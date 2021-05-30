@@ -13,7 +13,7 @@ class InvitationPostRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class InvitationPostRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'user_id' => 'required',
+            'is_attend' => 'required',
+            'desired' => 'nullable|max:255',
+            'has_allergy' => 'required|boolean',
+            'allergy_detail' => 'nullable|max:255',
+            'message' => 'nullable|max:255',
+            'address' => 'required|max:255',
+            'tel' => 'required|max:20',
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\InvitationPostRequest;
+use App\Models\Invitation;
 
 class InvitationController extends Controller
 {
@@ -32,6 +33,10 @@ class InvitationController extends Controller
      */
     public function post(InvitationPostRequest $request)
     {
-
+        $param = $request->validated();
+        Invitation::updateOrCreate(
+            ['user_id' => $param['user_id']],
+            $request
+        );
     }
 }
