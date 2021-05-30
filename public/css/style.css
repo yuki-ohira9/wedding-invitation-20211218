@@ -124,6 +124,7 @@ text-align:center;
 #mainBanner img{
 max-width:100%;
 height:auto;
+box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
 }
 
 .slogan{
@@ -734,8 +735,8 @@ img.alignleft{margin:0 7px 2px 0;}
 
 #images {
     display: grid;
-    grid-template-columns: 200px 200px
-    margin : 0 auto;
+    grid-template-columns: 200px 200px;
+    margin: 0 auto;
 }
 
     
@@ -829,9 +830,10 @@ text-align: left!important;
     border: 0;
     width:100%!important;
   }
+}
 
-*/
---------------RSVP--------------------------------------
+
+/* --------------RSVP-------------------------------------- */
 /*
 
 .contact-bg {
