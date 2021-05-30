@@ -28,3 +28,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/event', [App\Http\Controllers\EventController::class, 'index'])->name('event');
 
 Route::get('/invitation', [App\Http\Controllers\InvitationController::class, 'index'])->name('invitation');
+Route::post('/invitation', [App\Http\Controllers\InvitationController::class, 'post'])->name('invitation_post');
