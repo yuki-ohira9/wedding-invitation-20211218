@@ -17,7 +17,11 @@ use Illuminate\Support\Facades\Auth;
 // 初期ページはログイン
 Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm']);
 
-Auth::routes();
+Auth::routes([
+    'verify'   => true,
+    'register' => false, // デフォルトの登録機能OFF
+    'reset'    => true,
+]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
