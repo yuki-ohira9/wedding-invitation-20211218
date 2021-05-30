@@ -22,13 +22,13 @@
                                         <label for="name">お名前<span class="essential">必須</span></label>
                                     </th>
                                     <td>
-                                        <input type="text" name="yourname" id="name" placeholder="お名前をご入力ください" class="input-area" autocomplete="name">
+                                        <input type="text" name="name" id="name" placeholder="お名前をご入力ください" class="input-area" autocomplete="name">
                                     </td>
                                 </tr>
                                 <tr class="table-list">
                                     <th><label for="furigana">ふりがな<span class="essential">必須</span></label></th>
                                     <td>
-                                        <input type="text" name="yourname" id="furigana" placeholder="ふりがなをご入力ください" class="input-area">
+                                        <input type="text" name="furigana" id="furigana" placeholder="ふりがなをご入力ください" class="input-area">
                                     </td>
                                 </tr>
                                 <tr class="table-list">
