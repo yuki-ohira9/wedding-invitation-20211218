@@ -7,7 +7,7 @@
             @include('parts.header')
             @include('parts.tab')
             <div class="card">
-                <div class="card-header">{{ __('Greeting') }}</div>
+                <div class="card-header">{{ __('Event') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -16,7 +16,7 @@
                         </div>
                     @endif
 
-                    {{ __('Greeting Page') }}
+                    {{ __('Event Page') }}
                 </div>
             </div>
         </div>

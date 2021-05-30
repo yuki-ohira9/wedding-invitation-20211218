@@ -20,3 +20,7 @@ Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'showLoginFor
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/event', [App\Http\Controllers\EventController::class, 'index'])->name('event');
+
+Route::get('/invitation', [App\Http\Controllers\InvitationController::class, 'index'])->name('invitation');
