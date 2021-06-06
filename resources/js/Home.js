@@ -1,7 +1,5 @@
 import React from 'react';
 import posed from 'react-pose'
-import Animation from './Animation'
-import BorderYellow from './BorderYellow'
 import '../css/Home.css'
 
 const props = {
@@ -21,9 +19,7 @@ class Home extends React.Component {
     render(){
       return(
         <div className="wrapper">
-          {/* <BorderYellow display="true"/> */}
           <div className="home__main">
-            {/* <Animation className="animation" /> */}
             <div className="home__name">
               <Box className="name" pose={this.state.isVisible ? 'visible' : 'hidden'} >Wedding Invitation</Box>
               <Box className="home__description" pose={this.state.isVisible ? 'visible' : 'hidden'}>
