@@ -6,16 +6,20 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 import NavBar from "./NavBar";
 import Home from "./Home";
-import About from "./About";
+import Event from "./Event";
 import Auth from "./Auth";
+import Rsvp from "./Rsvp";
+
+import app from "../css/app.css";
 
 const App = () => {
     return (
         <BrowserRouter>
             <NavBar />
-            <Route path="/about" component={About} />
-            <Route path="/auth" component={Auth} />
-            <Route exact path="/" component={Home} />
+            <Route path="/home" component={Home} />
+            <Route path="/event" component={Event} />
+            <Route path="/rsvp" component={Rsvp} />
+            <Route exact path="/" component={Auth} />
         </BrowserRouter>
     );
 };
