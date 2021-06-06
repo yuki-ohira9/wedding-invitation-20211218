@@ -23,4 +23,7 @@ npm run dev
 php artisan config:clear
 php artisan cache:clear
 
+# 初期構築時
+php artisan admin:install
+
 exit
