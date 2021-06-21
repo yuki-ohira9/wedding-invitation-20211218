@@ -2880,7 +2880,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_pose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-pose */ "./node_modules/react-pose/dist/react-pose.es.js");
 /* harmony import */ var _css_Home_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../css/Home.css */ "./resources/css/Home.css");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _public_images_groom_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../public/images/groom.jpg */ "./public/images/groom.jpg");
+/* harmony import */ var _public_images_bride_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../public/images/bride.jpg */ "./public/images/bride.jpg");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2904,6 +2906,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 
@@ -2957,31 +2961,80 @@ var Home = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "wrapper",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           className: "home__main",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "home__name",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Box, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(Box, {
               className: "home__title",
               pose: this.state.isVisible ? 'visible' : 'hidden',
               children: "Wedding Invitation"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(Box, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(Box, {
               className: "home__bride_and_groom",
               pose: this.state.isVisible ? 'visible' : 'hidden',
-              children: ["Yuki & Rikako", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), "December 18th"]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(Box, {
-              className: "home__description",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              children: ["Yuki & Rikako", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), "December 18th"]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(Box, {
+              className: "home__description font_gray",
+              pose: this.state.isVisible ? 'visible' : 'hidden',
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
                 className: "home__description_block",
-                children: ["\u7686\u69D8\u306B\u304A\u304B\u308C\u307E\u3057\u3066\u306F", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), "\u307E\u3059\u307E\u3059\u3054\u6E05\u7965\u306E\u3053\u3068\u3068\u304A\u6176\u3073\u7533\u3057\u4E0A\u3052\u307E\u3059"]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                children: ["\u7686\u69D8\u306B\u304A\u304B\u308C\u307E\u3057\u3066\u306F", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), "\u307E\u3059\u307E\u3059\u3054\u6E05\u7965\u306E\u3053\u3068\u3068\u304A\u6176\u3073\u7533\u3057\u4E0A\u3052\u307E\u3059"]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
                 className: "home__description_block",
-                children: ["\u3053\u306E\u305F\u3073 \u79C1\u305F\u3061\u306F\u7D50\u5A5A\u3092\u3059\u308B\u3053\u3068\u306B\u306A\u308A\u307E\u3057\u305F", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), "\u3064\u304D\u307E\u3057\u3066\u306F\u65E5\u9803\u304A\u4E16\u8A71\u306B\u306A\u3063\u3066\u304A\u308A\u307E\u3059\u7686\u69D8\u306B", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), "\u611F\u8B1D\u3092\u8FBC\u3081\u3066 \u3055\u3055\u3084\u304B\u306A\u5C0F\u5BB4\u3092\u50AC\u3057\u305F\u304F\u5B58\u3058\u307E\u3059"]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                children: ["\u3053\u306E\u305F\u3073 \u79C1\u305F\u3061\u306F\u7D50\u5A5A\u3092\u3059\u308B\u3053\u3068\u306B\u306A\u308A\u307E\u3057\u305F", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), "\u3064\u304D\u307E\u3057\u3066\u306F\u65E5\u9803\u304A\u4E16\u8A71\u306B\u306A\u3063\u3066\u304A\u308A\u307E\u3059\u7686\u69D8\u306B", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), "\u611F\u8B1D\u3092\u8FBC\u3081\u3066 \u3055\u3055\u3084\u304B\u306A\u5C0F\u5BB4\u3092\u50AC\u3057\u305F\u304F\u5B58\u3058\u307E\u3059"]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
                 className: "home__description_block",
-                children: ["\u3054\u591A\u7528\u4E2D \u8AA0\u306B\u6050\u7E2E\u3067\u306F\u3054\u3056\u3044\u307E\u3059\u304C", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), "\u305C\u3072 \u3054\u51FA\u5E2D\u3092\u3044\u305F\u3060\u304D\u305F\u304F \u3054\u6848\u5185\u7533\u3057\u4E0A\u3052\u307E\u3059", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {})]
+                children: ["\u3054\u591A\u7528\u4E2D \u8AA0\u306B\u6050\u7E2E\u3067\u306F\u3054\u3056\u3044\u307E\u3059\u304C", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), "\u305C\u3072 \u3054\u51FA\u5E2D\u3092\u3044\u305F\u3060\u304D\u305F\u304F \u3054\u6848\u5185\u7533\u3057\u4E0A\u3052\u307E\u3059", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {})]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(Box, {
+              className: "home__introduction font_gray",
+              pose: this.state.isVisible ? 'visible' : 'hidden',
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "home__introduction_block",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  className: "home__introduction_image_block",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+                    src: _public_images_groom_jpg__WEBPACK_IMPORTED_MODULE_3__.default,
+                    className: "home__introduction_image",
+                    alt: "groom"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  className: "home__introduction_description_block home__introduction_description_name",
+                  children: "\u5927\u5E73 \u60A0\u8CB4"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  className: "home__introduction_description_block",
+                  children: "1994\u5E746\u670812\u65E5\u751F\u307E\u308C"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  className: "home__introduction_description_block",
+                  children: "\u8077\u696D\u306FSE"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  className: "home__introduction_description_block",
+                  children: "\u8DA3\u5473\u306F\u91CE\u7403\u3001DIY"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "home__introduction_block",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  className: "home__introduction_image_block",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+                    src: _public_images_bride_jpg__WEBPACK_IMPORTED_MODULE_4__.default,
+                    className: "home__introduction_image",
+                    alt: "bride"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  className: "home__introduction_description_block home__introduction_description_name",
+                  children: "\u91CE\u7530 \u68A8\u9999\u5B50"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  className: "home__introduction_description_block",
+                  children: "1997\u5E742\u670812\u65E5\u751F\u307E\u308C"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  className: "home__introduction_description_block",
+                  children: "\u8077\u696D\u306FSE"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  className: "home__introduction_description_block",
+                  children: "\u8DA3\u5473\u306F\u6599\u7406\u3001\u6F2B\u753B\u3001\u7D75\u753B"
+                })]
               })]
             })]
           })
@@ -7718,7 +7771,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".home__main {\n  display: flex;\n}\n\n.home__title {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  font-size: 70px;\n  font-weight: 800;\n  text-align: center;\n}\n\n.home__bride_and_groom {\n  position: absolute;\n  left: 0;\n  right: 0;\n  bottom: 150px;\n  width: 300px;\n  height: -webkit-max-content;\n  height: -moz-max-content;\n  height: max-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  text-align: center;\n}\n\n.home__description {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 730px;\n  width: 80%;\n  height: -webkit-max-content;\n  height: -moz-max-content;\n  height: max-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  text-align:center;\n  border-bottom: 3px solid #008080;\n  border-top: 3px solid #008080;\n}\n\n.home__description_block {\n  padding: 30px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".home__main {\n  display: flex;\n}\n\n.home__title {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  font-size: 70px;\n  font-weight: 800;\n  text-align: center;\n}\n\n.home__bride_and_groom {\n  position: absolute;\n  left: 0;\n  right: 0;\n  bottom: 150px;\n  width: 300px;\n  height: -webkit-max-content;\n  height: -moz-max-content;\n  height: max-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  text-align: center;\n}\n\n.home__description {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 730px;\n  width: 80%;\n  height: -webkit-max-content;\n  height: -moz-max-content;\n  height: max-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  text-align:center;\n  border-bottom: 3px solid #008080;\n  border-top: 3px solid #008080;\n}\n\n.home__description_block {\n  padding: 30px;\n}\n\n.font_gray {\n  color: #707070;\n}\n\n.home__introduction {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 1130px;\n  width: 80%;\n  height: -webkit-max-content;\n  height: -moz-max-content;\n  height: max-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  text-align:center;\n}\n\n@media screen and (max-width: 480px) {\n  .home__introduction {\n    top: 1200px !important;\n  }\n\n  .home__introduction_image_block {\n    width: 100% !important;\n    float: inherit !important;\n  }\n\n  .home__introduction_description_name{\n    margin: auto !important;\n  }\n\n  .home__introduction_description_block {\n    width: 100% !important;\n    float: inherit !important;\n    margin: auto !important;\n  }\n}\n\n.home__introduction_block {\n  width: 80%;\n  margin: auto;\n  overflow: hidden;\n  padding: 20px;\n}\n\n.home__introduction_image_block {\n  width: 40%;\n  left: 0;\n  float: left;\n}\n\n.home__introduction_image {\n  width: 200px;\n  border-radius: 50%;\n}\n\n.home__introduction_description_block {\n  width: 60%;\n  padding: 10px;\n  float: left;\n}\n\n.home__introduction_description_name {\n  font-weight: bold;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -7847,6 +7900,36 @@ module.exports = function (cssWithMappingToString) {
 
   return list;
 };
+
+/***/ }),
+
+/***/ "./public/images/bride.jpg":
+/*!*********************************!*\
+  !*** ./public/images/bride.jpg ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/bride.jpg?09d10e87f24cfe17d0ecb0c3a8c255fc");
+
+/***/ }),
+
+/***/ "./public/images/groom.jpg":
+/*!*********************************!*\
+  !*** ./public/images/groom.jpg ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/groom.jpg?c7bf46179ba8ffb5e9ca751461e45048");
 
 /***/ }),
 

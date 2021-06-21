@@ -45,3 +45,68 @@
 .home__description_block {
   padding: 30px;
 }
+
+.font_gray {
+  color: #707070;
+}
+
+.home__introduction {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 1130px;
+  width: 80%;
+  height: max-content;
+  margin: auto;
+  font-family: 'Caveat', cursive;
+  text-align:center;
+}
+
+@media screen and (max-width: 480px) {
+  .home__introduction {
+    top: 1200px !important;
+  }
+
+  .home__introduction_image_block {
+    width: 100% !important;
+    float: inherit !important;
+  }
+
+  .home__introduction_description_name{
+    margin: auto !important;
+  }
+
+  .home__introduction_description_block {
+    width: 100% !important;
+    float: inherit !important;
+    margin: auto !important;
+  }
+}
+
+.home__introduction_block {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.home__introduction_image_block {
+  width: 40%;
+  left: 0;
+  float: left;
+}
+
+.home__introduction_image {
+  width: 200px;
+  border-radius: 50%;
+}
+
+.home__introduction_description_block {
+  width: 60%;
+  padding: 10px;
+  float: left;
+}
+
+.home__introduction_description_name {
+  font-weight: bold;
+}
