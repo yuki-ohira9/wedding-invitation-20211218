@@ -2964,13 +2964,25 @@ var Home = /*#__PURE__*/function (_React$Component) {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
             className: "home__name",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Box, {
-              className: "name",
+              className: "home__title",
               pose: this.state.isVisible ? 'visible' : 'hidden',
               children: "Wedding Invitation"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(Box, {
-              className: "home__description",
+              className: "home__bride_and_groom",
               pose: this.state.isVisible ? 'visible' : 'hidden',
               children: ["Yuki & Rikako", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), "December 18th"]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(Box, {
+              className: "home__description",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                className: "home__description_block",
+                children: ["\u7686\u69D8\u306B\u304A\u304B\u308C\u307E\u3057\u3066\u306F", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), "\u307E\u3059\u307E\u3059\u3054\u6E05\u7965\u306E\u3053\u3068\u3068\u304A\u6176\u3073\u7533\u3057\u4E0A\u3052\u307E\u3059"]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                className: "home__description_block",
+                children: ["\u3053\u306E\u305F\u3073 \u79C1\u305F\u3061\u306F\u7D50\u5A5A\u3092\u3059\u308B\u3053\u3068\u306B\u306A\u308A\u307E\u3057\u305F", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), "\u3064\u304D\u307E\u3057\u3066\u306F\u65E5\u9803\u304A\u4E16\u8A71\u306B\u306A\u3063\u3066\u304A\u308A\u307E\u3059\u7686\u69D8\u306B", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), "\u611F\u8B1D\u3092\u8FBC\u3081\u3066 \u3055\u3055\u3084\u304B\u306A\u5C0F\u5BB4\u3092\u50AC\u3057\u305F\u304F\u5B58\u3058\u307E\u3059"]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                className: "home__description_block",
+                children: ["\u3054\u591A\u7528\u4E2D \u8AA0\u306B\u6050\u7E2E\u3067\u306F\u3054\u3056\u3044\u307E\u3059\u304C", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), "\u305C\u3072 \u3054\u51FA\u5E2D\u3092\u3044\u305F\u3060\u304D\u305F\u304F \u3054\u6848\u5185\u7533\u3057\u4E0A\u3052\u307E\u3059", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {})]
+              })]
             })]
           })
         })
@@ -7706,7 +7718,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".home__main {\n  display: flex;\n}\n  \n.home__name {\n}\n\n.home__description {\n  position: absolute;\n  left: 0;\n  right: 0;\n  bottom: 150px;\n  width: 300px;\n  height: -webkit-max-content;\n  height: -moz-max-content;\n  height: max-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  text-align:center;\n}\n\n.name {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  font-size: 70px;\n  font-weight: 800;\n  text-align: center;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".home__main {\n  display: flex;\n}\n\n.home__title {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  font-size: 70px;\n  font-weight: 800;\n  text-align: center;\n}\n\n.home__bride_and_groom {\n  position: absolute;\n  left: 0;\n  right: 0;\n  bottom: 150px;\n  width: 300px;\n  height: -webkit-max-content;\n  height: -moz-max-content;\n  height: max-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  text-align: center;\n}\n\n.home__description {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 730px;\n  width: 80%;\n  height: -webkit-max-content;\n  height: -moz-max-content;\n  height: max-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  text-align:center;\n  border-bottom: 3px solid #008080;\n  border-top: 3px solid #008080;\n}\n\n.home__description_block {\n  padding: 30px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -7755,7 +7767,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Caveat);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n    background-image: url(https://pakutaso.cdn.rabify.me/shared/img/thumb/Photoelly006.jpg.webp?d=1420);\n    /* background-image: url(/image/header.jpg); */\n   \n    /* 画像を常に天地左右の中央に配置 */\n    background-position: center center;\n    \n    /* 画像をタイル状に繰り返し表示しない */\n    background-repeat: no-repeat;\n    \n    /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */\n    background-attachment: fixed;\n    \n    /* 表示するコンテナの大きさに基づいて、背景画像を調整 */\n    background-size: cover;\n    \n    /* 背景画像が読み込まれる前に表示される背景のカラー */\n    background-color: #464646;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n    background-image: url(https://pakutaso.cdn.rabify.me/shared/img/thumb/Photoelly006.jpg.webp?d=1420);\n    /* background-image: url(/image/header.jpg); */\n   \n    /* 画像を常に天地左右の中央に配置 */\n    background-position: center center;\n    \n    /* 画像をタイル状に繰り返し表示しない */\n    background-repeat: no-repeat;\n    \n    /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */\n    background-attachment: fixed;\n    \n    /* 表示するコンテナの大きさに基づいて、背景画像を調整 */\n    background-size: cover;\n    \n    /* 背景画像が読み込まれる前に表示される背景のカラー */\n    /* background-color: #464646; */\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

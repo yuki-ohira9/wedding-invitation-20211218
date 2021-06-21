@@ -10,7 +10,7 @@ import Event from "./Event";
 import Auth from "./Auth";
 import Rsvp from "./Rsvp";
 
-import app from "../css/app.css";
+import "../css/app.css";
 
 const App = () => {
     return (

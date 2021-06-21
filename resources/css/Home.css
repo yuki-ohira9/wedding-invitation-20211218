@@ -1,23 +1,8 @@
 .home__main {
   display: flex;
 }
-  
-.home__name {
-}
 
-.home__description {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 150px;
-  width: 300px;
-  height: max-content;
-  margin: auto;
-  font-family: 'Caveat', cursive;
-  text-align:center;
-}
-
-.name {
+.home__title {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -29,4 +14,34 @@
   font-size: 70px;
   font-weight: 800;
   text-align: center;
+}
+
+.home__bride_and_groom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 150px;
+  width: 300px;
+  height: max-content;
+  margin: auto;
+  font-family: 'Caveat', cursive;
+  text-align: center;
+}
+
+.home__description {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 730px;
+  width: 80%;
+  height: max-content;
+  margin: auto;
+  font-family: 'Caveat', cursive;
+  text-align:center;
+  border-bottom: 3px solid #008080;
+  border-top: 3px solid #008080;
+}
+
+.home__description_block {
+  padding: 30px;
 }
