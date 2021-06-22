@@ -8,6 +8,7 @@ const props = {
     hidden: { opacity: 0 }
 }
 const Nav = posed.div(props)
+const Box = posed.div(props)
 
 class NavBar extends Component {
     constructor(props) {
@@ -26,7 +27,7 @@ class NavBar extends Component {
 
     render() {
         return (
-            <div>
+            <div className="home__main">
                 <Nav className="nav" pose={this.state.isVisible ? 'visible' : 'hidden'} >
                     <ul className="navbar">
                         <li className="navbar__item"><Link className="navbar__link" to="/home">Greeting</Link></li>
@@ -35,6 +36,11 @@ class NavBar extends Component {
                         <li className="navbar__item"><Link className="navbar__link" to="/">Login</Link></li>
                     </ul>
                 </Nav>
+                <Box className="home__title" pose={this.state.isVisible ? 'visible' : 'hidden'} >Wedding Invitation</Box>
+                <Box className="home__bride_and_groom" pose={this.state.isVisible ? 'visible' : 'hidden'}>
+                    Yuki & Rikako<br/>
+                    December 18th
+                </Box>
             </div>
         );
     }

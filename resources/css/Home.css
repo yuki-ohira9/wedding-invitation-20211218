@@ -2,37 +2,11 @@
   display: flex;
 }
 
-.home__title {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: fit-content;
-  margin: auto;
-  font-family: 'Caveat', cursive;
-  font-size: 70px;
-  font-weight: 800;
-  text-align: center;
-}
-
-.home__bride_and_groom {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 150px;
-  width: 300px;
-  height: max-content;
-  margin: auto;
-  font-family: 'Caveat', cursive;
-  text-align: center;
-}
-
 .home__description {
   position: absolute;
   left: 0;
   right: 0;
-  top: 730px;
+  top: 700px;
   width: 80%;
   height: max-content;
   margin: auto;
@@ -44,6 +18,7 @@
 
 .home__description_block {
   padding: 30px;
+  white-space: nowrap;
 }
 
 .font_gray {
@@ -62,9 +37,13 @@
   text-align:center;
 }
 
+/* SPの場合 */
 @media screen and (max-width: 480px) {
+  .home__description {
+    font-size: 12px;
+  }
   .home__introduction {
-    top: 1200px !important;
+    top: 1050px !important;
   }
 
   .home__introduction_image_block {
