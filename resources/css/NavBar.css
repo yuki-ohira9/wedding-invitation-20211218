@@ -1,0 +1,68 @@
+.navbar{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+}
+.navbar {
+    margin-top: 60px;
+    padding: 0;
+}
+
+.navbar__item {
+    transform:rotate(30deg);
+}
+.navbar__link {
+    font-family: 'Caveat', cursive;
+    font-size: 36px;
+    font-weight: 600;
+    color:#707070;
+}
+
+.navbar__link:hover {
+    font-family: 'Caveat', cursive;
+    font-size: 36px;
+    font-weight: 600;
+    color:#fff;
+    background-color: #FF4646;
+}
+.nav {
+    display: block;
+    z-index: 2;
+    width: 100%;
+}
+
+.home__main {
+    display: flex;
+}
+  
+.home__title {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: fit-content;
+    margin: auto;
+    font-family: 'Caveat', cursive;
+    font-size: 70px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.home__bride_and_groom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 150px;
+    width: 300px;
+    height: max-content;
+    margin: auto;
+    font-family: 'Caveat', cursive;
+    text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+    .home__title {
+        font-size: 55px !important;
+    }
+}
