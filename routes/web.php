@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Auth;
 Route::get('{any}', function () {
     return view('app');
 })->where('any','.*');
+
+if(config('app.env') === 'production'){
+    // asset()やurl()がhttpsで生成されるため、httpsで接続されるようにする
+    URL::forceScheme('https');
+}
