@@ -23,7 +23,7 @@
     font-size: 36px;
     font-weight: 600;
     color:#fff;
-    background-color: #FF4646;
+    background-color: #008080;
 }
 .nav {
     display: block;
@@ -47,6 +47,7 @@
     font-size: 70px;
     font-weight: 800;
     text-align: center;
+    text-shadow: 1px 2px 3px #808080;
 }
 
 .home__bride_and_groom {
@@ -59,6 +60,7 @@
     margin: auto;
     font-family: 'Caveat', cursive;
     text-align: center;
+    text-shadow: 1px 2px 3px #808080;
 }
 
 @media screen and (max-width: 480px) {
