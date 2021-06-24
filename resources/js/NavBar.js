@@ -25,6 +25,13 @@ class NavBar extends Component {
         }, 1500);
     }
 
+    logout = async () => {
+        let result = window.confirm('ログアウトしますか？');
+        if (true === result) {
+            location.href='/logout';
+        }
+    };
+
     render() {
         return (
             <div className="home__main">
@@ -33,7 +40,7 @@ class NavBar extends Component {
                         <li className="navbar__item"><Link className="navbar__link" to="/home">Greeting</Link></li>
                         <li className="navbar__item"><Link className="navbar__link" to="/event">Event</Link></li>
                         <li className="navbar__item"><Link className="navbar__link" to="/rsvp">Rsvp</Link></li>
-                        <li className="navbar__item"><Link className="navbar__link" to="/">Login</Link></li>
+                        <li className="navbar__item navbar__link" onClick={this.logout}>Logout</li>
                     </ul>
                 </Nav>
                 <Box className="home__title" pose={this.state.isVisible ? 'visible' : 'hidden'} >Wedding Invitation</Box>

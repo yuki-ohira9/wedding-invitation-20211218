@@ -1,5 +1,4 @@
 import React from 'react';
-import posed from 'react-pose'
 import '../css/Home.css'
 import Groom from '../../public/images/groom.jpg'
 import Bride from '../../public/images/bride.jpg'

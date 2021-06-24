@@ -1,0 +1,24 @@
+.login__form_container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: fit-content;
+  margin: auto;
+  font-family: 'Caveat', cursive;
+  text-align:center;
+  font-size: 18px;
+}
+
+.login__form_block {
+  margin: auto;
+  width: 50%;
+}
+
+/* SPの場合 */
+@media screen and (max-width: 480px) {
+  .login__form_block {
+    width: 70% !important;
+  }
+}
