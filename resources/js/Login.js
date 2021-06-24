@@ -16,6 +16,8 @@ class Login extends Component {
   }
 
   click = async () => {
+    $('.login__button').prop("disabled", true);
+    $('.login__button').text("Logging in now");
     let result = await User.login(this.state.email, this.state.password);
     if (true === result) {
       this.props.history.push({ pathname: 'home' });
@@ -23,6 +25,8 @@ class Login extends Component {
       console.log('メールアドレスかパスワードが違います');
       this.setState({ errMessage: 'メールアドレスかパスワードが違います' });
     }
+    $('.login__button').text("Login");
+    $('.login__button').prop("disabled", false);
   };
 
   handleChange = e => {
@@ -55,7 +59,7 @@ class Login extends Component {
                 value={this.state.password}
               />
             </Form.Group>
-            <Button variant="light" onClick={this.click}>
+            <Button className="login__button" variant="light" onClick={this.click}>
               Login
             </Button>
           </Form>
