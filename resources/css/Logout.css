@@ -1,4 +1,4 @@
-.login__form_container {
+.logout__container {
   position: absolute;
   left: 0;
   right: 0;
@@ -11,14 +11,14 @@
   font-size: 18px;
 }
 
-.login__form_block {
+.logout__block {
   margin: auto;
-  width: 50%;
+  width: 100%;
 }
 
 /* SPの場合 */
 @media screen and (max-width: 480px) {
-  .login__form_block {
+  .logout__container {
     width: 70% !important;
   }
 }

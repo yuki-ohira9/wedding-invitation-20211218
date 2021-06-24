@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import User from './User';
+import '../css/Logout.css'
 
 export default class Logout extends Component {
   async componentDidMount() {
@@ -10,15 +11,15 @@ export default class Logout extends Component {
 
   render() {
     return (
-      <Container className="center">
-        <Row className="justify-content-md-center">
+      <Container className="center logout__container">
+        <div className="logout__block">
           <div>
-            <h2>ログアウトしました</h2>
-            <div className="text-center">
-              <Link to="/login">ログイン画面へ</Link>
+            <h2>Thank you for visiting my website.</h2>
+            <div>
+              <Link to="/login">To Login Page</Link>
             </div>
           </div>
-        </Row>
+        </div>
       </Container>
     );
   }
