@@ -19,6 +19,7 @@
 .home__description_block {
   padding: 30px;
   white-space: nowrap;
+  backdrop-filter: blur(2px);
 }
 
 .font_gray {
@@ -78,14 +79,17 @@
 .home__introduction_image {
   width: 200px;
   border-radius: 50%;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
 }
 
 .home__introduction_description_block {
   width: 60%;
   padding: 10px;
   float: left;
+  backdrop-filter: blur(2px);
 }
 
 .home__introduction_description_name {
   font-weight: bold;
+  backdrop-filter: blur(2px);
 }

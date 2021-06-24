@@ -8,6 +8,7 @@
   margin: auto;
   font-family: 'Caveat', cursive;
   text-align:center;
+  backdrop-filter: blur(2px);
 }
 
 .event_main__title {
