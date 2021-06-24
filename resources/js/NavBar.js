@@ -33,7 +33,7 @@ class NavBar extends Component {
                         <li className="navbar__item"><Link className="navbar__link" to="/home">Greeting</Link></li>
                         <li className="navbar__item"><Link className="navbar__link" to="/event">Event</Link></li>
                         <li className="navbar__item"><Link className="navbar__link" to="/rsvp">Rsvp</Link></li>
-                        <li className="navbar__item"><Link className="navbar__link" to="/">Login</Link></li>
+                        <li className="navbar__item"><Link className="navbar__link" to="/logout">Logout</Link></li>
                     </ul>
                 </Nav>
                 <Box className="home__title" pose={this.state.isVisible ? 'visible' : 'hidden'} >Wedding Invitation</Box>
