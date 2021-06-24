@@ -3023,10 +3023,12 @@ var Login = /*#__PURE__*/function (_Component) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              $('.login__button').prop("disabled", true);
+              $('.login__button').text("Logging in now");
+              _context.next = 4;
               return _User__WEBPACK_IMPORTED_MODULE_2__.default.login(_this.state.email, _this.state.password);
 
-            case 2:
+            case 4:
               result = _context.sent;
 
               if (true === result) {
@@ -3041,7 +3043,10 @@ var Login = /*#__PURE__*/function (_Component) {
                 });
               }
 
-            case 4:
+              $('.login__button').text("Login");
+              $('.login__button').prop("disabled", false);
+
+            case 8:
             case "end":
               return _context.stop();
           }
@@ -3093,6 +3098,7 @@ var Login = /*#__PURE__*/function (_Component) {
                 value: this.state.password
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__.default, {
+              className: "login__button",
               variant: "light",
               onClick: this.click,
               children: "Login"
@@ -3308,18 +3314,13 @@ var NavBar = /*#__PURE__*/function (_Component) {
     _this = _super.call(this, props);
 
     _defineProperty(_assertThisInitialized(_this), "logout", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var result;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              result = window.confirm('ログアウトしますか？');
+              return _context.abrupt("return", window.confirm('ログアウトしますか？'));
 
-              if (true === result) {
-                location.href = '/logout';
-              }
-
-            case 2:
+            case 1:
             case "end":
               return _context.stop();
           }
@@ -3377,9 +3378,13 @@ var NavBar = /*#__PURE__*/function (_Component) {
                 children: "Rsvp"
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
-              className: "navbar__item navbar__link",
-              onClick: this.logout,
-              children: "Logout"
+              className: "navbar__item",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+                className: "navbar__link",
+                to: "/logout",
+                onClick: this.logout,
+                children: "Logout"
+              })
             })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Box, {
