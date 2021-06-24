@@ -8333,7 +8333,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Caveat);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n    background-image: url(https://pakutaso.cdn.rabify.me/shared/img/thumb/Photoelly006.jpg.webp?d=1420);\n    /* background-image: url(/image/header.jpg); */\n   \n    /* 画像を常に天地左右の中央に配置 */\n    background-position: center center;\n    \n    /* 画像をタイル状に繰り返し表示しない */\n    background-repeat: no-repeat;\n    \n    /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */\n    background-attachment: fixed;\n    \n    /* 表示するコンテナの大きさに基づいて、背景画像を調整 */\n    background-size: cover;\n    \n    /* 背景画像が読み込まれる前に表示される背景のカラー */\n    /* background-color: #464646; */\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n    background-image: url(/image/header.jpg);\n   \n    /* 画像を常に天地左右の中央に配置 */\n    background-position: center center;\n    \n    /* 画像をタイル状に繰り返し表示しない */\n    background-repeat: no-repeat;\n    \n    /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */\n    background-attachment: fixed;\n    \n    /* 表示するコンテナの大きさに基づいて、背景画像を調整 */\n    background-size: cover;\n    \n    /* 背景画像が読み込まれる前に表示される背景のカラー */\n    /* background-color: #464646; */\n}\n\n/* SPの場合 */\n@media screen and (max-width: 480px) {\n    body {\n        background-image: url(/image/header_sp.jpg) !important;\n    }\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
