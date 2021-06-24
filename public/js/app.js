@@ -3318,7 +3318,9 @@ var NavBar = /*#__PURE__*/function (_Component) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              return _context.abrupt("return", window.confirm('ログアウトしますか？'));
+              if (window.confirm('ログアウトしますか？')) {
+                window.location = '/logout';
+              }
 
             case 1:
             case "end":
@@ -3378,13 +3380,9 @@ var NavBar = /*#__PURE__*/function (_Component) {
                 children: "Rsvp"
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
-              className: "navbar__item",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
-                className: "navbar__link",
-                to: "/logout",
-                onClick: this.logout,
-                children: "Logout"
-              })
+              className: "navbar__item navbar__link",
+              onClick: this.logout,
+              children: "Logout"
             })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Box, {
@@ -3419,13 +3417,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./User */ "./resources/js/User.js");
+/* harmony import */ var _css_Rsvp_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../css/Rsvp.css */ "./resources/css/Rsvp.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
 
 
 
 var Rsvp = function Rsvp() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    children: "Rsvp"
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    className: "wrapper",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "rsvp__main",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: "rsvp__description font_gray",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "rsvp__description_block",
+          children: ["\u304A\u554F\u3044\u5408\u308F\u305B\u3001\u3054\u8981\u671B\u7B49\u304C\u3054\u3056\u3044\u307E\u3057\u305F\u3089\u3001\u304A\u6C17\u8EFD\u306B\u304A\u554F\u3044\u5408\u308F\u305B\u304F\u3060\u3055\u3044\u3002", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {})]
+        }), _User__WEBPACK_IMPORTED_MODULE_1__.default.userInfo.name]
+      })
+    })
   });
 };
 
@@ -3469,6 +3482,8 @@ var User = function User() {
     return _this.get('isLoggedIn') === 'true';
   });
 
+  _defineProperty(this, "userInfo", {});
+
   _defineProperty(this, "set", function (key, value) {
     return localStorage.setItem(key, value);
   });
@@ -3489,14 +3504,15 @@ var User = function User() {
 
   _defineProperty(this, "login", /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(email, password) {
-      var result;
+      var result, userInfo;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              result = false; // ログイン時にCSRFトークンを初期化
+              result = false;
+              userInfo = {}; // ログイン時にCSRFトークンを初期化
 
-              _context2.next = 3;
+              _context2.next = 4;
               return axios.get("/sanctum/csrf-cookie").then( /*#__PURE__*/function () {
                 var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(response) {
                   return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -3509,6 +3525,7 @@ var User = function User() {
                             password: password
                           }).then(function (res) {
                             if (res.data.result) {
+                              userInfo = res.data.user;
                               result = true;
                             } else {
                               result = false;
@@ -3530,12 +3547,13 @@ var User = function User() {
                 };
               }());
 
-            case 3:
+            case 4:
               _this.set('isLoggedIn', result);
 
+              _this.userInfo = userInfo;
               return _context2.abrupt("return", result);
 
-            case 5:
+            case 7:
             case "end":
               return _context2.stop();
           }
@@ -8308,7 +8326,31 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".navbar{\n    display: flex;\n    list-style: none;\n    justify-content: space-around;\n}\n.navbar {\n    margin-top: 60px;\n    padding: 0;\n}\n\n.navbar__item {\n    transform:rotate(30deg);\n}\n.navbar__link {\n    font-family: 'Caveat', cursive;\n    font-size: 36px;\n    font-weight: 600;\n    color:#707070;\n}\n\n.navbar__link:hover {\n    font-family: 'Caveat', cursive;\n    font-size: 36px;\n    font-weight: 600;\n    color:#fff;\n    background-color: #FF4646;\n}\n.nav {\n    display: block;\n    z-index: 2;\n    width: 100%;\n}\n\n.home__main {\n    display: flex;\n}\n  \n.home__title {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    height: -webkit-fit-content;\n    height: -moz-fit-content;\n    height: fit-content;\n    margin: auto;\n    font-family: 'Caveat', cursive;\n    font-size: 70px;\n    font-weight: 800;\n    text-align: center;\n}\n\n.home__bride_and_groom {\n    position: absolute;\n    left: 0;\n    right: 0;\n    bottom: 150px;\n    width: 300px;\n    height: -webkit-max-content;\n    height: -moz-max-content;\n    height: max-content;\n    margin: auto;\n    font-family: 'Caveat', cursive;\n    text-align: center;\n}\n\n@media screen and (max-width: 480px) {\n    .home__title {\n        font-size: 55px !important;\n    }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".navbar{\n    display: flex;\n    list-style: none;\n    justify-content: space-around;\n}\n.navbar {\n    margin-top: 60px;\n    padding: 0;\n}\n\n.navbar__item {\n    transform:rotate(30deg);\n}\n.navbar__link {\n    font-family: 'Caveat', cursive;\n    font-size: 36px;\n    font-weight: 600;\n    color:#707070;\n}\n\n.navbar__link:hover {\n    font-family: 'Caveat', cursive;\n    font-size: 36px;\n    font-weight: 600;\n    color:#fff;\n    background-color: #008080;\n}\n.nav {\n    display: block;\n    z-index: 2;\n    width: 100%;\n}\n\n.home__main {\n    display: flex;\n}\n  \n.home__title {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    height: -webkit-fit-content;\n    height: -moz-fit-content;\n    height: fit-content;\n    margin: auto;\n    font-family: 'Caveat', cursive;\n    font-size: 70px;\n    font-weight: 800;\n    text-align: center;\n    text-shadow: 1px 2px 3px #808080;\n}\n\n.home__bride_and_groom {\n    position: absolute;\n    left: 0;\n    right: 0;\n    bottom: 150px;\n    width: 300px;\n    height: -webkit-max-content;\n    height: -moz-max-content;\n    height: max-content;\n    margin: auto;\n    font-family: 'Caveat', cursive;\n    text-align: center;\n    text-shadow: 1px 2px 3px #808080;\n}\n\n@media screen and (max-width: 480px) {\n    .home__title {\n        font-size: 55px !important;\n    }\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/Rsvp.css":
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/Rsvp.css ***!
+  \******************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".rsvp__main {\n  display: flex;\n}\n\n.rsvp__description {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 700px;\n  width: 80%;\n  height: -webkit-max-content;\n  height: -moz-max-content;\n  height: max-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  text-align:center;\n  border-bottom: 3px solid #008080;\n  border-top: 3px solid #008080;\n}\n\n.rsvp__description_block {\n  padding: 30px;\n  -webkit-backdrop-filter: blur(2px);\n          backdrop-filter: blur(2px);\n}\n\n.font_gray {\n  color: #707070;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -82741,6 +82783,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_NavBar_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
+/***/ "./resources/css/Rsvp.css":
+/*!********************************!*\
+  !*** ./resources/css/Rsvp.css ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_Rsvp_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./Rsvp.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/Rsvp.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_Rsvp_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_Rsvp_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
