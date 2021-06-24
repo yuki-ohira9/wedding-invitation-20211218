@@ -832,6 +832,65 @@ var steps = (function (steps, direction) {
 
 /***/ }),
 
+/***/ "./node_modules/@restart/hooks/esm/useCommittedRef.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@restart/hooks/esm/useCommittedRef.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+/**
+ * Creates a `Ref` whose value is updated in an effect, ensuring the most recent
+ * value is the one rendered with. Generally only required for Concurrent mode usage
+ * where previous work in `render()` may be discarded befor being used.
+ *
+ * This is safe to access in an event handler.
+ *
+ * @param value The `Ref` value
+ */
+
+function useCommittedRef(value) {
+  var ref = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(value);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    ref.current = value;
+  }, [value]);
+  return ref;
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useCommittedRef);
+
+/***/ }),
+
+/***/ "./node_modules/@restart/hooks/esm/useEventCallback.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@restart/hooks/esm/useEventCallback.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ useEventCallback)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _useCommittedRef__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./useCommittedRef */ "./node_modules/@restart/hooks/esm/useCommittedRef.js");
+
+
+function useEventCallback(fn) {
+  var ref = (0,_useCommittedRef__WEBPACK_IMPORTED_MODULE_1__.default)(fn);
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    return ref.current && ref.current.apply(ref, arguments);
+  }, [ref]);
+}
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -2676,163 +2735,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./User */ "./resources/js/User.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
-
-var Auth = function Auth() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
-      _useState2 = _slicedToArray(_useState, 2),
-      user = _useState2[0],
-      setUser = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
-      _useState4 = _slicedToArray(_useState3, 2),
-      email = _useState4[0],
-      setEmail = _useState4[1];
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
-      _useState6 = _slicedToArray(_useState5, 2),
-      password = _useState6[0],
-      setPassword = _useState6[1]; // ブラウザリロード時にログイン済みか判定
-
-
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    getUser();
-  }, [getUser]); // 認証ユーザを取得
-
-  var getUser = function getUser() {
-    axios.get("/api/user").then(function (res) {
-      console.log('[getUser]ログイン済み');
-      console.log(res.data);
-      setUser(res.data);
-    })["catch"](function (err) {
-      console.log('[getUser]ログインしてません');
-    });
-  }; // ログイン
-
-
-  var login = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              e.preventDefault(); // ログイン時にCSRFトークンを初期化
-
-              axios.get("/sanctum/csrf-cookie").then(function (response) {
-                axios.post("/api/login", {
-                  email: email,
-                  password: password
-                }).then(function (res) {
-                  console.log(res.data);
-
-                  if (res.data.result) {
-                    console.log('[login]ログイン成功');
-                    setUser(res.data.user);
-                  } else {
-                    console.log(res.data.message);
-                    console.log('[login]ログイン失敗');
-                  }
-                })["catch"](function (err) {
-                  console.log(err.response);
-                  console.log('[login]ログイン失敗');
-                });
-              });
-
-            case 2:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-
-    return function login(_x) {
-      return _ref.apply(this, arguments);
-    };
-  }(); // ログアウト
-
-
-  var logout = function logout() {
-    axios.get("/api/logout").then(function (res) {
-      setUser(null);
-    })["catch"](function (err) {
-      console.log(err);
-    });
-  }; // ログインフォーム
-
-
-  var form = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
-    onSubmit: login,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-      children: "email"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      type: "email",
-      value: email,
-      onChange: function onChange(e) {
-        return setEmail(e.target.value);
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-      children: "password"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      type: "password",
-      value: password,
-      onChange: function onChange(e) {
-        return setPassword(e.target.value);
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-      type: "submit",
-      children: "Login"
-    })]
-  }); // ユーザ情報
-
-
-  var userInfo = null; // 認証済みの場合、ログアウトボタンとユーザ情報を表示
-
-  if (user) {
-    form = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-      onClick: logout,
-      children: "Logout"
-    });
-    userInfo = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-        children: "User"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        children: ["name: ", user.name]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        children: ["email: ", user.email]
-      })]
-    });
-  }
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    children: [form, userInfo, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-      onClick: getUser,
-      children: "getUser"
-    })]
+var Auth = function Auth(props) {
+  return _User__WEBPACK_IMPORTED_MODULE_1__.default.isLoggedIn() ? props.children : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Redirect, {
+    to: '/login'
   });
 };
 
@@ -2947,12 +2861,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_pose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-pose */ "./node_modules/react-pose/dist/react-pose.es.js");
-/* harmony import */ var _css_Home_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../css/Home.css */ "./resources/css/Home.css");
-/* harmony import */ var _public_images_groom_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../public/images/groom.jpg */ "./public/images/groom.jpg");
-/* harmony import */ var _public_images_bride_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../public/images/bride.jpg */ "./public/images/bride.jpg");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
+/* harmony import */ var _css_Home_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../css/Home.css */ "./resources/css/Home.css");
+/* harmony import */ var _public_images_groom_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../public/images/groom.jpg */ "./public/images/groom.jpg");
+/* harmony import */ var _public_images_bride_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../public/images/bride.jpg */ "./public/images/bride.jpg");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -2961,65 +2873,65 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Home = function Home() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "wrapper",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "home__main",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "home__description font_gray",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "home__description_block",
-          children: ["\u7686\u69D8\u306B\u304A\u304B\u308C\u307E\u3057\u3066\u306F", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), "\u307E\u3059\u307E\u3059\u3054\u6E05\u7965\u306E\u3053\u3068\u3068\u304A\u6176\u3073\u7533\u3057\u4E0A\u3052\u307E\u3059"]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          children: ["\u7686\u69D8\u306B\u304A\u304B\u308C\u307E\u3057\u3066\u306F", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), "\u307E\u3059\u307E\u3059\u3054\u6E05\u7965\u306E\u3053\u3068\u3068\u304A\u6176\u3073\u7533\u3057\u4E0A\u3052\u307E\u3059"]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "home__description_block",
-          children: ["\u3053\u306E\u305F\u3073 \u79C1\u305F\u3061\u306F\u7D50\u5A5A\u3092\u3059\u308B\u3053\u3068\u306B\u306A\u308A\u307E\u3057\u305F", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), "\u3064\u304D\u307E\u3057\u3066\u306F\u65E5\u9803\u304A\u4E16\u8A71\u306B\u306A\u3063\u3066\u304A\u308A\u307E\u3059\u7686\u69D8\u306B", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), "\u611F\u8B1D\u3092\u8FBC\u3081\u3066 \u3055\u3055\u3084\u304B\u306A\u5C0F\u5BB4\u3092\u50AC\u3057\u305F\u304F\u5B58\u3058\u307E\u3059"]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          children: ["\u3053\u306E\u305F\u3073 \u79C1\u305F\u3061\u306F\u7D50\u5A5A\u3092\u3059\u308B\u3053\u3068\u306B\u306A\u308A\u307E\u3057\u305F", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), "\u3064\u304D\u307E\u3057\u3066\u306F\u65E5\u9803\u304A\u4E16\u8A71\u306B\u306A\u3063\u3066\u304A\u308A\u307E\u3059\u7686\u69D8\u306B", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), "\u611F\u8B1D\u3092\u8FBC\u3081\u3066 \u3055\u3055\u3084\u304B\u306A\u5C0F\u5BB4\u3092\u50AC\u3057\u305F\u304F\u5B58\u3058\u307E\u3059"]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "home__description_block",
-          children: ["\u3054\u591A\u7528\u4E2D \u8AA0\u306B\u6050\u7E2E\u3067\u306F\u3054\u3056\u3044\u307E\u3059\u304C", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), "\u305C\u3072 \u3054\u51FA\u5E2D\u3092\u3044\u305F\u3060\u304D\u305F\u304F \u3054\u6848\u5185\u7533\u3057\u4E0A\u3052\u307E\u3059", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {})]
+          children: ["\u3054\u591A\u7528\u4E2D \u8AA0\u306B\u6050\u7E2E\u3067\u306F\u3054\u3056\u3044\u307E\u3059\u304C", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), "\u305C\u3072 \u3054\u51FA\u5E2D\u3092\u3044\u305F\u3060\u304D\u305F\u304F \u3054\u6848\u5185\u7533\u3057\u4E0A\u3052\u307E\u3059", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {})]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "home__introduction font_gray",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "home__introduction_block",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "home__introduction_image_block",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
-              src: _public_images_groom_jpg__WEBPACK_IMPORTED_MODULE_3__.default,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+              src: _public_images_groom_jpg__WEBPACK_IMPORTED_MODULE_2__.default,
               className: "home__introduction_image",
               alt: "groom"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "home__introduction_description_block home__introduction_description_name",
             children: "\u5927\u5E73 \u60A0\u8CB4"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "home__introduction_description_block",
             children: "1994\u5E746\u670812\u65E5\u751F\u307E\u308C"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "home__introduction_description_block",
             children: "\u8077\u696D\u306FSE"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "home__introduction_description_block",
             children: "\u8DA3\u5473\u306F\u91CE\u7403\u3001DIY"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "home__introduction_block",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "home__introduction_image_block",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
-              src: _public_images_bride_jpg__WEBPACK_IMPORTED_MODULE_4__.default,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+              src: _public_images_bride_jpg__WEBPACK_IMPORTED_MODULE_3__.default,
               className: "home__introduction_image",
               alt: "bride"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "home__introduction_description_block home__introduction_description_name",
             children: "\u91CE\u7530 \u68A8\u9999\u5B50"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "home__introduction_description_block",
             children: "1997\u5E742\u670812\u65E5\u751F\u307E\u308C"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "home__introduction_description_block",
             children: "\u8077\u696D\u306FSE"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "home__introduction_description_block",
             children: "\u8DA3\u5473\u306F\u6599\u7406\u3001\u6F2B\u753B\u3001\u7D75\u753B"
           })]
@@ -3033,10 +2945,10 @@ var Home = function Home() {
 
 /***/ }),
 
-/***/ "./resources/js/NavBar.js":
-/*!********************************!*\
-  !*** ./resources/js/NavBar.js ***!
-  \********************************/
+/***/ "./resources/js/Login.js":
+/*!*******************************!*\
+  !*** ./resources/js/Login.js ***!
+  \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3044,12 +2956,186 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _css_NavBar_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../css/NavBar.css */ "./resources/css/NavBar.css");
-/* harmony import */ var react_pose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-pose */ "./node_modules/react-pose/dist/react-pose.es.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Alert.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./User */ "./resources/js/User.js");
+/* harmony import */ var _css_Login_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../css/Login.css */ "./resources/css/Login.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+
+var Login = /*#__PURE__*/function (_Component) {
+  _inherits(Login, _Component);
+
+  var _super = _createSuper(Login);
+
+  function Login(props) {
+    var _this;
+
+    _classCallCheck(this, Login);
+
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "click", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var result;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _User__WEBPACK_IMPORTED_MODULE_2__.default.login(_this.state.email, _this.state.password);
+
+            case 2:
+              result = _context.sent;
+
+              if (true === result) {
+                _this.props.history.push({
+                  pathname: 'home'
+                });
+              } else {
+                console.log('メールアドレスかパスワードが違います');
+
+                _this.setState({
+                  errMessage: 'メールアドレスかパスワードが違います'
+                });
+              }
+
+            case 4:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    })));
+
+    _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
+      _this.setState(_defineProperty({}, e.target.id, e.target.value));
+    });
+
+    _this.state = {
+      email: '',
+      password: '',
+      errMessage: ''
+    };
+    return _this;
+  }
+
+  _createClass(Login, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default, {
+        className: "center login__form_container",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "login__form_block",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__.default, {
+            children: [this.state.errMessage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__.default, {
+              variant: "danger",
+              children: "\u30E1\u30FC\u30EB\u30A2\u30C9\u30EC\u30B9\u304B\u30D1\u30B9\u30EF\u30FC\u30C9\u304C\u9055\u3044\u307E\u3059"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__.default.Group, {
+              controlId: "email",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__.default.Label, {
+                children: "Mail Address"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__.default.Control, {
+                type: "email",
+                placeholder: "Please enter your Email address",
+                onChange: this.handleChange,
+                value: this.state.email
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__.default.Group, {
+              controlId: "password",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__.default.Label, {
+                children: "Password"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__.default.Control, {
+                type: "password",
+                placeholder: "Please enter your password",
+                onChange: this.handleChange,
+                value: this.state.password
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__.default, {
+              variant: "light",
+              onClick: this.click,
+              children: "Login"
+            })]
+          })
+        })
+      });
+    }
+  }]);
+
+  return Login;
+}(react__WEBPACK_IMPORTED_MODULE_1__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.withRouter)(Login));
+
+/***/ }),
+
+/***/ "./resources/js/Logout.js":
+/*!********************************!*\
+  !*** ./resources/js/Logout.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Logout)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./User */ "./resources/js/User.js");
+/* harmony import */ var _css_Logout_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../css/Logout.css */ "./resources/css/Logout.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3077,6 +3163,127 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
+var Logout = /*#__PURE__*/function (_Component) {
+  _inherits(Logout, _Component);
+
+  var _super = _createSuper(Logout);
+
+  function Logout() {
+    _classCallCheck(this, Logout);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Logout, [{
+    key: "componentDidMount",
+    value: function () {
+      var _componentDidMount = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _User__WEBPACK_IMPORTED_MODULE_2__.default.logout();
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function componentDidMount() {
+        return _componentDidMount.apply(this, arguments);
+      }
+
+      return componentDidMount;
+    }()
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default, {
+        className: "center logout__container",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "logout__block",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
+              children: "Thank you for visiting my website."
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+                to: "/login",
+                children: "To Login Page"
+              })
+            })]
+          })
+        })
+      });
+    }
+  }]);
+
+  return Logout;
+}(react__WEBPACK_IMPORTED_MODULE_1__.Component);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/NavBar.js":
+/*!********************************!*\
+  !*** ./resources/js/NavBar.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _css_NavBar_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../css/NavBar.css */ "./resources/css/NavBar.css");
+/* harmony import */ var react_pose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-pose */ "./node_modules/react-pose/dist/react-pose.es.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
 var props = {
   visible: {
     opacity: 1
@@ -3085,8 +3292,8 @@ var props = {
     opacity: 0
   }
 };
-var Nav = react_pose__WEBPACK_IMPORTED_MODULE_2__.default.div(props);
-var Box = react_pose__WEBPACK_IMPORTED_MODULE_2__.default.div(props);
+var Nav = react_pose__WEBPACK_IMPORTED_MODULE_3__.default.div(props);
+var Box = react_pose__WEBPACK_IMPORTED_MODULE_3__.default.div(props);
 
 var NavBar = /*#__PURE__*/function (_Component) {
   _inherits(NavBar, _Component);
@@ -3099,6 +3306,27 @@ var NavBar = /*#__PURE__*/function (_Component) {
     _classCallCheck(this, NavBar);
 
     _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "logout", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var result;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              result = window.confirm('ログアウトしますか？');
+
+              if (true === result) {
+                location.href = '/logout';
+              }
+
+            case 2:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    })));
+
     _this.state = {
       todos: [],
       nextId: 0
@@ -3120,58 +3348,55 @@ var NavBar = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "home__main",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Nav, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Nav, {
           className: "nav",
           pose: this.state.isVisible ? 'visible' : 'hidden',
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("ul", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("ul", {
             className: "navbar",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
               className: "navbar__item",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
                 className: "navbar__link",
                 to: "/home",
                 children: "Greeting"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
               className: "navbar__item",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
                 className: "navbar__link",
                 to: "/event",
                 children: "Event"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
               className: "navbar__item",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
                 className: "navbar__link",
                 to: "/rsvp",
                 children: "Rsvp"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
-              className: "navbar__item",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-                className: "navbar__link",
-                to: "/",
-                children: "Login"
-              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+              className: "navbar__item navbar__link",
+              onClick: this.logout,
+              children: "Logout"
             })]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Box, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Box, {
           className: "home__title",
           pose: this.state.isVisible ? 'visible' : 'hidden',
           children: "Wedding Invitation"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(Box, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(Box, {
           className: "home__bride_and_groom",
           pose: this.state.isVisible ? 'visible' : 'hidden',
-          children: ["Yuki & Rikako", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), "December 18th"]
+          children: ["Yuki & Rikako", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), "December 18th"]
         })]
       });
     }
   }]);
 
   return NavBar;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+}(react__WEBPACK_IMPORTED_MODULE_1__.Component);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (NavBar);
 
@@ -3203,6 +3428,145 @@ var Rsvp = function Rsvp() {
 
 /***/ }),
 
+/***/ "./resources/js/User.js":
+/*!******************************!*\
+  !*** ./resources/js/User.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var User = function User() {
+  var _this = this;
+
+  _classCallCheck(this, User);
+
+  _defineProperty(this, "isLoggedIn", function () {
+    return _this.get('isLoggedIn') === 'true';
+  });
+
+  _defineProperty(this, "set", function (key, value) {
+    return localStorage.setItem(key, value);
+  });
+
+  _defineProperty(this, "get", function (key) {
+    return _this.getLocalStorage(key);
+  });
+
+  _defineProperty(this, "getLocalStorage", function (key) {
+    var ret = localStorage.getItem(key);
+
+    if (ret) {
+      return ret;
+    }
+
+    return null;
+  });
+
+  _defineProperty(this, "login", /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(email, password) {
+      var result;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              result = false; // ログイン時にCSRFトークンを初期化
+
+              _context2.next = 3;
+              return axios.get("/sanctum/csrf-cookie").then( /*#__PURE__*/function () {
+                var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(response) {
+                  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+                    while (1) {
+                      switch (_context.prev = _context.next) {
+                        case 0:
+                          _context.next = 2;
+                          return axios.post("/api/login", {
+                            email: email,
+                            password: password
+                          }).then(function (res) {
+                            if (res.data.result) {
+                              result = true;
+                            } else {
+                              result = false;
+                            }
+                          })["catch"](function (err) {
+                            result = false;
+                          });
+
+                        case 2:
+                        case "end":
+                          return _context.stop();
+                      }
+                    }
+                  }, _callee);
+                }));
+
+                return function (_x3) {
+                  return _ref2.apply(this, arguments);
+                };
+              }());
+
+            case 3:
+              _this.set('isLoggedIn', result);
+
+              return _context2.abrupt("return", result);
+
+            case 5:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function (_x, _x2) {
+      return _ref.apply(this, arguments);
+    };
+  }());
+
+  _defineProperty(this, "logout", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            if (_this.isLoggedIn()) {
+              _this.set('isLoggedIn', false); // ログアウト処理
+              //　他に必要な処理があるのならこちら
+
+            }
+
+          case 1:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  })));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new User());
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -3213,15 +3577,17 @@ var Rsvp = function Rsvp() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _NavBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NavBar */ "./resources/js/NavBar.js");
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Home */ "./resources/js/Home.js");
 /* harmony import */ var _Event__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Event */ "./resources/js/Event.js");
 /* harmony import */ var _Auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Auth */ "./resources/js/Auth.js");
 /* harmony import */ var _Rsvp__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Rsvp */ "./resources/js/Rsvp.js");
-/* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../css/app.css */ "./resources/css/app.css");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Login */ "./resources/js/Login.js");
+/* harmony import */ var _Logout__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Logout */ "./resources/js/Logout.js");
+/* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../css/app.css */ "./resources/css/app.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -3236,27 +3602,37 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
+
+
 var App = function App() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.BrowserRouter, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_NavBar__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
-      path: "/home",
-      component: _Home__WEBPACK_IMPORTED_MODULE_3__.default
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
-      path: "/event",
-      component: _Event__WEBPACK_IMPORTED_MODULE_4__.default
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
-      path: "/rsvp",
-      component: _Rsvp__WEBPACK_IMPORTED_MODULE_6__.default
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
-      exact: true,
-      path: "/",
-      component: _Auth__WEBPACK_IMPORTED_MODULE_5__.default
-    })]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.BrowserRouter, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Switch, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+        exact: true,
+        path: "/login",
+        component: _Login__WEBPACK_IMPORTED_MODULE_7__.default
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+        exact: true,
+        path: "/logout",
+        component: _Logout__WEBPACK_IMPORTED_MODULE_8__.default
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_Auth__WEBPACK_IMPORTED_MODULE_5__.default, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_NavBar__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+          path: "/home",
+          component: _Home__WEBPACK_IMPORTED_MODULE_3__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+          path: "/event",
+          component: _Event__WEBPACK_IMPORTED_MODULE_4__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+          path: "/rsvp",
+          component: _Rsvp__WEBPACK_IMPORTED_MODULE_6__.default
+        })]
+      })]
+    })
   });
 };
 
 if (document.getElementById("app")) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(App, {}), document.getElementById("app"));
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(App, {}), document.getElementById("app"));
 }
 
 /***/ }),
@@ -7747,6 +8123,73 @@ window.axios.defaults.withCredentials = true;
 
 /***/ }),
 
+/***/ "./node_modules/classnames/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/classnames/index.js ***!
+  \******************************************/
+/***/ ((module, exports) => {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+  Copyright (c) 2018 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames() {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg)) {
+				if (arg.length) {
+					var inner = classNames.apply(null, arg);
+					if (inner) {
+						classes.push(inner);
+					}
+				}
+			} else if (argType === 'object') {
+				if (arg.toString === Object.prototype.toString) {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				} else {
+					classes.push(arg.toString());
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if ( true && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {}
+}());
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/Event.css":
 /*!*******************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/Event.css ***!
@@ -7789,6 +8232,54 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".home__main {\n  display: flex;\n}\n\n.home__description {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 700px;\n  width: 80%;\n  height: -webkit-max-content;\n  height: -moz-max-content;\n  height: max-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  text-align:center;\n  border-bottom: 3px solid #008080;\n  border-top: 3px solid #008080;\n}\n\n.home__description_block {\n  padding: 30px;\n  white-space: nowrap;\n}\n\n.font_gray {\n  color: #707070;\n}\n\n.home__introduction {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 1130px;\n  width: 80%;\n  height: -webkit-max-content;\n  height: -moz-max-content;\n  height: max-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  text-align:center;\n}\n\n/* SPの場合 */\n@media screen and (max-width: 480px) {\n  .home__description {\n    font-size: 12px;\n  }\n  .home__introduction {\n    top: 1050px !important;\n  }\n\n  .home__introduction_image_block {\n    width: 100% !important;\n    float: inherit !important;\n  }\n\n  .home__introduction_description_name{\n    margin: auto !important;\n  }\n\n  .home__introduction_description_block {\n    width: 100% !important;\n    float: inherit !important;\n    margin: auto !important;\n  }\n}\n\n.home__introduction_block {\n  width: 80%;\n  margin: auto;\n  overflow: hidden;\n  padding: 20px;\n}\n\n.home__introduction_image_block {\n  width: 40%;\n  left: 0;\n  float: left;\n}\n\n.home__introduction_image {\n  width: 200px;\n  border-radius: 50%;\n}\n\n.home__introduction_description_block {\n  width: 60%;\n  padding: 10px;\n  float: left;\n}\n\n.home__introduction_description_name {\n  font-weight: bold;\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/Login.css":
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/Login.css ***!
+  \*******************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".login__form_container {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  text-align:center;\n  font-size: 18px;\n}\n\n.login__form_block {\n  margin: auto;\n  width: 50%;\n}\n\n/* SPの場合 */\n@media screen and (max-width: 480px) {\n  .login__form_block {\n    width: 70% !important;\n  }\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/Logout.css":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/Logout.css ***!
+  \********************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".logout__container {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  text-align:center;\n  font-size: 18px;\n}\n\n.logout__block {\n  margin: auto;\n  width: 100%;\n}\n\n/* SPの場合 */\n@media screen and (max-width: 480px) {\n  .logout__container {\n    width: 70% !important;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -7917,6 +8408,450 @@ module.exports = function (cssWithMappingToString) {
 
   return list;
 };
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/esm/addEventListener.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/dom-helpers/esm/addEventListener.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "optionsSupported": () => (/* binding */ optionsSupported),
+/* harmony export */   "onceSupported": () => (/* binding */ onceSupported),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _canUseDOM__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./canUseDOM */ "./node_modules/dom-helpers/esm/canUseDOM.js");
+/* eslint-disable no-return-assign */
+
+var optionsSupported = false;
+var onceSupported = false;
+
+try {
+  var options = {
+    get passive() {
+      return optionsSupported = true;
+    },
+
+    get once() {
+      // eslint-disable-next-line no-multi-assign
+      return onceSupported = optionsSupported = true;
+    }
+
+  };
+
+  if (_canUseDOM__WEBPACK_IMPORTED_MODULE_0__.default) {
+    window.addEventListener('test', options, options);
+    window.removeEventListener('test', options, true);
+  }
+} catch (e) {
+  /* */
+}
+
+/**
+ * An `addEventListener` ponyfill, supports the `once` option
+ * 
+ * @param node the element
+ * @param eventName the event name
+ * @param handle the handler
+ * @param options event options
+ */
+function addEventListener(node, eventName, handler, options) {
+  if (options && typeof options !== 'boolean' && !onceSupported) {
+    var once = options.once,
+        capture = options.capture;
+    var wrappedHandler = handler;
+
+    if (!onceSupported && once) {
+      wrappedHandler = handler.__once || function onceHandler(event) {
+        this.removeEventListener(eventName, onceHandler, capture);
+        handler.call(this, event);
+      };
+
+      handler.__once = wrappedHandler;
+    }
+
+    node.addEventListener(eventName, wrappedHandler, optionsSupported ? options : capture);
+  }
+
+  node.addEventListener(eventName, handler, options);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (addEventListener);
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/esm/camelize.js":
+/*!**************************************************!*\
+  !*** ./node_modules/dom-helpers/esm/camelize.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ camelize)
+/* harmony export */ });
+var rHyphen = /-(.)/g;
+function camelize(string) {
+  return string.replace(rHyphen, function (_, chr) {
+    return chr.toUpperCase();
+  });
+}
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/esm/canUseDOM.js":
+/*!***************************************************!*\
+  !*** ./node_modules/dom-helpers/esm/canUseDOM.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (!!(typeof window !== 'undefined' && window.document && window.document.createElement));
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/esm/css.js":
+/*!*********************************************!*\
+  !*** ./node_modules/dom-helpers/esm/css.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _getComputedStyle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getComputedStyle */ "./node_modules/dom-helpers/esm/getComputedStyle.js");
+/* harmony import */ var _hyphenateStyle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hyphenateStyle */ "./node_modules/dom-helpers/esm/hyphenateStyle.js");
+/* harmony import */ var _isTransform__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./isTransform */ "./node_modules/dom-helpers/esm/isTransform.js");
+
+
+
+
+function style(node, property) {
+  var css = '';
+  var transforms = '';
+
+  if (typeof property === 'string') {
+    return node.style.getPropertyValue((0,_hyphenateStyle__WEBPACK_IMPORTED_MODULE_1__.default)(property)) || (0,_getComputedStyle__WEBPACK_IMPORTED_MODULE_0__.default)(node).getPropertyValue((0,_hyphenateStyle__WEBPACK_IMPORTED_MODULE_1__.default)(property));
+  }
+
+  Object.keys(property).forEach(function (key) {
+    var value = property[key];
+
+    if (!value && value !== 0) {
+      node.style.removeProperty((0,_hyphenateStyle__WEBPACK_IMPORTED_MODULE_1__.default)(key));
+    } else if ((0,_isTransform__WEBPACK_IMPORTED_MODULE_2__.default)(key)) {
+      transforms += key + "(" + value + ") ";
+    } else {
+      css += (0,_hyphenateStyle__WEBPACK_IMPORTED_MODULE_1__.default)(key) + ": " + value + ";";
+    }
+  });
+
+  if (transforms) {
+    css += "transform: " + transforms + ";";
+  }
+
+  node.style.cssText += ";" + css;
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (style);
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/esm/getComputedStyle.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/dom-helpers/esm/getComputedStyle.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ getComputedStyle)
+/* harmony export */ });
+/* harmony import */ var _ownerWindow__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ownerWindow */ "./node_modules/dom-helpers/esm/ownerWindow.js");
+
+/**
+ * Returns one or all computed style properties of an element.
+ * 
+ * @param node the element
+ * @param psuedoElement the style property
+ */
+
+function getComputedStyle(node, psuedoElement) {
+  return (0,_ownerWindow__WEBPACK_IMPORTED_MODULE_0__.default)(node).getComputedStyle(node, psuedoElement);
+}
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/esm/hyphenate.js":
+/*!***************************************************!*\
+  !*** ./node_modules/dom-helpers/esm/hyphenate.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ hyphenate)
+/* harmony export */ });
+var rUpper = /([A-Z])/g;
+function hyphenate(string) {
+  return string.replace(rUpper, '-$1').toLowerCase();
+}
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/esm/hyphenateStyle.js":
+/*!********************************************************!*\
+  !*** ./node_modules/dom-helpers/esm/hyphenateStyle.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ hyphenateStyleName)
+/* harmony export */ });
+/* harmony import */ var _hyphenate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hyphenate */ "./node_modules/dom-helpers/esm/hyphenate.js");
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
+ * https://github.com/facebook/react/blob/2aeb8a2a6beb00617a4217f7f8284924fa2ad819/src/vendor/core/hyphenateStyleName.js
+ */
+
+var msPattern = /^ms-/;
+function hyphenateStyleName(string) {
+  return (0,_hyphenate__WEBPACK_IMPORTED_MODULE_0__.default)(string).replace(msPattern, '-ms-');
+}
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/esm/isTransform.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/dom-helpers/esm/isTransform.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ isTransform)
+/* harmony export */ });
+var supportedTransforms = /^((translate|rotate|scale)(X|Y|Z|3d)?|matrix(3d)?|perspective|skew(X|Y)?)$/i;
+function isTransform(value) {
+  return !!(value && supportedTransforms.test(value));
+}
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/esm/listen.js":
+/*!************************************************!*\
+  !*** ./node_modules/dom-helpers/esm/listen.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _addEventListener__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./addEventListener */ "./node_modules/dom-helpers/esm/addEventListener.js");
+/* harmony import */ var _removeEventListener__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./removeEventListener */ "./node_modules/dom-helpers/esm/removeEventListener.js");
+
+
+
+function listen(node, eventName, handler, options) {
+  (0,_addEventListener__WEBPACK_IMPORTED_MODULE_0__.default)(node, eventName, handler, options);
+  return function () {
+    (0,_removeEventListener__WEBPACK_IMPORTED_MODULE_1__.default)(node, eventName, handler, options);
+  };
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (listen);
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/esm/ownerDocument.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/dom-helpers/esm/ownerDocument.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ownerDocument)
+/* harmony export */ });
+/**
+ * Returns the owner document of a given element.
+ * 
+ * @param node the element
+ */
+function ownerDocument(node) {
+  return node && node.ownerDocument || document;
+}
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/esm/ownerWindow.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/dom-helpers/esm/ownerWindow.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ownerWindow)
+/* harmony export */ });
+/* harmony import */ var _ownerDocument__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ownerDocument */ "./node_modules/dom-helpers/esm/ownerDocument.js");
+
+/**
+ * Returns the owner window of a given element.
+ * 
+ * @param node the element
+ */
+
+function ownerWindow(node) {
+  var doc = (0,_ownerDocument__WEBPACK_IMPORTED_MODULE_0__.default)(node);
+  return doc && doc.defaultView || window;
+}
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/esm/removeEventListener.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/dom-helpers/esm/removeEventListener.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/**
+ * A `removeEventListener` ponyfill
+ * 
+ * @param node the element
+ * @param eventName the event name
+ * @param handle the handler
+ * @param options event options
+ */
+function removeEventListener(node, eventName, handler, options) {
+  var capture = options && typeof options !== 'boolean' ? options.capture : options;
+  node.removeEventListener(eventName, handler, capture);
+
+  if (handler.__once) {
+    node.removeEventListener(eventName, handler.__once, capture);
+  }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (removeEventListener);
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/esm/transitionEnd.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/dom-helpers/esm/transitionEnd.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ transitionEnd)
+/* harmony export */ });
+/* harmony import */ var _css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css */ "./node_modules/dom-helpers/esm/css.js");
+/* harmony import */ var _listen__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./listen */ "./node_modules/dom-helpers/esm/listen.js");
+/* harmony import */ var _triggerEvent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./triggerEvent */ "./node_modules/dom-helpers/esm/triggerEvent.js");
+
+
+
+
+function parseDuration(node) {
+  var str = (0,_css__WEBPACK_IMPORTED_MODULE_0__.default)(node, 'transitionDuration') || '';
+  var mult = str.indexOf('ms') === -1 ? 1000 : 1;
+  return parseFloat(str) * mult;
+}
+
+function emulateTransitionEnd(element, duration, padding) {
+  if (padding === void 0) {
+    padding = 5;
+  }
+
+  var called = false;
+  var handle = setTimeout(function () {
+    if (!called) (0,_triggerEvent__WEBPACK_IMPORTED_MODULE_2__.default)(element, 'transitionend', true);
+  }, duration + padding);
+  var remove = (0,_listen__WEBPACK_IMPORTED_MODULE_1__.default)(element, 'transitionend', function () {
+    called = true;
+  }, {
+    once: true
+  });
+  return function () {
+    clearTimeout(handle);
+    remove();
+  };
+}
+
+function transitionEnd(element, handler, duration, padding) {
+  if (duration == null) duration = parseDuration(element) || 0;
+  var removeEmulate = emulateTransitionEnd(element, duration, padding);
+  var remove = (0,_listen__WEBPACK_IMPORTED_MODULE_1__.default)(element, 'transitionend', handler);
+  return function () {
+    removeEmulate();
+    remove();
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/esm/triggerEvent.js":
+/*!******************************************************!*\
+  !*** ./node_modules/dom-helpers/esm/triggerEvent.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ triggerEvent)
+/* harmony export */ });
+/**
+ * Triggers an event on a given element.
+ * 
+ * @param node the element
+ * @param eventName the event name to trigger
+ * @param bubbles whether the event should bubble up
+ * @param cancelable whether the event should be cancelable
+ */
+function triggerEvent(node, eventName, bubbles, cancelable) {
+  if (bubbles === void 0) {
+    bubbles = false;
+  }
+
+  if (cancelable === void 0) {
+    cancelable = true;
+  }
+
+  if (node) {
+    var event = document.createEvent('HTMLEvents');
+    event.initEvent(eventName, bubbles, cancelable);
+    node.dispatchEvent(event);
+  }
+}
 
 /***/ }),
 
@@ -9188,6 +10123,66 @@ function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
 }
 
 module.exports = hoistNonReactStatics;
+
+
+/***/ }),
+
+/***/ "./node_modules/invariant/browser.js":
+/*!*******************************************!*\
+  !*** ./node_modules/invariant/browser.js ***!
+  \*******************************************/
+/***/ ((module) => {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+/**
+ * Use invariant() to assert state which your program assumes to be true.
+ *
+ * Provide sprintf-style format (only %s is supported) and arguments
+ * to provide information about what broke and what you were
+ * expecting.
+ *
+ * The invariant message will be stripped in production, but the invariant
+ * will remain to ensure logic does not differ in production.
+ */
+
+var invariant = function(condition, format, a, b, c, d, e, f) {
+  if (true) {
+    if (format === undefined) {
+      throw new Error('invariant requires an error message argument');
+    }
+  }
+
+  if (!condition) {
+    var error;
+    if (format === undefined) {
+      error = new Error(
+        'Minified exception occurred; use the non-minified dev environment ' +
+        'for the full error message and additional helpful warnings.'
+      );
+    } else {
+      var args = [a, b, c, d, e, f];
+      var argIndex = 0;
+      error = new Error(
+        format.replace(/%s/g, function() { return args[argIndex++]; })
+      );
+      error.name = 'Invariant Violation';
+    }
+
+    error.framesToPop = 1; // we don't care about invariant's own frame
+    throw error;
+  }
+};
+
+module.exports = invariant;
 
 
 /***/ }),
@@ -43783,6 +44778,111 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/prop-types-extra/lib/all.js":
+/*!**************************************************!*\
+  !*** ./node_modules/prop-types-extra/lib/all.js ***!
+  \**************************************************/
+/***/ ((module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = all;
+
+var _createChainableTypeChecker = __webpack_require__(/*! ./utils/createChainableTypeChecker */ "./node_modules/prop-types-extra/lib/utils/createChainableTypeChecker.js");
+
+var _createChainableTypeChecker2 = _interopRequireDefault(_createChainableTypeChecker);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function all() {
+  for (var _len = arguments.length, validators = Array(_len), _key = 0; _key < _len; _key++) {
+    validators[_key] = arguments[_key];
+  }
+
+  function allPropTypes() {
+    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    var error = null;
+
+    validators.forEach(function (validator) {
+      if (error != null) {
+        return;
+      }
+
+      var result = validator.apply(undefined, args);
+      if (result != null) {
+        error = result;
+      }
+    });
+
+    return error;
+  }
+
+  return (0, _createChainableTypeChecker2.default)(allPropTypes);
+}
+module.exports = exports['default'];
+
+/***/ }),
+
+/***/ "./node_modules/prop-types-extra/lib/utils/createChainableTypeChecker.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/prop-types-extra/lib/utils/createChainableTypeChecker.js ***!
+  \*******************************************************************************/
+/***/ ((module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = createChainableTypeChecker;
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+// Mostly taken from ReactPropTypes.
+
+function createChainableTypeChecker(validate) {
+  function checkType(isRequired, props, propName, componentName, location, propFullName) {
+    var componentNameSafe = componentName || '<<anonymous>>';
+    var propFullNameSafe = propFullName || propName;
+
+    if (props[propName] == null) {
+      if (isRequired) {
+        return new Error('Required ' + location + ' `' + propFullNameSafe + '` was not specified ' + ('in `' + componentNameSafe + '`.'));
+      }
+
+      return null;
+    }
+
+    for (var _len = arguments.length, args = Array(_len > 6 ? _len - 6 : 0), _key = 6; _key < _len; _key++) {
+      args[_key - 6] = arguments[_key];
+    }
+
+    return validate.apply(undefined, [props, propName, componentNameSafe, location, propFullNameSafe].concat(args));
+  }
+
+  var chainedCheckType = checkType.bind(null, false);
+  chainedCheckType.isRequired = checkType.bind(null, true);
+
+  return chainedCheckType;
+}
+module.exports = exports['default'];
+
+/***/ }),
+
 /***/ "./node_modules/prop-types/checkPropTypes.js":
 /*!***************************************************!*\
   !*** ./node_modules/prop-types/checkPropTypes.js ***!
@@ -44543,6 +45643,1653 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/Alert.js":
+/*!***************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/Alert.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var uncontrollable__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! uncontrollable */ "./node_modules/uncontrollable/lib/esm/index.js");
+/* harmony import */ var _restart_hooks_useEventCallback__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @restart/hooks/useEventCallback */ "./node_modules/@restart/hooks/esm/useEventCallback.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var _Fade__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Fade */ "./node_modules/react-bootstrap/esm/Fade.js");
+/* harmony import */ var _CloseButton__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./CloseButton */ "./node_modules/react-bootstrap/esm/CloseButton.js");
+/* harmony import */ var _divWithClassName__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./divWithClassName */ "./node_modules/react-bootstrap/esm/divWithClassName.js");
+/* harmony import */ var _createWithBsPrefix__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./createWithBsPrefix */ "./node_modules/react-bootstrap/esm/createWithBsPrefix.js");
+/* harmony import */ var _SafeAnchor__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./SafeAnchor */ "./node_modules/react-bootstrap/esm/SafeAnchor.js");
+
+
+var _excluded = ["bsPrefix", "show", "closeLabel", "className", "children", "variant", "onClose", "dismissible", "transition"];
+
+
+
+
+
+
+
+
+
+
+var DivStyledAsH4 = (0,_divWithClassName__WEBPACK_IMPORTED_MODULE_6__.default)('h4');
+DivStyledAsH4.displayName = 'DivStyledAsH4';
+var AlertHeading = (0,_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_7__.default)('alert-heading', {
+  Component: DivStyledAsH4
+});
+var AlertLink = (0,_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_7__.default)('alert-link', {
+  Component: _SafeAnchor__WEBPACK_IMPORTED_MODULE_8__.default
+});
+var defaultProps = {
+  show: true,
+  transition: _Fade__WEBPACK_IMPORTED_MODULE_9__.default,
+  closeLabel: 'Close alert'
+};
+var Alert = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function (uncontrolledProps, ref) {
+  var _useUncontrolled = (0,uncontrollable__WEBPACK_IMPORTED_MODULE_4__.useUncontrolled)(uncontrolledProps, {
+    show: 'onClose'
+  }),
+      bsPrefix = _useUncontrolled.bsPrefix,
+      show = _useUncontrolled.show,
+      closeLabel = _useUncontrolled.closeLabel,
+      className = _useUncontrolled.className,
+      children = _useUncontrolled.children,
+      variant = _useUncontrolled.variant,
+      onClose = _useUncontrolled.onClose,
+      dismissible = _useUncontrolled.dismissible,
+      transition = _useUncontrolled.transition,
+      props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_useUncontrolled, _excluded);
+
+  var prefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_10__.useBootstrapPrefix)(bsPrefix, 'alert');
+  var handleClose = (0,_restart_hooks_useEventCallback__WEBPACK_IMPORTED_MODULE_5__.default)(function (e) {
+    if (onClose) {
+      onClose(false, e);
+    }
+  });
+  var Transition = transition === true ? _Fade__WEBPACK_IMPORTED_MODULE_9__.default : transition;
+  var alert = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+    role: "alert"
+  }, !Transition ? props : undefined, {
+    ref: ref,
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, prefix, variant && prefix + "-" + variant, dismissible && prefix + "-dismissible")
+  }), dismissible && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_CloseButton__WEBPACK_IMPORTED_MODULE_11__.default, {
+    onClick: handleClose,
+    label: closeLabel
+  }), children);
+  if (!Transition) return show ? alert : null;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Transition, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+    unmountOnExit: true
+  }, props, {
+    ref: undefined,
+    in: show
+  }), alert);
+});
+Alert.displayName = 'Alert';
+Alert.defaultProps = defaultProps;
+Alert.Link = AlertLink;
+Alert.Heading = AlertHeading;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Alert);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/Button.js":
+/*!****************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/Button.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var _SafeAnchor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SafeAnchor */ "./node_modules/react-bootstrap/esm/SafeAnchor.js");
+
+
+var _excluded = ["bsPrefix", "variant", "size", "active", "className", "block", "type", "as"];
+
+
+
+
+var defaultProps = {
+  variant: 'primary',
+  active: false,
+  disabled: false
+};
+var Button = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function (_ref, ref) {
+  var bsPrefix = _ref.bsPrefix,
+      variant = _ref.variant,
+      size = _ref.size,
+      active = _ref.active,
+      className = _ref.className,
+      block = _ref.block,
+      type = _ref.type,
+      as = _ref.as,
+      props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_ref, _excluded);
+
+  var prefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_4__.useBootstrapPrefix)(bsPrefix, 'btn');
+  var classes = classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, prefix, active && 'active', variant && prefix + "-" + variant, block && prefix + "-block", size && prefix + "-" + size);
+
+  if (props.href) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_SafeAnchor__WEBPACK_IMPORTED_MODULE_5__.default, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, props, {
+      as: as,
+      ref: ref,
+      className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(classes, props.disabled && 'disabled')
+    }));
+  }
+
+  if (ref) {
+    props.ref = ref;
+  }
+
+  if (type) {
+    props.type = type;
+  } else if (!as) {
+    props.type = 'button';
+  }
+
+  var Component = as || 'button';
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Component, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, props, {
+    className: classes
+  }));
+});
+Button.displayName = 'Button';
+Button.defaultProps = defaultProps;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Button);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/CloseButton.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/CloseButton.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_4__);
+
+
+var _excluded = ["label", "onClick", "className"];
+
+
+
+var propTypes = {
+  label: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string.isRequired),
+  onClick: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func)
+};
+var defaultProps = {
+  label: 'Close'
+};
+var CloseButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function (_ref, ref) {
+  var label = _ref.label,
+      onClick = _ref.onClick,
+      className = _ref.className,
+      props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_ref, _excluded);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("button", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+    ref: ref,
+    type: "button",
+    className: classnames__WEBPACK_IMPORTED_MODULE_4___default()('close', className),
+    onClick: onClick
+  }, props), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", {
+    "aria-hidden": "true"
+  }, "\xD7"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", {
+    className: "sr-only"
+  }, label));
+});
+CloseButton.displayName = 'CloseButton';
+CloseButton.propTypes = propTypes;
+CloseButton.defaultProps = defaultProps;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CloseButton);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/Col.js":
+/*!*************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/Col.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+
+
+var _excluded = ["bsPrefix", "className", "as"];
+
+
+
+var DEVICE_SIZES = ['xl', 'lg', 'md', 'sm', 'xs'];
+var Col = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef( // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+function (_ref, ref) {
+  var bsPrefix = _ref.bsPrefix,
+      className = _ref.className,
+      _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'div' : _ref$as,
+      props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_ref, _excluded);
+
+  var prefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_4__.useBootstrapPrefix)(bsPrefix, 'col');
+  var spans = [];
+  var classes = [];
+  DEVICE_SIZES.forEach(function (brkPoint) {
+    var propValue = props[brkPoint];
+    delete props[brkPoint];
+    var span;
+    var offset;
+    var order;
+
+    if (typeof propValue === 'object' && propValue != null) {
+      var _propValue$span = propValue.span;
+      span = _propValue$span === void 0 ? true : _propValue$span;
+      offset = propValue.offset;
+      order = propValue.order;
+    } else {
+      span = propValue;
+    }
+
+    var infix = brkPoint !== 'xs' ? "-" + brkPoint : '';
+    if (span) spans.push(span === true ? "" + prefix + infix : "" + prefix + infix + "-" + span);
+    if (order != null) classes.push("order" + infix + "-" + order);
+    if (offset != null) classes.push("offset" + infix + "-" + offset);
+  });
+
+  if (!spans.length) {
+    spans.push(prefix); // plain 'col'
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Component, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, props, {
+    ref: ref,
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default().apply(void 0, [className].concat(spans, classes))
+  }));
+});
+Col.displayName = 'Col';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Col);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/Container.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/Container.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+
+
+var _excluded = ["bsPrefix", "fluid", "as", "className"];
+
+
+
+var defaultProps = {
+  fluid: false
+};
+var Container = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function (_ref, ref) {
+  var bsPrefix = _ref.bsPrefix,
+      fluid = _ref.fluid,
+      _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'div' : _ref$as,
+      className = _ref.className,
+      props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_ref, _excluded);
+
+  var prefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_4__.useBootstrapPrefix)(bsPrefix, 'container');
+  var suffix = typeof fluid === 'string' ? "-" + fluid : '-fluid';
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Component, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+    ref: ref
+  }, props, {
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, fluid ? "" + prefix + suffix : prefix)
+  }));
+});
+Container.displayName = 'Container';
+Container.defaultProps = defaultProps;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Container);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/Fade.js":
+/*!**************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/Fade.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_transition_group_Transition__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-transition-group/Transition */ "./node_modules/react-transition-group/esm/Transition.js");
+/* harmony import */ var _transitionEndListener__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./transitionEndListener */ "./node_modules/react-bootstrap/esm/transitionEndListener.js");
+/* harmony import */ var _triggerBrowserReflow__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./triggerBrowserReflow */ "./node_modules/react-bootstrap/esm/triggerBrowserReflow.js");
+
+
+var _excluded = ["className", "children"];
+
+var _fadeStyles;
+
+
+
+
+
+
+var defaultProps = {
+  in: false,
+  timeout: 300,
+  mountOnEnter: false,
+  unmountOnExit: false,
+  appear: false
+};
+var fadeStyles = (_fadeStyles = {}, _fadeStyles[react_transition_group_Transition__WEBPACK_IMPORTED_MODULE_4__.ENTERING] = 'show', _fadeStyles[react_transition_group_Transition__WEBPACK_IMPORTED_MODULE_4__.ENTERED] = 'show', _fadeStyles);
+var Fade = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function (_ref, ref) {
+  var className = _ref.className,
+      children = _ref.children,
+      props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_ref, _excluded);
+
+  var handleEnter = (0,react__WEBPACK_IMPORTED_MODULE_3__.useCallback)(function (node) {
+    (0,_triggerBrowserReflow__WEBPACK_IMPORTED_MODULE_5__.default)(node);
+    if (props.onEnter) props.onEnter(node);
+  }, [props]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(react_transition_group_Transition__WEBPACK_IMPORTED_MODULE_4__.default, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+    ref: ref,
+    addEndListener: _transitionEndListener__WEBPACK_IMPORTED_MODULE_6__.default
+  }, props, {
+    onEnter: handleEnter
+  }), function (status, innerProps) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.cloneElement(children, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, innerProps, {
+      className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('fade', className, children.props.className, fadeStyles[status])
+    }));
+  });
+});
+Fade.defaultProps = defaultProps;
+Fade.displayName = 'Fade';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Fade);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/Feedback.js":
+/*!******************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/Feedback.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
+
+
+var _excluded = ["as", "className", "type", "tooltip"];
+
+
+
+var propTypes = {
+  /**
+   * Specify whether the feedback is for valid or invalid fields
+   *
+   * @type {('valid'|'invalid')}
+   */
+  type: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
+
+  /** Display feedback as a tooltip. */
+  tooltip: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+  as: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().elementType)
+};
+var Feedback = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef( // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+function (_ref, ref) {
+  var _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'div' : _ref$as,
+      className = _ref.className,
+      _ref$type = _ref.type,
+      type = _ref$type === void 0 ? 'valid' : _ref$type,
+      _ref$tooltip = _ref.tooltip,
+      tooltip = _ref$tooltip === void 0 ? false : _ref$tooltip,
+      props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_ref, _excluded);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Component, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, props, {
+    ref: ref,
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, type + "-" + (tooltip ? 'tooltip' : 'feedback'))
+  }));
+});
+Feedback.displayName = 'Feedback';
+Feedback.propTypes = propTypes;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Feedback);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/Form.js":
+/*!**************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/Form.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _FormCheck__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./FormCheck */ "./node_modules/react-bootstrap/esm/FormCheck.js");
+/* harmony import */ var _FormFile__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./FormFile */ "./node_modules/react-bootstrap/esm/FormFile.js");
+/* harmony import */ var _FormControl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./FormControl */ "./node_modules/react-bootstrap/esm/FormControl.js");
+/* harmony import */ var _FormGroup__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./FormGroup */ "./node_modules/react-bootstrap/esm/FormGroup.js");
+/* harmony import */ var _FormLabel__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./FormLabel */ "./node_modules/react-bootstrap/esm/FormLabel.js");
+/* harmony import */ var _FormText__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./FormText */ "./node_modules/react-bootstrap/esm/FormText.js");
+/* harmony import */ var _Switch__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Switch */ "./node_modules/react-bootstrap/esm/Switch.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var _createWithBsPrefix__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./createWithBsPrefix */ "./node_modules/react-bootstrap/esm/createWithBsPrefix.js");
+
+
+var _excluded = ["bsPrefix", "inline", "className", "validated", "as"];
+
+
+
+
+
+
+
+
+
+
+
+var FormRow = (0,_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_4__.default)('form-row');
+var defaultProps = {
+  inline: false
+};
+var FormImpl = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function (_ref, ref) {
+  var bsPrefix = _ref.bsPrefix,
+      inline = _ref.inline,
+      className = _ref.className,
+      validated = _ref.validated,
+      _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'form' : _ref$as,
+      props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_ref, _excluded);
+
+  bsPrefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_5__.useBootstrapPrefix)(bsPrefix, 'form');
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Component, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, props, {
+    ref: ref,
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, validated && 'was-validated', inline && bsPrefix + "-inline")
+  }));
+});
+FormImpl.displayName = 'Form';
+FormImpl.defaultProps = defaultProps;
+FormImpl.Row = FormRow;
+FormImpl.Group = _FormGroup__WEBPACK_IMPORTED_MODULE_6__.default;
+FormImpl.Control = _FormControl__WEBPACK_IMPORTED_MODULE_7__.default;
+FormImpl.Check = _FormCheck__WEBPACK_IMPORTED_MODULE_8__.default;
+FormImpl.File = _FormFile__WEBPACK_IMPORTED_MODULE_9__.default;
+FormImpl.Switch = _Switch__WEBPACK_IMPORTED_MODULE_10__.default;
+FormImpl.Label = _FormLabel__WEBPACK_IMPORTED_MODULE_11__.default;
+FormImpl.Text = _FormText__WEBPACK_IMPORTED_MODULE_12__.default;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormImpl);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/FormCheck.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/FormCheck.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var prop_types_extra_lib_all__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types-extra/lib/all */ "./node_modules/prop-types-extra/lib/all.js");
+/* harmony import */ var prop_types_extra_lib_all__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types_extra_lib_all__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Feedback__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Feedback */ "./node_modules/react-bootstrap/esm/Feedback.js");
+/* harmony import */ var _FormCheckInput__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./FormCheckInput */ "./node_modules/react-bootstrap/esm/FormCheckInput.js");
+/* harmony import */ var _FormCheckLabel__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./FormCheckLabel */ "./node_modules/react-bootstrap/esm/FormCheckLabel.js");
+/* harmony import */ var _FormContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./FormContext */ "./node_modules/react-bootstrap/esm/FormContext.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+
+
+var _excluded = ["id", "bsPrefix", "bsCustomPrefix", "inline", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "title", "type", "label", "children", "custom", "as"];
+
+
+
+
+
+
+
+
+var FormCheck = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.forwardRef(function (_ref, ref) {
+  var id = _ref.id,
+      bsPrefix = _ref.bsPrefix,
+      bsCustomPrefix = _ref.bsCustomPrefix,
+      _ref$inline = _ref.inline,
+      inline = _ref$inline === void 0 ? false : _ref$inline,
+      _ref$disabled = _ref.disabled,
+      disabled = _ref$disabled === void 0 ? false : _ref$disabled,
+      _ref$isValid = _ref.isValid,
+      isValid = _ref$isValid === void 0 ? false : _ref$isValid,
+      _ref$isInvalid = _ref.isInvalid,
+      isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid,
+      _ref$feedbackTooltip = _ref.feedbackTooltip,
+      feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip,
+      feedback = _ref.feedback,
+      className = _ref.className,
+      style = _ref.style,
+      _ref$title = _ref.title,
+      title = _ref$title === void 0 ? '' : _ref$title,
+      _ref$type = _ref.type,
+      type = _ref$type === void 0 ? 'checkbox' : _ref$type,
+      label = _ref.label,
+      children = _ref.children,
+      propCustom = _ref.custom,
+      _ref$as = _ref.as,
+      as = _ref$as === void 0 ? 'input' : _ref$as,
+      props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_ref, _excluded);
+
+  var custom = type === 'switch' ? true : propCustom;
+
+  var _ref2 = custom ? [bsCustomPrefix, 'custom-control'] : [bsPrefix, 'form-check'],
+      prefix = _ref2[0],
+      defaultPrefix = _ref2[1];
+
+  bsPrefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_5__.useBootstrapPrefix)(prefix, defaultPrefix);
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_4__.useContext)(_FormContext__WEBPACK_IMPORTED_MODULE_6__.default),
+      controlId = _useContext.controlId;
+
+  var innerFormContext = (0,react__WEBPACK_IMPORTED_MODULE_4__.useMemo)(function () {
+    return {
+      controlId: id || controlId,
+      custom: custom
+    };
+  }, [controlId, custom, id]);
+  var hasLabel = custom || label != null && label !== false && !children;
+  var input = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.createElement(_FormCheckInput__WEBPACK_IMPORTED_MODULE_7__.default, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, props, {
+    type: type === 'switch' ? 'checkbox' : type,
+    ref: ref,
+    isValid: isValid,
+    isInvalid: isInvalid,
+    isStatic: !hasLabel,
+    disabled: disabled,
+    as: as
+  }));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.createElement(_FormContext__WEBPACK_IMPORTED_MODULE_6__.default.Provider, {
+    value: innerFormContext
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.createElement("div", {
+    style: style,
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, bsPrefix, custom && "custom-" + type, inline && bsPrefix + "-inline")
+  }, children || /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.createElement(react__WEBPACK_IMPORTED_MODULE_4__.Fragment, null, input, hasLabel && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.createElement(_FormCheckLabel__WEBPACK_IMPORTED_MODULE_8__.default, {
+    title: title
+  }, label), (isValid || isInvalid) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.createElement(_Feedback__WEBPACK_IMPORTED_MODULE_9__.default, {
+    type: isValid ? 'valid' : 'invalid',
+    tooltip: feedbackTooltip
+  }, feedback))));
+});
+FormCheck.displayName = 'FormCheck';
+FormCheck.Input = _FormCheckInput__WEBPACK_IMPORTED_MODULE_7__.default;
+FormCheck.Label = _FormCheckLabel__WEBPACK_IMPORTED_MODULE_8__.default;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormCheck);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/FormCheckInput.js":
+/*!************************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/FormCheckInput.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _FormContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./FormContext */ "./node_modules/react-bootstrap/esm/FormContext.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+
+
+var _excluded = ["id", "bsPrefix", "bsCustomPrefix", "className", "type", "isValid", "isInvalid", "isStatic", "as"];
+
+
+
+
+var FormCheckInput = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function (_ref, ref) {
+  var id = _ref.id,
+      bsPrefix = _ref.bsPrefix,
+      bsCustomPrefix = _ref.bsCustomPrefix,
+      className = _ref.className,
+      _ref$type = _ref.type,
+      type = _ref$type === void 0 ? 'checkbox' : _ref$type,
+      _ref$isValid = _ref.isValid,
+      isValid = _ref$isValid === void 0 ? false : _ref$isValid,
+      _ref$isInvalid = _ref.isInvalid,
+      isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid,
+      isStatic = _ref.isStatic,
+      _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'input' : _ref$as,
+      props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_ref, _excluded);
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_3__.useContext)(_FormContext__WEBPACK_IMPORTED_MODULE_4__.default),
+      controlId = _useContext.controlId,
+      custom = _useContext.custom;
+
+  var _ref2 = custom ? [bsCustomPrefix, 'custom-control-input'] : [bsPrefix, 'form-check-input'],
+      prefix = _ref2[0],
+      defaultPrefix = _ref2[1];
+
+  bsPrefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_5__.useBootstrapPrefix)(prefix, defaultPrefix);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Component, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, props, {
+    ref: ref,
+    type: type,
+    id: id || controlId,
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, bsPrefix, isValid && 'is-valid', isInvalid && 'is-invalid', isStatic && 'position-static')
+  }));
+});
+FormCheckInput.displayName = 'FormCheckInput';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormCheckInput);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/FormCheckLabel.js":
+/*!************************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/FormCheckLabel.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _FormContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./FormContext */ "./node_modules/react-bootstrap/esm/FormContext.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+
+
+var _excluded = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
+
+
+
+
+var FormCheckLabel = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function (_ref, ref) {
+  var bsPrefix = _ref.bsPrefix,
+      bsCustomPrefix = _ref.bsCustomPrefix,
+      className = _ref.className,
+      htmlFor = _ref.htmlFor,
+      props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_ref, _excluded);
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_3__.useContext)(_FormContext__WEBPACK_IMPORTED_MODULE_4__.default),
+      controlId = _useContext.controlId,
+      custom = _useContext.custom;
+
+  var _ref2 = custom ? [bsCustomPrefix, 'custom-control-label'] : [bsPrefix, 'form-check-label'],
+      prefix = _ref2[0],
+      defaultPrefix = _ref2[1];
+
+  bsPrefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_5__.useBootstrapPrefix)(prefix, defaultPrefix);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("label", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, props, {
+    ref: ref,
+    htmlFor: htmlFor || controlId,
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, bsPrefix)
+  }));
+});
+FormCheckLabel.displayName = 'FormCheckLabel';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormCheckLabel);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/FormContext.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/FormContext.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+ // TODO
+
+var FormContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createContext({
+  controlId: undefined
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormContext);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/FormControl.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/FormControl.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var prop_types_extra_lib_all__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types-extra/lib/all */ "./node_modules/prop-types-extra/lib/all.js");
+/* harmony import */ var prop_types_extra_lib_all__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types_extra_lib_all__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var warning__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! warning */ "./node_modules/warning/warning.js");
+/* harmony import */ var warning__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(warning__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Feedback__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Feedback */ "./node_modules/react-bootstrap/esm/Feedback.js");
+/* harmony import */ var _FormContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./FormContext */ "./node_modules/react-bootstrap/esm/FormContext.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+
+
+var _excluded = ["bsPrefix", "bsCustomPrefix", "type", "size", "htmlSize", "id", "className", "isValid", "isInvalid", "plaintext", "readOnly", "custom", "as"];
+
+
+
+
+
+
+
+var FormControl = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.forwardRef(function (_ref, ref) {
+  var bsPrefix = _ref.bsPrefix,
+      bsCustomPrefix = _ref.bsCustomPrefix,
+      type = _ref.type,
+      size = _ref.size,
+      htmlSize = _ref.htmlSize,
+      id = _ref.id,
+      className = _ref.className,
+      _ref$isValid = _ref.isValid,
+      isValid = _ref$isValid === void 0 ? false : _ref$isValid,
+      _ref$isInvalid = _ref.isInvalid,
+      isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid,
+      plaintext = _ref.plaintext,
+      readOnly = _ref.readOnly,
+      custom = _ref.custom,
+      _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'input' : _ref$as,
+      props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_ref, _excluded);
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_4__.useContext)(_FormContext__WEBPACK_IMPORTED_MODULE_6__.default),
+      controlId = _useContext.controlId;
+
+  var _ref2 = custom ? [bsCustomPrefix, 'custom'] : [bsPrefix, 'form-control'],
+      prefix = _ref2[0],
+      defaultPrefix = _ref2[1];
+
+  bsPrefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_7__.useBootstrapPrefix)(prefix, defaultPrefix);
+  var classes;
+
+  if (plaintext) {
+    var _classes;
+
+    classes = (_classes = {}, _classes[bsPrefix + "-plaintext"] = true, _classes);
+  } else if (type === 'file') {
+    var _classes2;
+
+    classes = (_classes2 = {}, _classes2[bsPrefix + "-file"] = true, _classes2);
+  } else if (type === 'range') {
+    var _classes3;
+
+    classes = (_classes3 = {}, _classes3[bsPrefix + "-range"] = true, _classes3);
+  } else if (Component === 'select' && custom) {
+    var _classes4;
+
+    classes = (_classes4 = {}, _classes4[bsPrefix + "-select"] = true, _classes4[bsPrefix + "-select-" + size] = size, _classes4);
+  } else {
+    var _classes5;
+
+    classes = (_classes5 = {}, _classes5[bsPrefix] = true, _classes5[bsPrefix + "-" + size] = size, _classes5);
+  }
+
+   true ? warning__WEBPACK_IMPORTED_MODULE_5___default()(controlId == null || !id, '`controlId` is ignored on `<FormControl>` when `id` is specified.') : 0;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.createElement(Component, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, props, {
+    type: type,
+    size: htmlSize,
+    ref: ref,
+    readOnly: readOnly,
+    id: id || controlId,
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, classes, isValid && "is-valid", isInvalid && "is-invalid")
+  }));
+});
+FormControl.displayName = 'FormControl';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Object.assign(FormControl, {
+  Feedback: _Feedback__WEBPACK_IMPORTED_MODULE_8__.default
+}));
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/FormFile.js":
+/*!******************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/FormFile.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types_extra_lib_all__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types-extra/lib/all */ "./node_modules/prop-types-extra/lib/all.js");
+/* harmony import */ var prop_types_extra_lib_all__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types_extra_lib_all__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Feedback__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Feedback */ "./node_modules/react-bootstrap/esm/Feedback.js");
+/* harmony import */ var _FormFileInput__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./FormFileInput */ "./node_modules/react-bootstrap/esm/FormFileInput.js");
+/* harmony import */ var _FormFileLabel__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./FormFileLabel */ "./node_modules/react-bootstrap/esm/FormFileLabel.js");
+/* harmony import */ var _FormContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./FormContext */ "./node_modules/react-bootstrap/esm/FormContext.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+
+
+var _excluded = ["id", "bsPrefix", "bsCustomPrefix", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "label", "children", "custom", "lang", "data-browse", "as", "inputAs"];
+
+
+
+
+
+
+
+
+var FormFile = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function (_ref, ref) {
+  var id = _ref.id,
+      bsPrefix = _ref.bsPrefix,
+      bsCustomPrefix = _ref.bsCustomPrefix,
+      _ref$disabled = _ref.disabled,
+      disabled = _ref$disabled === void 0 ? false : _ref$disabled,
+      _ref$isValid = _ref.isValid,
+      isValid = _ref$isValid === void 0 ? false : _ref$isValid,
+      _ref$isInvalid = _ref.isInvalid,
+      isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid,
+      _ref$feedbackTooltip = _ref.feedbackTooltip,
+      feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip,
+      feedback = _ref.feedback,
+      className = _ref.className,
+      style = _ref.style,
+      label = _ref.label,
+      children = _ref.children,
+      custom = _ref.custom,
+      lang = _ref.lang,
+      dataBrowse = _ref['data-browse'],
+      _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'div' : _ref$as,
+      _ref$inputAs = _ref.inputAs,
+      inputAs = _ref$inputAs === void 0 ? 'input' : _ref$inputAs,
+      props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_ref, _excluded);
+
+  var _ref2 = custom ? [bsCustomPrefix, 'custom'] : [bsPrefix, 'form-file'],
+      prefix = _ref2[0],
+      defaultPrefix = _ref2[1];
+
+  bsPrefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_5__.useBootstrapPrefix)(prefix, defaultPrefix);
+  var type = 'file';
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_3__.useContext)(_FormContext__WEBPACK_IMPORTED_MODULE_6__.default),
+      controlId = _useContext.controlId;
+
+  var innerFormContext = (0,react__WEBPACK_IMPORTED_MODULE_3__.useMemo)(function () {
+    return {
+      controlId: id || controlId,
+      custom: custom
+    };
+  }, [controlId, custom, id]);
+  var hasLabel = label != null && label !== false && !children;
+  var input = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_FormFileInput__WEBPACK_IMPORTED_MODULE_7__.default, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, props, {
+    ref: ref,
+    isValid: isValid,
+    isInvalid: isInvalid,
+    disabled: disabled,
+    as: inputAs,
+    lang: lang
+  }));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_FormContext__WEBPACK_IMPORTED_MODULE_6__.default.Provider, {
+    value: innerFormContext
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Component, {
+    style: style,
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, bsPrefix, custom && "custom-" + type)
+  }, children || /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null, custom ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null, input, hasLabel && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_FormFileLabel__WEBPACK_IMPORTED_MODULE_8__.default, {
+    "data-browse": dataBrowse
+  }, label)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null, hasLabel && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_FormFileLabel__WEBPACK_IMPORTED_MODULE_8__.default, null, label), input), (isValid || isInvalid) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_Feedback__WEBPACK_IMPORTED_MODULE_9__.default, {
+    type: isValid ? 'valid' : 'invalid',
+    tooltip: feedbackTooltip
+  }, feedback))));
+});
+FormFile.displayName = 'FormFile';
+FormFile.Input = _FormFileInput__WEBPACK_IMPORTED_MODULE_7__.default;
+FormFile.Label = _FormFileLabel__WEBPACK_IMPORTED_MODULE_8__.default;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormFile);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/FormFileInput.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/FormFileInput.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _FormContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./FormContext */ "./node_modules/react-bootstrap/esm/FormContext.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+
+
+var _excluded = ["id", "bsPrefix", "bsCustomPrefix", "className", "isValid", "isInvalid", "lang", "as"];
+
+
+
+
+var FormFileInput = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function (_ref, ref) {
+  var id = _ref.id,
+      bsPrefix = _ref.bsPrefix,
+      bsCustomPrefix = _ref.bsCustomPrefix,
+      className = _ref.className,
+      isValid = _ref.isValid,
+      isInvalid = _ref.isInvalid,
+      lang = _ref.lang,
+      _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'input' : _ref$as,
+      props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_ref, _excluded);
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_3__.useContext)(_FormContext__WEBPACK_IMPORTED_MODULE_4__.default),
+      controlId = _useContext.controlId,
+      custom = _useContext.custom;
+
+  var type = 'file';
+
+  var _ref2 = custom ? [bsCustomPrefix, 'custom-file-input'] : [bsPrefix, 'form-control-file'],
+      prefix = _ref2[0],
+      defaultPrefix = _ref2[1];
+
+  bsPrefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_5__.useBootstrapPrefix)(prefix, defaultPrefix);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Component, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, props, {
+    ref: ref,
+    id: id || controlId,
+    type: type,
+    lang: lang,
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, bsPrefix, isValid && 'is-valid', isInvalid && 'is-invalid')
+  }));
+});
+FormFileInput.displayName = 'FormFileInput';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormFileInput);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/FormFileLabel.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/FormFileLabel.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _FormContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./FormContext */ "./node_modules/react-bootstrap/esm/FormContext.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+
+
+var _excluded = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
+
+
+
+
+var FormFileLabel = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function (_ref, ref) {
+  var bsPrefix = _ref.bsPrefix,
+      bsCustomPrefix = _ref.bsCustomPrefix,
+      className = _ref.className,
+      htmlFor = _ref.htmlFor,
+      props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_ref, _excluded);
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_3__.useContext)(_FormContext__WEBPACK_IMPORTED_MODULE_4__.default),
+      controlId = _useContext.controlId,
+      custom = _useContext.custom;
+
+  var _ref2 = custom ? [bsCustomPrefix, 'custom-file-label'] : [bsPrefix, 'form-file-label'],
+      prefix = _ref2[0],
+      defaultPrefix = _ref2[1];
+
+  bsPrefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_5__.useBootstrapPrefix)(prefix, defaultPrefix);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("label", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, props, {
+    ref: ref,
+    htmlFor: htmlFor || controlId,
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, bsPrefix),
+    "data-browse": props['data-browse']
+  }));
+});
+FormFileLabel.displayName = 'FormFileLabel';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormFileLabel);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/FormGroup.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/FormGroup.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _FormContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./FormContext */ "./node_modules/react-bootstrap/esm/FormContext.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+
+
+var _excluded = ["bsPrefix", "className", "children", "controlId", "as"];
+
+
+
+
+var FormGroup = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function (_ref, ref) {
+  var bsPrefix = _ref.bsPrefix,
+      className = _ref.className,
+      children = _ref.children,
+      controlId = _ref.controlId,
+      _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'div' : _ref$as,
+      props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_ref, _excluded);
+
+  bsPrefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_4__.useBootstrapPrefix)(bsPrefix, 'form-group');
+  var context = (0,react__WEBPACK_IMPORTED_MODULE_3__.useMemo)(function () {
+    return {
+      controlId: controlId
+    };
+  }, [controlId]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_FormContext__WEBPACK_IMPORTED_MODULE_5__.default.Provider, {
+    value: context
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Component, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, props, {
+    ref: ref,
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, bsPrefix)
+  }), children));
+});
+FormGroup.displayName = 'FormGroup';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormGroup);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/FormLabel.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/FormLabel.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var warning__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! warning */ "./node_modules/warning/warning.js");
+/* harmony import */ var warning__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(warning__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Col__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Col */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var _FormContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./FormContext */ "./node_modules/react-bootstrap/esm/FormContext.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+
+
+var _excluded = ["as", "bsPrefix", "column", "srOnly", "className", "htmlFor"];
+
+
+
+
+
+
+var defaultProps = {
+  column: false,
+  srOnly: false
+};
+var FormLabel = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function (_ref, ref) {
+  var _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'label' : _ref$as,
+      bsPrefix = _ref.bsPrefix,
+      column = _ref.column,
+      srOnly = _ref.srOnly,
+      className = _ref.className,
+      htmlFor = _ref.htmlFor,
+      props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_ref, _excluded);
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_3__.useContext)(_FormContext__WEBPACK_IMPORTED_MODULE_5__.default),
+      controlId = _useContext.controlId;
+
+  bsPrefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_6__.useBootstrapPrefix)(bsPrefix, 'form-label');
+  var columnClass = 'col-form-label';
+  if (typeof column === 'string') columnClass = columnClass + " " + columnClass + "-" + column;
+  var classes = classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, bsPrefix, srOnly && 'sr-only', column && columnClass);
+   true ? warning__WEBPACK_IMPORTED_MODULE_4___default()(controlId == null || !htmlFor, '`controlId` is ignored on `<FormLabel>` when `htmlFor` is specified.') : 0;
+  htmlFor = htmlFor || controlId;
+  if (column) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_Col__WEBPACK_IMPORTED_MODULE_7__.default, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+    ref: ref,
+    as: "label",
+    className: classes,
+    htmlFor: htmlFor
+  }, props));
+  return (
+    /*#__PURE__*/
+    // eslint-disable-next-line jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control
+    react__WEBPACK_IMPORTED_MODULE_3__.createElement(Component, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+      ref: ref,
+      className: classes,
+      htmlFor: htmlFor
+    }, props))
+  );
+});
+FormLabel.displayName = 'FormLabel';
+FormLabel.defaultProps = defaultProps;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormLabel);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/FormText.js":
+/*!******************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/FormText.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+
+
+var _excluded = ["bsPrefix", "className", "as", "muted"];
+
+
+
+var FormText = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef( // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+function (_ref, ref) {
+  var bsPrefix = _ref.bsPrefix,
+      className = _ref.className,
+      _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'small' : _ref$as,
+      muted = _ref.muted,
+      props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_ref, _excluded);
+
+  bsPrefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_4__.useBootstrapPrefix)(bsPrefix, 'form-text');
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Component, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, props, {
+    ref: ref,
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, bsPrefix, muted && 'text-muted')
+  }));
+});
+FormText.displayName = 'FormText';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormText);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/SafeAnchor.js":
+/*!********************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/SafeAnchor.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _createChainedFunction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./createChainedFunction */ "./node_modules/react-bootstrap/esm/createChainedFunction.js");
+
+
+var _excluded = ["as", "disabled", "onKeyDown"];
+
+
+
+function isTrivialHref(href) {
+  return !href || href.trim() === '#';
+}
+/**
+ * There are situations due to browser quirks or Bootstrap CSS where
+ * an anchor tag is needed, when semantically a button tag is the
+ * better choice. SafeAnchor ensures that when an anchor is used like a
+ * button its accessible. It also emulates input `disabled` behavior for
+ * links, which is usually desirable for Buttons, NavItems, DropdownItems, etc.
+ */
+
+
+var SafeAnchor = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function (_ref, ref) {
+  var _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'a' : _ref$as,
+      disabled = _ref.disabled,
+      onKeyDown = _ref.onKeyDown,
+      props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_ref, _excluded);
+
+  var handleClick = function handleClick(event) {
+    var href = props.href,
+        onClick = props.onClick;
+
+    if (disabled || isTrivialHref(href)) {
+      event.preventDefault();
+    }
+
+    if (disabled) {
+      event.stopPropagation();
+      return;
+    }
+
+    if (onClick) {
+      onClick(event);
+    }
+  };
+
+  var handleKeyDown = function handleKeyDown(event) {
+    if (event.key === ' ') {
+      event.preventDefault();
+      handleClick(event);
+    }
+  };
+
+  if (isTrivialHref(props.href)) {
+    props.role = props.role || 'button'; // we want to make sure there is a href attribute on the node
+    // otherwise, the cursor incorrectly styled (except with role='button')
+
+    props.href = props.href || '#';
+  }
+
+  if (disabled) {
+    props.tabIndex = -1;
+    props['aria-disabled'] = true;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+    ref: ref
+  }, props, {
+    onClick: handleClick,
+    onKeyDown: (0,_createChainedFunction__WEBPACK_IMPORTED_MODULE_3__.default)(handleKeyDown, onKeyDown)
+  }));
+});
+SafeAnchor.displayName = 'SafeAnchor';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SafeAnchor);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/Switch.js":
+/*!****************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/Switch.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _FormCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormCheck */ "./node_modules/react-bootstrap/esm/FormCheck.js");
+
+
+
+var Switch = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(function (props, ref) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_FormCheck__WEBPACK_IMPORTED_MODULE_2__.default, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, props, {
+    ref: ref,
+    type: "switch"
+  }));
+});
+Switch.displayName = 'Switch';
+Switch.Input = _FormCheck__WEBPACK_IMPORTED_MODULE_2__.default.Input;
+Switch.Label = _FormCheck__WEBPACK_IMPORTED_MODULE_2__.default.Label;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Switch);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/ThemeProvider.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/ThemeProvider.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useBootstrapPrefix": () => (/* binding */ useBootstrapPrefix),
+/* harmony export */   "createBootstrapComponent": () => (/* binding */ createBootstrapComponent),
+/* harmony export */   "ThemeConsumer": () => (/* binding */ Consumer),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var ThemeContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createContext({});
+var Consumer = ThemeContext.Consumer,
+    Provider = ThemeContext.Provider;
+
+function ThemeProvider(_ref) {
+  var prefixes = _ref.prefixes,
+      children = _ref.children;
+  var copiedPrefixes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
+    return (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, prefixes);
+  }, [prefixes]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(Provider, {
+    value: copiedPrefixes
+  }, children);
+}
+
+function useBootstrapPrefix(prefix, defaultPrefix) {
+  var prefixes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(ThemeContext);
+  return prefix || prefixes[defaultPrefix] || defaultPrefix;
+}
+
+function createBootstrapComponent(Component, opts) {
+  if (typeof opts === 'string') opts = {
+    prefix: opts
+  };
+  var isClassy = Component.prototype && Component.prototype.isReactComponent; // If it's a functional component make sure we don't break it with a ref
+
+  var _opts = opts,
+      prefix = _opts.prefix,
+      _opts$forwardRefAs = _opts.forwardRefAs,
+      forwardRefAs = _opts$forwardRefAs === void 0 ? isClassy ? 'ref' : 'innerRef' : _opts$forwardRefAs;
+  var Wrapped = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(function (_ref2, ref) {
+    var props = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, _ref2);
+
+    props[forwardRefAs] = ref;
+    var bsPrefix = useBootstrapPrefix(props.bsPrefix, prefix);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(Component, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, props, {
+      bsPrefix: bsPrefix
+    }));
+  });
+  Wrapped.displayName = "Bootstrap(" + (Component.displayName || Component.name) + ")";
+  return Wrapped;
+}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ThemeProvider);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/createChainedFunction.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/createChainedFunction.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/**
+ * Safe chained function
+ *
+ * Will only create a new function if needed,
+ * otherwise will pass back existing functions or null.
+ *
+ * @param {function} functions to chain
+ * @returns {function|null}
+ */
+function createChainedFunction() {
+  for (var _len = arguments.length, funcs = new Array(_len), _key = 0; _key < _len; _key++) {
+    funcs[_key] = arguments[_key];
+  }
+
+  return funcs.filter(function (f) {
+    return f != null;
+  }).reduce(function (acc, f) {
+    if (typeof f !== 'function') {
+      throw new Error('Invalid Argument Type, must only provide functions, undefined, or null.');
+    }
+
+    if (acc === null) return f;
+    return function chainedFunction() {
+      for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        args[_key2] = arguments[_key2];
+      }
+
+      // @ts-ignore
+      acc.apply(this, args); // @ts-ignore
+
+      f.apply(this, args);
+    };
+  }, null);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createChainedFunction);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/createWithBsPrefix.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/createWithBsPrefix.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ createWithBsPrefix)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var dom_helpers_camelize__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! dom-helpers/camelize */ "./node_modules/dom-helpers/esm/camelize.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+
+
+var _excluded = ["className", "bsPrefix", "as"];
+
+
+
+
+
+var pascalCase = function pascalCase(str) {
+  return str[0].toUpperCase() + (0,dom_helpers_camelize__WEBPACK_IMPORTED_MODULE_3__.default)(str).slice(1);
+};
+
+// TODO: emstricten & fix the typing here! `createWithBsPrefix<TElementType>...`
+function createWithBsPrefix(prefix, _temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$displayName = _ref.displayName,
+      displayName = _ref$displayName === void 0 ? pascalCase(prefix) : _ref$displayName,
+      Component = _ref.Component,
+      defaultProps = _ref.defaultProps;
+
+  var BsComponent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.forwardRef(function (_ref2, ref) {
+    var className = _ref2.className,
+        bsPrefix = _ref2.bsPrefix,
+        _ref2$as = _ref2.as,
+        Tag = _ref2$as === void 0 ? Component || 'div' : _ref2$as,
+        props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_ref2, _excluded);
+
+    var resolvedPrefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_5__.useBootstrapPrefix)(bsPrefix, prefix);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.createElement(Tag, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+      ref: ref,
+      className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, resolvedPrefix)
+    }, props));
+  });
+  BsComponent.defaultProps = defaultProps;
+  BsComponent.displayName = displayName;
+  return BsComponent;
+}
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/divWithClassName.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/divWithClassName.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function (className) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(function (p, ref) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, p, {
+      ref: ref,
+      className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(p.className, className)
+    }));
+  });
+});
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/transitionEndListener.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/transitionEndListener.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ transitionEndListener)
+/* harmony export */ });
+/* harmony import */ var dom_helpers_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! dom-helpers/css */ "./node_modules/dom-helpers/esm/css.js");
+/* harmony import */ var dom_helpers_transitionEnd__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! dom-helpers/transitionEnd */ "./node_modules/dom-helpers/esm/transitionEnd.js");
+
+
+
+function parseDuration(node, property) {
+  var str = (0,dom_helpers_css__WEBPACK_IMPORTED_MODULE_0__.default)(node, property) || '';
+  var mult = str.indexOf('ms') === -1 ? 1000 : 1;
+  return parseFloat(str) * mult;
+}
+
+function transitionEndListener(element, handler) {
+  var duration = parseDuration(element, 'transitionDuration');
+  var delay = parseDuration(element, 'transitionDelay');
+  var remove = (0,dom_helpers_transitionEnd__WEBPACK_IMPORTED_MODULE_1__.default)(element, function (e) {
+    if (e.target === element) {
+      remove();
+      handler(e);
+    }
+  }, duration + delay);
+}
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/triggerBrowserReflow.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/triggerBrowserReflow.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ triggerBrowserReflow)
+/* harmony export */ });
+// reading a dimension prop will cause the browser to recalculate,
+// which will let our animations work
+function triggerBrowserReflow(node) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+  node.offsetHeight;
+}
 
 /***/ }),
 
@@ -71066,6 +73813,179 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "polyfill": () => (/* binding */ polyfill)
+/* harmony export */ });
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+function componentWillMount() {
+  // Call this.constructor.gDSFP to support sub-classes.
+  var state = this.constructor.getDerivedStateFromProps(this.props, this.state);
+  if (state !== null && state !== undefined) {
+    this.setState(state);
+  }
+}
+
+function componentWillReceiveProps(nextProps) {
+  // Call this.constructor.gDSFP to support sub-classes.
+  // Use the setState() updater to ensure state isn't stale in certain edge cases.
+  function updater(prevState) {
+    var state = this.constructor.getDerivedStateFromProps(nextProps, prevState);
+    return state !== null && state !== undefined ? state : null;
+  }
+  // Binding "this" is important for shallow renderer support.
+  this.setState(updater.bind(this));
+}
+
+function componentWillUpdate(nextProps, nextState) {
+  try {
+    var prevProps = this.props;
+    var prevState = this.state;
+    this.props = nextProps;
+    this.state = nextState;
+    this.__reactInternalSnapshotFlag = true;
+    this.__reactInternalSnapshot = this.getSnapshotBeforeUpdate(
+      prevProps,
+      prevState
+    );
+  } finally {
+    this.props = prevProps;
+    this.state = prevState;
+  }
+}
+
+// React may warn about cWM/cWRP/cWU methods being deprecated.
+// Add a flag to suppress these warnings for this special case.
+componentWillMount.__suppressDeprecationWarning = true;
+componentWillReceiveProps.__suppressDeprecationWarning = true;
+componentWillUpdate.__suppressDeprecationWarning = true;
+
+function polyfill(Component) {
+  var prototype = Component.prototype;
+
+  if (!prototype || !prototype.isReactComponent) {
+    throw new Error('Can only polyfill class components');
+  }
+
+  if (
+    typeof Component.getDerivedStateFromProps !== 'function' &&
+    typeof prototype.getSnapshotBeforeUpdate !== 'function'
+  ) {
+    return Component;
+  }
+
+  // If new component APIs are defined, "unsafe" lifecycles won't be called.
+  // Error if any of these lifecycles are present,
+  // Because they would work differently between older and newer (16.3+) versions of React.
+  var foundWillMountName = null;
+  var foundWillReceivePropsName = null;
+  var foundWillUpdateName = null;
+  if (typeof prototype.componentWillMount === 'function') {
+    foundWillMountName = 'componentWillMount';
+  } else if (typeof prototype.UNSAFE_componentWillMount === 'function') {
+    foundWillMountName = 'UNSAFE_componentWillMount';
+  }
+  if (typeof prototype.componentWillReceiveProps === 'function') {
+    foundWillReceivePropsName = 'componentWillReceiveProps';
+  } else if (typeof prototype.UNSAFE_componentWillReceiveProps === 'function') {
+    foundWillReceivePropsName = 'UNSAFE_componentWillReceiveProps';
+  }
+  if (typeof prototype.componentWillUpdate === 'function') {
+    foundWillUpdateName = 'componentWillUpdate';
+  } else if (typeof prototype.UNSAFE_componentWillUpdate === 'function') {
+    foundWillUpdateName = 'UNSAFE_componentWillUpdate';
+  }
+  if (
+    foundWillMountName !== null ||
+    foundWillReceivePropsName !== null ||
+    foundWillUpdateName !== null
+  ) {
+    var componentName = Component.displayName || Component.name;
+    var newApiName =
+      typeof Component.getDerivedStateFromProps === 'function'
+        ? 'getDerivedStateFromProps()'
+        : 'getSnapshotBeforeUpdate()';
+
+    throw Error(
+      'Unsafe legacy lifecycles will not be called for components using new component APIs.\n\n' +
+        componentName +
+        ' uses ' +
+        newApiName +
+        ' but also contains the following legacy lifecycles:' +
+        (foundWillMountName !== null ? '\n  ' + foundWillMountName : '') +
+        (foundWillReceivePropsName !== null
+          ? '\n  ' + foundWillReceivePropsName
+          : '') +
+        (foundWillUpdateName !== null ? '\n  ' + foundWillUpdateName : '') +
+        '\n\nThe above lifecycles should be removed. Learn more about this warning here:\n' +
+        'https://fb.me/react-async-component-lifecycle-hooks'
+    );
+  }
+
+  // React <= 16.2 does not support static getDerivedStateFromProps.
+  // As a workaround, use cWM and cWRP to invoke the new static lifecycle.
+  // Newer versions of React will ignore these lifecycles if gDSFP exists.
+  if (typeof Component.getDerivedStateFromProps === 'function') {
+    prototype.componentWillMount = componentWillMount;
+    prototype.componentWillReceiveProps = componentWillReceiveProps;
+  }
+
+  // React <= 16.2 does not support getSnapshotBeforeUpdate.
+  // As a workaround, use cWU to invoke the new lifecycle.
+  // Newer versions of React will ignore that lifecycle if gSBU exists.
+  if (typeof prototype.getSnapshotBeforeUpdate === 'function') {
+    if (typeof prototype.componentDidUpdate !== 'function') {
+      throw new Error(
+        'Cannot polyfill getSnapshotBeforeUpdate() for components that do not define componentDidUpdate() on the prototype'
+      );
+    }
+
+    prototype.componentWillUpdate = componentWillUpdate;
+
+    var componentDidUpdate = prototype.componentDidUpdate;
+
+    prototype.componentDidUpdate = function componentDidUpdatePolyfill(
+      prevProps,
+      prevState,
+      maybeSnapshot
+    ) {
+      // 16.3+ will not execute our will-update method;
+      // It will pass a snapshot value to did-update though.
+      // Older versions will require our polyfilled will-update value.
+      // We need to handle both cases, but can't just check for the presence of "maybeSnapshot",
+      // Because for <= 15.x versions this might be a "prevContext" object.
+      // We also can't just check "__reactInternalSnapshot",
+      // Because get-snapshot might return a falsy value.
+      // So check for the explicit __reactInternalSnapshotFlag flag to determine behavior.
+      var snapshot = this.__reactInternalSnapshotFlag
+        ? this.__reactInternalSnapshot
+        : maybeSnapshot;
+
+      componentDidUpdate.call(this, prevProps, prevState, snapshot);
+    };
+  }
+
+  return Component;
+}
+
+
+
+
+/***/ }),
+
 /***/ "./node_modules/react-pose/dist/react-pose.es.js":
 /*!*******************************************************!*\
   !*** ./node_modules/react-pose/dist/react-pose.es.js ***!
@@ -73450,6 +76370,719 @@ function pathToRegexp (path, keys, options) {
   return stringToRegexp(/** @type {string} */ (path), /** @type {!Array} */ (keys), options)
 }
 
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/esm/Transition.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/Transition.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "UNMOUNTED": () => (/* binding */ UNMOUNTED),
+/* harmony export */   "EXITED": () => (/* binding */ EXITED),
+/* harmony export */   "ENTERING": () => (/* binding */ ENTERING),
+/* harmony export */   "ENTERED": () => (/* binding */ ENTERED),
+/* harmony export */   "EXITING": () => (/* binding */ EXITING),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./config */ "./node_modules/react-transition-group/esm/config.js");
+/* harmony import */ var _utils_PropTypes__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils/PropTypes */ "./node_modules/react-transition-group/esm/utils/PropTypes.js");
+/* harmony import */ var _TransitionGroupContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./TransitionGroupContext */ "./node_modules/react-transition-group/esm/TransitionGroupContext.js");
+
+
+
+
+
+
+
+
+var UNMOUNTED = 'unmounted';
+var EXITED = 'exited';
+var ENTERING = 'entering';
+var ENTERED = 'entered';
+var EXITING = 'exiting';
+/**
+ * The Transition component lets you describe a transition from one component
+ * state to another _over time_ with a simple declarative API. Most commonly
+ * it's used to animate the mounting and unmounting of a component, but can also
+ * be used to describe in-place transition states as well.
+ *
+ * ---
+ *
+ * **Note**: `Transition` is a platform-agnostic base component. If you're using
+ * transitions in CSS, you'll probably want to use
+ * [`CSSTransition`](https://reactcommunity.org/react-transition-group/css-transition)
+ * instead. It inherits all the features of `Transition`, but contains
+ * additional features necessary to play nice with CSS transitions (hence the
+ * name of the component).
+ *
+ * ---
+ *
+ * By default the `Transition` component does not alter the behavior of the
+ * component it renders, it only tracks "enter" and "exit" states for the
+ * components. It's up to you to give meaning and effect to those states. For
+ * example we can add styles to a component when it enters or exits:
+ *
+ * ```jsx
+ * import { Transition } from 'react-transition-group';
+ *
+ * const duration = 300;
+ *
+ * const defaultStyle = {
+ *   transition: `opacity ${duration}ms ease-in-out`,
+ *   opacity: 0,
+ * }
+ *
+ * const transitionStyles = {
+ *   entering: { opacity: 1 },
+ *   entered:  { opacity: 1 },
+ *   exiting:  { opacity: 0 },
+ *   exited:  { opacity: 0 },
+ * };
+ *
+ * const Fade = ({ in: inProp }) => (
+ *   <Transition in={inProp} timeout={duration}>
+ *     {state => (
+ *       <div style={{
+ *         ...defaultStyle,
+ *         ...transitionStyles[state]
+ *       }}>
+ *         I'm a fade Transition!
+ *       </div>
+ *     )}
+ *   </Transition>
+ * );
+ * ```
+ *
+ * There are 4 main states a Transition can be in:
+ *  - `'entering'`
+ *  - `'entered'`
+ *  - `'exiting'`
+ *  - `'exited'`
+ *
+ * Transition state is toggled via the `in` prop. When `true` the component
+ * begins the "Enter" stage. During this stage, the component will shift from
+ * its current transition state, to `'entering'` for the duration of the
+ * transition and then to the `'entered'` stage once it's complete. Let's take
+ * the following example (we'll use the
+ * [useState](https://reactjs.org/docs/hooks-reference.html#usestate) hook):
+ *
+ * ```jsx
+ * function App() {
+ *   const [inProp, setInProp] = useState(false);
+ *   return (
+ *     <div>
+ *       <Transition in={inProp} timeout={500}>
+ *         {state => (
+ *           // ...
+ *         )}
+ *       </Transition>
+ *       <button onClick={() => setInProp(true)}>
+ *         Click to Enter
+ *       </button>
+ *     </div>
+ *   );
+ * }
+ * ```
+ *
+ * When the button is clicked the component will shift to the `'entering'` state
+ * and stay there for 500ms (the value of `timeout`) before it finally switches
+ * to `'entered'`.
+ *
+ * When `in` is `false` the same thing happens except the state moves from
+ * `'exiting'` to `'exited'`.
+ */
+
+var Transition = /*#__PURE__*/function (_React$Component) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__.default)(Transition, _React$Component);
+
+  function Transition(props, context) {
+    var _this;
+
+    _this = _React$Component.call(this, props, context) || this;
+    var parentGroup = context; // In the context of a TransitionGroup all enters are really appears
+
+    var appear = parentGroup && !parentGroup.isMounting ? props.enter : props.appear;
+    var initialStatus;
+    _this.appearStatus = null;
+
+    if (props.in) {
+      if (appear) {
+        initialStatus = EXITED;
+        _this.appearStatus = ENTERING;
+      } else {
+        initialStatus = ENTERED;
+      }
+    } else {
+      if (props.unmountOnExit || props.mountOnEnter) {
+        initialStatus = UNMOUNTED;
+      } else {
+        initialStatus = EXITED;
+      }
+    }
+
+    _this.state = {
+      status: initialStatus
+    };
+    _this.nextCallback = null;
+    return _this;
+  }
+
+  Transition.getDerivedStateFromProps = function getDerivedStateFromProps(_ref, prevState) {
+    var nextIn = _ref.in;
+
+    if (nextIn && prevState.status === UNMOUNTED) {
+      return {
+        status: EXITED
+      };
+    }
+
+    return null;
+  } // getSnapshotBeforeUpdate(prevProps) {
+  //   let nextStatus = null
+  //   if (prevProps !== this.props) {
+  //     const { status } = this.state
+  //     if (this.props.in) {
+  //       if (status !== ENTERING && status !== ENTERED) {
+  //         nextStatus = ENTERING
+  //       }
+  //     } else {
+  //       if (status === ENTERING || status === ENTERED) {
+  //         nextStatus = EXITING
+  //       }
+  //     }
+  //   }
+  //   return { nextStatus }
+  // }
+  ;
+
+  var _proto = Transition.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    this.updateStatus(true, this.appearStatus);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    var nextStatus = null;
+
+    if (prevProps !== this.props) {
+      var status = this.state.status;
+
+      if (this.props.in) {
+        if (status !== ENTERING && status !== ENTERED) {
+          nextStatus = ENTERING;
+        }
+      } else {
+        if (status === ENTERING || status === ENTERED) {
+          nextStatus = EXITING;
+        }
+      }
+    }
+
+    this.updateStatus(false, nextStatus);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.cancelNextCallback();
+  };
+
+  _proto.getTimeouts = function getTimeouts() {
+    var timeout = this.props.timeout;
+    var exit, enter, appear;
+    exit = enter = appear = timeout;
+
+    if (timeout != null && typeof timeout !== 'number') {
+      exit = timeout.exit;
+      enter = timeout.enter; // TODO: remove fallback for next major
+
+      appear = timeout.appear !== undefined ? timeout.appear : enter;
+    }
+
+    return {
+      exit: exit,
+      enter: enter,
+      appear: appear
+    };
+  };
+
+  _proto.updateStatus = function updateStatus(mounting, nextStatus) {
+    if (mounting === void 0) {
+      mounting = false;
+    }
+
+    if (nextStatus !== null) {
+      // nextStatus will always be ENTERING or EXITING.
+      this.cancelNextCallback();
+
+      if (nextStatus === ENTERING) {
+        this.performEnter(mounting);
+      } else {
+        this.performExit();
+      }
+    } else if (this.props.unmountOnExit && this.state.status === EXITED) {
+      this.setState({
+        status: UNMOUNTED
+      });
+    }
+  };
+
+  _proto.performEnter = function performEnter(mounting) {
+    var _this2 = this;
+
+    var enter = this.props.enter;
+    var appearing = this.context ? this.context.isMounting : mounting;
+
+    var _ref2 = this.props.nodeRef ? [appearing] : [react_dom__WEBPACK_IMPORTED_MODULE_4__.findDOMNode(this), appearing],
+        maybeNode = _ref2[0],
+        maybeAppearing = _ref2[1];
+
+    var timeouts = this.getTimeouts();
+    var enterTimeout = appearing ? timeouts.appear : timeouts.enter; // no enter animation skip right to ENTERED
+    // if we are mounting and running this it means appear _must_ be set
+
+    if (!mounting && !enter || _config__WEBPACK_IMPORTED_MODULE_5__.default.disabled) {
+      this.safeSetState({
+        status: ENTERED
+      }, function () {
+        _this2.props.onEntered(maybeNode);
+      });
+      return;
+    }
+
+    this.props.onEnter(maybeNode, maybeAppearing);
+    this.safeSetState({
+      status: ENTERING
+    }, function () {
+      _this2.props.onEntering(maybeNode, maybeAppearing);
+
+      _this2.onTransitionEnd(enterTimeout, function () {
+        _this2.safeSetState({
+          status: ENTERED
+        }, function () {
+          _this2.props.onEntered(maybeNode, maybeAppearing);
+        });
+      });
+    });
+  };
+
+  _proto.performExit = function performExit() {
+    var _this3 = this;
+
+    var exit = this.props.exit;
+    var timeouts = this.getTimeouts();
+    var maybeNode = this.props.nodeRef ? undefined : react_dom__WEBPACK_IMPORTED_MODULE_4__.findDOMNode(this); // no exit animation skip right to EXITED
+
+    if (!exit || _config__WEBPACK_IMPORTED_MODULE_5__.default.disabled) {
+      this.safeSetState({
+        status: EXITED
+      }, function () {
+        _this3.props.onExited(maybeNode);
+      });
+      return;
+    }
+
+    this.props.onExit(maybeNode);
+    this.safeSetState({
+      status: EXITING
+    }, function () {
+      _this3.props.onExiting(maybeNode);
+
+      _this3.onTransitionEnd(timeouts.exit, function () {
+        _this3.safeSetState({
+          status: EXITED
+        }, function () {
+          _this3.props.onExited(maybeNode);
+        });
+      });
+    });
+  };
+
+  _proto.cancelNextCallback = function cancelNextCallback() {
+    if (this.nextCallback !== null) {
+      this.nextCallback.cancel();
+      this.nextCallback = null;
+    }
+  };
+
+  _proto.safeSetState = function safeSetState(nextState, callback) {
+    // This shouldn't be necessary, but there are weird race conditions with
+    // setState callbacks and unmounting in testing, so always make sure that
+    // we can cancel any pending setState callbacks after we unmount.
+    callback = this.setNextCallback(callback);
+    this.setState(nextState, callback);
+  };
+
+  _proto.setNextCallback = function setNextCallback(callback) {
+    var _this4 = this;
+
+    var active = true;
+
+    this.nextCallback = function (event) {
+      if (active) {
+        active = false;
+        _this4.nextCallback = null;
+        callback(event);
+      }
+    };
+
+    this.nextCallback.cancel = function () {
+      active = false;
+    };
+
+    return this.nextCallback;
+  };
+
+  _proto.onTransitionEnd = function onTransitionEnd(timeout, handler) {
+    this.setNextCallback(handler);
+    var node = this.props.nodeRef ? this.props.nodeRef.current : react_dom__WEBPACK_IMPORTED_MODULE_4__.findDOMNode(this);
+    var doesNotHaveTimeoutOrListener = timeout == null && !this.props.addEndListener;
+
+    if (!node || doesNotHaveTimeoutOrListener) {
+      setTimeout(this.nextCallback, 0);
+      return;
+    }
+
+    if (this.props.addEndListener) {
+      var _ref3 = this.props.nodeRef ? [this.nextCallback] : [node, this.nextCallback],
+          maybeNode = _ref3[0],
+          maybeNextCallback = _ref3[1];
+
+      this.props.addEndListener(maybeNode, maybeNextCallback);
+    }
+
+    if (timeout != null) {
+      setTimeout(this.nextCallback, timeout);
+    }
+  };
+
+  _proto.render = function render() {
+    var status = this.state.status;
+
+    if (status === UNMOUNTED) {
+      return null;
+    }
+
+    var _this$props = this.props,
+        children = _this$props.children,
+        _in = _this$props.in,
+        _mountOnEnter = _this$props.mountOnEnter,
+        _unmountOnExit = _this$props.unmountOnExit,
+        _appear = _this$props.appear,
+        _enter = _this$props.enter,
+        _exit = _this$props.exit,
+        _timeout = _this$props.timeout,
+        _addEndListener = _this$props.addEndListener,
+        _onEnter = _this$props.onEnter,
+        _onEntering = _this$props.onEntering,
+        _onEntered = _this$props.onEntered,
+        _onExit = _this$props.onExit,
+        _onExiting = _this$props.onExiting,
+        _onExited = _this$props.onExited,
+        _nodeRef = _this$props.nodeRef,
+        childProps = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__.default)(_this$props, ["children", "in", "mountOnEnter", "unmountOnExit", "appear", "enter", "exit", "timeout", "addEndListener", "onEnter", "onEntering", "onEntered", "onExit", "onExiting", "onExited", "nodeRef"]);
+
+    return (
+      /*#__PURE__*/
+      // allows for nested Transitions
+      react__WEBPACK_IMPORTED_MODULE_3__.createElement(_TransitionGroupContext__WEBPACK_IMPORTED_MODULE_6__.default.Provider, {
+        value: null
+      }, typeof children === 'function' ? children(status, childProps) : react__WEBPACK_IMPORTED_MODULE_3__.cloneElement(react__WEBPACK_IMPORTED_MODULE_3__.Children.only(children), childProps))
+    );
+  };
+
+  return Transition;
+}(react__WEBPACK_IMPORTED_MODULE_3__.Component);
+
+Transition.contextType = _TransitionGroupContext__WEBPACK_IMPORTED_MODULE_6__.default;
+Transition.propTypes =  true ? {
+  /**
+   * A React reference to DOM element that need to transition:
+   * https://stackoverflow.com/a/51127130/4671932
+   *
+   *   - When `nodeRef` prop is used, `node` is not passed to callback functions
+   *      (e.g. `onEnter`) because user already has direct access to the node.
+   *   - When changing `key` prop of `Transition` in a `TransitionGroup` a new
+   *     `nodeRef` need to be provided to `Transition` with changed `key` prop
+   *     (see
+   *     [test/CSSTransition-test.js](https://github.com/reactjs/react-transition-group/blob/13435f897b3ab71f6e19d724f145596f5910581c/test/CSSTransition-test.js#L362-L437)).
+   */
+  nodeRef: prop_types__WEBPACK_IMPORTED_MODULE_2___default().shape({
+    current: typeof Element === 'undefined' ? (prop_types__WEBPACK_IMPORTED_MODULE_2___default().any) : function (propValue, key, componentName, location, propFullName, secret) {
+      var value = propValue[key];
+      return prop_types__WEBPACK_IMPORTED_MODULE_2___default().instanceOf(value && 'ownerDocument' in value ? value.ownerDocument.defaultView.Element : Element)(propValue, key, componentName, location, propFullName, secret);
+    }
+  }),
+
+  /**
+   * A `function` child can be used instead of a React element. This function is
+   * called with the current transition status (`'entering'`, `'entered'`,
+   * `'exiting'`, `'exited'`), which can be used to apply context
+   * specific props to a component.
+   *
+   * ```jsx
+   * <Transition in={this.state.in} timeout={150}>
+   *   {state => (
+   *     <MyComponent className={`fade fade-${state}`} />
+   *   )}
+   * </Transition>
+   * ```
+   */
+  children: prop_types__WEBPACK_IMPORTED_MODULE_2___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_2___default().func.isRequired), (prop_types__WEBPACK_IMPORTED_MODULE_2___default().element.isRequired)]).isRequired,
+
+  /**
+   * Show the component; triggers the enter or exit states
+   */
+  in: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * By default the child component is mounted immediately along with
+   * the parent `Transition` component. If you want to "lazy mount" the component on the
+   * first `in={true}` you can set `mountOnEnter`. After the first enter transition the component will stay
+   * mounted, even on "exited", unless you also specify `unmountOnExit`.
+   */
+  mountOnEnter: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * By default the child component stays mounted after it reaches the `'exited'` state.
+   * Set `unmountOnExit` if you'd prefer to unmount the component after it finishes exiting.
+   */
+  unmountOnExit: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * By default the child component does not perform the enter transition when
+   * it first mounts, regardless of the value of `in`. If you want this
+   * behavior, set both `appear` and `in` to `true`.
+   *
+   * > **Note**: there are no special appear states like `appearing`/`appeared`, this prop
+   * > only adds an additional enter transition. However, in the
+   * > `<CSSTransition>` component that first enter transition does result in
+   * > additional `.appear-*` classes, that way you can choose to style it
+   * > differently.
+   */
+  appear: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * Enable or disable enter transitions.
+   */
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * Enable or disable exit transitions.
+   */
+  exit: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * The duration of the transition, in milliseconds.
+   * Required unless `addEndListener` is provided.
+   *
+   * You may specify a single timeout for all transitions:
+   *
+   * ```jsx
+   * timeout={500}
+   * ```
+   *
+   * or individually:
+   *
+   * ```jsx
+   * timeout={{
+   *  appear: 500,
+   *  enter: 300,
+   *  exit: 500,
+   * }}
+   * ```
+   *
+   * - `appear` defaults to the value of `enter`
+   * - `enter` defaults to `0`
+   * - `exit` defaults to `0`
+   *
+   * @type {number | { enter?: number, exit?: number, appear?: number }}
+   */
+  timeout: function timeout(props) {
+    var pt = _utils_PropTypes__WEBPACK_IMPORTED_MODULE_7__.timeoutsShape;
+    if (!props.addEndListener) pt = pt.isRequired;
+
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    return pt.apply(void 0, [props].concat(args));
+  },
+
+  /**
+   * Add a custom transition end trigger. Called with the transitioning
+   * DOM node and a `done` callback. Allows for more fine grained transition end
+   * logic. Timeouts are still used as a fallback if provided.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * ```jsx
+   * addEndListener={(node, done) => {
+   *   // use the css transitionend event to mark the finish of a transition
+   *   node.addEventListener('transitionend', done, false);
+   * }}
+   * ```
+   */
+  addEndListener: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Callback fired before the "entering" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool) -> void
+   */
+  onEnter: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Callback fired after the "entering" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool)
+   */
+  onEntering: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Callback fired after the "entered" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool) -> void
+   */
+  onEntered: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Callback fired before the "exiting" status is applied.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExit: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Callback fired after the "exiting" status is applied.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExiting: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Callback fired after the "exited" status is applied.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExited: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func)
+} : 0; // Name the function so it is clearer in the documentation
+
+function noop() {}
+
+Transition.defaultProps = {
+  in: false,
+  mountOnEnter: false,
+  unmountOnExit: false,
+  appear: false,
+  enter: true,
+  exit: true,
+  onEnter: noop,
+  onEntering: noop,
+  onEntered: noop,
+  onExit: noop,
+  onExiting: noop,
+  onExited: noop
+};
+Transition.UNMOUNTED = UNMOUNTED;
+Transition.EXITED = EXITED;
+Transition.ENTERING = ENTERING;
+Transition.ENTERED = ENTERED;
+Transition.EXITING = EXITING;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Transition);
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/esm/TransitionGroupContext.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/TransitionGroupContext.js ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (react__WEBPACK_IMPORTED_MODULE_0__.createContext(null));
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/esm/config.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/config.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  disabled: false
+});
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/esm/utils/PropTypes.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/utils/PropTypes.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "timeoutsShape": () => (/* binding */ timeoutsShape),
+/* harmony export */   "classNamesShape": () => (/* binding */ classNamesShape)
+/* harmony export */ });
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
+
+var timeoutsShape =  true ? prop_types__WEBPACK_IMPORTED_MODULE_0___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_0___default().number), prop_types__WEBPACK_IMPORTED_MODULE_0___default().shape({
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().number),
+  exit: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().number),
+  appear: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().number)
+}).isRequired]) : 0;
+var classNamesShape =  true ? prop_types__WEBPACK_IMPORTED_MODULE_0___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_0___default().string), prop_types__WEBPACK_IMPORTED_MODULE_0___default().shape({
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  exit: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  active: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string)
+}), prop_types__WEBPACK_IMPORTED_MODULE_0___default().shape({
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  enterDone: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  enterActive: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  exit: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  exitDone: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  exitActive: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string)
+})]) : 0;
 
 /***/ }),
 
@@ -79016,6 +82649,66 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./resources/css/Login.css":
+/*!*********************************!*\
+  !*** ./resources/css/Login.css ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_Login_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./Login.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/Login.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_Login_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_Login_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
+/***/ "./resources/css/Logout.css":
+/*!**********************************!*\
+  !*** ./resources/css/Logout.css ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_Logout_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./Logout.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/Logout.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_Logout_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_Logout_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
 /***/ "./resources/css/NavBar.css":
 /*!**********************************!*\
   !*** ./resources/css/NavBar.css ***!
@@ -80738,6 +84431,366 @@ function warning(condition, message) {
 
 /***/ }),
 
+/***/ "./node_modules/uncontrollable/lib/esm/hook.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/uncontrollable/lib/esm/hook.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useUncontrolledProp": () => (/* binding */ useUncontrolledProp),
+/* harmony export */   "default": () => (/* binding */ useUncontrolled)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils */ "./node_modules/uncontrollable/lib/esm/utils.js");
+
+
+
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return typeof key === "symbol" ? key : String(key); }
+
+function _toPrimitive(input, hint) { if (typeof input !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (typeof res !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
+
+
+
+function useUncontrolledProp(propValue, defaultValue, handler) {
+  var wasPropRef = (0,react__WEBPACK_IMPORTED_MODULE_2__.useRef)(propValue !== undefined);
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(defaultValue),
+      stateValue = _useState[0],
+      setState = _useState[1];
+
+  var isProp = propValue !== undefined;
+  var wasProp = wasPropRef.current;
+  wasPropRef.current = isProp;
+  /**
+   * If a prop switches from controlled to Uncontrolled
+   * reset its value to the defaultValue
+   */
+
+  if (!isProp && wasProp && stateValue !== defaultValue) {
+    setState(defaultValue);
+  }
+
+  return [isProp ? propValue : stateValue, (0,react__WEBPACK_IMPORTED_MODULE_2__.useCallback)(function (value) {
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    if (handler) handler.apply(void 0, [value].concat(args));
+    setState(value);
+  }, [handler])];
+}
+
+
+function useUncontrolled(props, config) {
+  return Object.keys(config).reduce(function (result, fieldName) {
+    var _extends2;
+
+    var _ref = result,
+        defaultValue = _ref[_utils__WEBPACK_IMPORTED_MODULE_3__.defaultKey(fieldName)],
+        propsValue = _ref[fieldName],
+        rest = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__.default)(_ref, [_utils__WEBPACK_IMPORTED_MODULE_3__.defaultKey(fieldName), fieldName].map(_toPropertyKey));
+
+    var handlerName = config[fieldName];
+
+    var _useUncontrolledProp = useUncontrolledProp(propsValue, defaultValue, props[handlerName]),
+        value = _useUncontrolledProp[0],
+        handler = _useUncontrolledProp[1];
+
+    return (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, rest, (_extends2 = {}, _extends2[fieldName] = value, _extends2[handlerName] = handler, _extends2));
+  }, props);
+}
+
+/***/ }),
+
+/***/ "./node_modules/uncontrollable/lib/esm/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/uncontrollable/lib/esm/index.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useUncontrolled": () => (/* reexport safe */ _hook__WEBPACK_IMPORTED_MODULE_0__.default),
+/* harmony export */   "useUncontrolledProp": () => (/* reexport safe */ _hook__WEBPACK_IMPORTED_MODULE_0__.useUncontrolledProp),
+/* harmony export */   "uncontrollable": () => (/* reexport safe */ _uncontrollable__WEBPACK_IMPORTED_MODULE_1__.default)
+/* harmony export */ });
+/* harmony import */ var _hook__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hook */ "./node_modules/uncontrollable/lib/esm/hook.js");
+/* harmony import */ var _uncontrollable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./uncontrollable */ "./node_modules/uncontrollable/lib/esm/uncontrollable.js");
+
+
+
+/***/ }),
+
+/***/ "./node_modules/uncontrollable/lib/esm/uncontrollable.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/uncontrollable/lib/esm/uncontrollable.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ uncontrollable)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_lifecycles_compat__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-lifecycles-compat */ "./node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js");
+/* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! invariant */ "./node_modules/invariant/browser.js");
+/* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(invariant__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils */ "./node_modules/uncontrollable/lib/esm/utils.js");
+
+
+
+var _jsxFileName = "/Users/jquense/src/uncontrollable/src/uncontrollable.js";
+
+
+
+
+function uncontrollable(Component, controlledValues, methods) {
+  if (methods === void 0) {
+    methods = [];
+  }
+
+  var displayName = Component.displayName || Component.name || 'Component';
+  var canAcceptRef = _utils__WEBPACK_IMPORTED_MODULE_6__.canAcceptRef(Component);
+  var controlledProps = Object.keys(controlledValues);
+  var PROPS_TO_OMIT = controlledProps.map(_utils__WEBPACK_IMPORTED_MODULE_6__.defaultKey);
+  !(canAcceptRef || !methods.length) ?  true ? invariant__WEBPACK_IMPORTED_MODULE_5___default()(false, '[uncontrollable] stateless function components cannot pass through methods ' + 'because they have no associated instances. Check component: ' + displayName + ', ' + 'attempting to pass through methods: ' + methods.join(', ')) : 0 : void 0;
+
+  var UncontrolledComponent =
+  /*#__PURE__*/
+  function (_React$Component) {
+    (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__.default)(UncontrolledComponent, _React$Component);
+
+    function UncontrolledComponent() {
+      var _this;
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
+      _this.handlers = Object.create(null);
+      controlledProps.forEach(function (propName) {
+        var handlerName = controlledValues[propName];
+
+        var handleChange = function handleChange(value) {
+          if (_this.props[handlerName]) {
+            var _this$props;
+
+            _this._notifying = true;
+
+            for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+              args[_key2 - 1] = arguments[_key2];
+            }
+
+            (_this$props = _this.props)[handlerName].apply(_this$props, [value].concat(args));
+
+            _this._notifying = false;
+          }
+
+          if (!_this.unmounted) _this.setState(function (_ref) {
+            var _extends2;
+
+            var values = _ref.values;
+            return {
+              values: (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__.default)(Object.create(null), values, (_extends2 = {}, _extends2[propName] = value, _extends2))
+            };
+          });
+        };
+
+        _this.handlers[handlerName] = handleChange;
+      });
+      if (methods.length) _this.attachRef = function (ref) {
+        _this.inner = ref;
+      };
+      var values = Object.create(null);
+      controlledProps.forEach(function (key) {
+        values[key] = _this.props[_utils__WEBPACK_IMPORTED_MODULE_6__.defaultKey(key)];
+      });
+      _this.state = {
+        values: values,
+        prevProps: {}
+      };
+      return _this;
+    }
+
+    var _proto = UncontrolledComponent.prototype;
+
+    _proto.shouldComponentUpdate = function shouldComponentUpdate() {
+      //let setState trigger the update
+      return !this._notifying;
+    };
+
+    UncontrolledComponent.getDerivedStateFromProps = function getDerivedStateFromProps(props, _ref2) {
+      var values = _ref2.values,
+          prevProps = _ref2.prevProps;
+      var nextState = {
+        values: (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__.default)(Object.create(null), values),
+        prevProps: {}
+      };
+      controlledProps.forEach(function (key) {
+        /**
+         * If a prop switches from controlled to Uncontrolled
+         * reset its value to the defaultValue
+         */
+        nextState.prevProps[key] = props[key];
+
+        if (!_utils__WEBPACK_IMPORTED_MODULE_6__.isProp(props, key) && _utils__WEBPACK_IMPORTED_MODULE_6__.isProp(prevProps, key)) {
+          nextState.values[key] = props[_utils__WEBPACK_IMPORTED_MODULE_6__.defaultKey(key)];
+        }
+      });
+      return nextState;
+    };
+
+    _proto.componentWillUnmount = function componentWillUnmount() {
+      this.unmounted = true;
+    };
+
+    _proto.render = function render() {
+      var _this2 = this;
+
+      var _this$props2 = this.props,
+          innerRef = _this$props2.innerRef,
+          props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__.default)(_this$props2, ["innerRef"]);
+
+      PROPS_TO_OMIT.forEach(function (prop) {
+        delete props[prop];
+      });
+      var newProps = {};
+      controlledProps.forEach(function (propName) {
+        var propValue = _this2.props[propName];
+        newProps[propName] = propValue !== undefined ? propValue : _this2.state.values[propName];
+      });
+      return react__WEBPACK_IMPORTED_MODULE_3__.createElement(Component, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__.default)({}, props, newProps, this.handlers, {
+        ref: innerRef || this.attachRef
+      }));
+    };
+
+    return UncontrolledComponent;
+  }(react__WEBPACK_IMPORTED_MODULE_3__.Component);
+
+  (0,react_lifecycles_compat__WEBPACK_IMPORTED_MODULE_4__.polyfill)(UncontrolledComponent);
+  UncontrolledComponent.displayName = "Uncontrolled(" + displayName + ")";
+  UncontrolledComponent.propTypes = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__.default)({
+    innerRef: function innerRef() {}
+  }, _utils__WEBPACK_IMPORTED_MODULE_6__.uncontrolledPropTypes(controlledValues, displayName));
+  methods.forEach(function (method) {
+    UncontrolledComponent.prototype[method] = function $proxiedMethod() {
+      var _this$inner;
+
+      return (_this$inner = this.inner)[method].apply(_this$inner, arguments);
+    };
+  });
+  var WrappedComponent = UncontrolledComponent;
+
+  if (react__WEBPACK_IMPORTED_MODULE_3__.forwardRef) {
+    WrappedComponent = react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function (props, ref) {
+      return react__WEBPACK_IMPORTED_MODULE_3__.createElement(UncontrolledComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__.default)({}, props, {
+        innerRef: ref,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 128
+        },
+        __self: this
+      }));
+    });
+    WrappedComponent.propTypes = UncontrolledComponent.propTypes;
+  }
+
+  WrappedComponent.ControlledComponent = Component;
+  /**
+   * useful when wrapping a Component and you want to control
+   * everything
+   */
+
+  WrappedComponent.deferControlTo = function (newComponent, additions, nextMethods) {
+    if (additions === void 0) {
+      additions = {};
+    }
+
+    return uncontrollable(newComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__.default)({}, controlledValues, additions), nextMethods);
+  };
+
+  return WrappedComponent;
+}
+
+/***/ }),
+
+/***/ "./node_modules/uncontrollable/lib/esm/utils.js":
+/*!******************************************************!*\
+  !*** ./node_modules/uncontrollable/lib/esm/utils.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "uncontrolledPropTypes": () => (/* binding */ uncontrolledPropTypes),
+/* harmony export */   "isProp": () => (/* binding */ isProp),
+/* harmony export */   "defaultKey": () => (/* binding */ defaultKey),
+/* harmony export */   "canAcceptRef": () => (/* binding */ canAcceptRef)
+/* harmony export */ });
+/* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! invariant */ "./node_modules/invariant/browser.js");
+/* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(invariant__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var noop = function noop() {};
+
+function readOnlyPropType(handler, name) {
+  return function (props, propName) {
+    if (props[propName] !== undefined) {
+      if (!props[handler]) {
+        return new Error("You have provided a `" + propName + "` prop to `" + name + "` " + ("without an `" + handler + "` handler prop. This will render a read-only field. ") + ("If the field should be mutable use `" + defaultKey(propName) + "`. ") + ("Otherwise, set `" + handler + "`."));
+      }
+    }
+  };
+}
+
+function uncontrolledPropTypes(controlledValues, displayName) {
+  var propTypes = {};
+  Object.keys(controlledValues).forEach(function (prop) {
+    // add default propTypes for folks that use runtime checks
+    propTypes[defaultKey(prop)] = noop;
+
+    if (true) {
+      var handler = controlledValues[prop];
+      !(typeof handler === 'string' && handler.trim().length) ?  true ? invariant__WEBPACK_IMPORTED_MODULE_0___default()(false, 'Uncontrollable - [%s]: the prop `%s` needs a valid handler key name in order to make it uncontrollable', displayName, prop) : 0 : void 0;
+      propTypes[prop] = readOnlyPropType(handler, displayName);
+    }
+  });
+  return propTypes;
+}
+function isProp(props, prop) {
+  return props[prop] !== undefined;
+}
+function defaultKey(key) {
+  return 'default' + key.charAt(0).toUpperCase() + key.substr(1);
+}
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+function canAcceptRef(component) {
+  return !!component && (typeof component !== 'function' || component.prototype && component.prototype.isReactComponent);
+}
+
+/***/ }),
+
 /***/ "./node_modules/value-equal/esm/value-equal.js":
 /*!*****************************************************!*\
   !*** ./node_modules/value-equal/esm/value-equal.js ***!
@@ -80785,6 +84838,79 @@ function valueEqual(a, b) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (valueEqual);
+
+
+/***/ }),
+
+/***/ "./node_modules/warning/warning.js":
+/*!*****************************************!*\
+  !*** ./node_modules/warning/warning.js ***!
+  \*****************************************/
+/***/ ((module) => {
+
+"use strict";
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+/**
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */
+
+var __DEV__ = "development" !== 'production';
+
+var warning = function() {};
+
+if (__DEV__) {
+  var printWarning = function printWarning(format, args) {
+    var len = arguments.length;
+    args = new Array(len > 1 ? len - 1 : 0);
+    for (var key = 1; key < len; key++) {
+      args[key - 1] = arguments[key];
+    }
+    var argIndex = 0;
+    var message = 'Warning: ' +
+      format.replace(/%s/g, function() {
+        return args[argIndex++];
+      });
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  }
+
+  warning = function(condition, format, args) {
+    var len = arguments.length;
+    args = new Array(len > 2 ? len - 2 : 0);
+    for (var key = 2; key < len; key++) {
+      args[key - 2] = arguments[key];
+    }
+    if (format === undefined) {
+      throw new Error(
+          '`warning(condition, format, ...args)` requires a warning ' +
+          'message argument'
+      );
+    }
+    if (!condition) {
+      printWarning.apply(null, [format].concat(args));
+    }
+  };
+}
+
+module.exports = warning;
 
 
 /***/ })

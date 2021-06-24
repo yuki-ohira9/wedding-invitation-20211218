@@ -1,0 +1,24 @@
+.logout__container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: fit-content;
+  margin: auto;
+  font-family: 'Caveat', cursive;
+  text-align:center;
+  font-size: 18px;
+}
+
+.logout__block {
+  margin: auto;
+  width: 100%;
+}
+
+/* SPの場合 */
+@media screen and (max-width: 480px) {
+  .logout__container {
+    width: 70% !important;
+  }
+}
