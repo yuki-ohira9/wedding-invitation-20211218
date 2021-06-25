@@ -77,6 +77,12 @@ class GuestsController extends AdminController
             ->default(function ($form) {
             return $form->model()->password;
         });
+        $form->select('type', __('user.type'))->options([
+            config('user.type.formula') => __('user.type_formula'),
+            config('user.type.second_party') => __('user.type_second_party'),
+            config('user.type.none') => __('user.type_none'),
+        ]);
+
         $form->display('created_at', __('Created At'));
         $form->display('updated_at', __('Updated At'));
 

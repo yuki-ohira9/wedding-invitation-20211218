@@ -2745,7 +2745,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Auth = function Auth(props) {
-  return _User__WEBPACK_IMPORTED_MODULE_1__.default.isLoggedIn() ? props.children : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Redirect, {
+  return _User__WEBPACK_IMPORTED_MODULE_1__.default.isLoggedIn() && _User__WEBPACK_IMPORTED_MODULE_1__.default.userId() && _User__WEBPACK_IMPORTED_MODULE_1__.default.userName() && _User__WEBPACK_IMPORTED_MODULE_1__.default.userEmail() ? props.children : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Redirect, {
     to: '/login'
   });
 };
@@ -2801,44 +2801,46 @@ var Event = function Event() {
         children: "\u7D50\u5A5A\u5F0F\u4E8C\u6B21\u4F1A\u306B\u3064\u3044\u3066"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
         className: "event_main__description_block",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("table", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              children: "\u958B\u50AC\u65E5"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-              children: "2021\u5E7412\u670818\u65E5(\u571F)"
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("table", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tbody", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+                children: "\u958B\u50AC\u65E5"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                children: "2021\u5E7412\u670818\u65E5(\u571F)"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+                children: "\u958B\u50AC\u6642\u9593"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                children: "18\u664245\u5206\u301C"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+                children: "\u6240\u5728\u5730"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                children: "\u6771\u4EAC\u90FD\u6E2F\u533A\u53F0\u58341-9-1"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+                children: "\u99D0\u8ECA\u5834"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                children: "\u3042\u308A/300\u53F0(\u5730\u4E0B\u99D0\u8ECA\u5834)"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+                children: "\u30A2\u30AF\u30BB\u30B9"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("td", {
+                children: ["\u3086\u308A\u304B\u3082\u3081\u7DDA\u300C\u53F0\u5834\u99C5\u300D\u3088\u308A\u5F92\u6B691\u5206", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), "\u308A\u3093\u304B\u3044\u7DDA\u300C\u6771\u4EAC\u30C6\u30EC\u30DD\u30FC\u30C8\u99C5\u300D\u3088\u308A\u5F92\u6B691\u5206", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), "\u7121\u6599\u30B7\u30E3\u30C8\u30EB\u30D0\u30B9\u3042\u308A"]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+                children: "\u4F1A\u8CBB"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                children: "\xA510,000"
+              })]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              children: "\u958B\u50AC\u6642\u9593"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-              children: "18\u664245\u5206\u301C"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              children: "\u6240\u5728\u5730"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-              children: "\u6771\u4EAC\u90FD\u6E2F\u533A\u53F0\u58341-9-1"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              children: "\u99D0\u8ECA\u5834"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-              children: "\u3042\u308A/300\u53F0(\u5730\u4E0B\u99D0\u8ECA\u5834)"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              children: "\u30A2\u30AF\u30BB\u30B9"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("td", {
-              children: ["\u3086\u308A\u304B\u3082\u3081\u7DDA\u300C\u53F0\u5834\u99C5\u300D\u3088\u308A\u5F92\u6B691\u5206", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), "\u308A\u3093\u304B\u3044\u7DDA\u300C\u6771\u4EAC\u30C6\u30EC\u30DD\u30FC\u30C8\u99C5\u300D\u3088\u308A\u5F92\u6B691\u5206", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), "\u7121\u6599\u30B7\u30E3\u30C8\u30EB\u30D0\u30B9\u3042\u308A"]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              children: "\u4F1A\u8CBB"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-              children: "\xA510,000"
-            })]
-          })]
+          })
         })
       })]
     })
@@ -3416,31 +3418,334 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./User */ "./resources/js/User.js");
-/* harmony import */ var _css_Rsvp_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../css/Rsvp.css */ "./resources/css/Rsvp.css");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Alert.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./User */ "./resources/js/User.js");
+/* harmony import */ var _css_Rsvp_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../css/Rsvp.css */ "./resources/css/Rsvp.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
 
 
-var Rsvp = function Rsvp() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-    className: "wrapper",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "rsvp__main",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "rsvp__description font_gray",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          className: "rsvp__description_block",
-          children: ["\u304A\u554F\u3044\u5408\u308F\u305B\u3001\u3054\u8981\u671B\u7B49\u304C\u3054\u3056\u3044\u307E\u3057\u305F\u3089\u3001\u304A\u6C17\u8EFD\u306B\u304A\u554F\u3044\u5408\u308F\u305B\u304F\u3060\u3055\u3044\u3002", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {})]
-        }), _User__WEBPACK_IMPORTED_MODULE_1__.default.userInfo.name]
-      })
-    })
-  });
-};
+
+
+var Rsvp = /*#__PURE__*/function (_Component) {
+  _inherits(Rsvp, _Component);
+
+  var _super = _createSuper(Rsvp);
+
+  function Rsvp(props) {
+    var _User$address, _User$tel, _User$allergyDetail, _User$message;
+
+    var _this;
+
+    _classCallCheck(this, Rsvp);
+
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "click", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _this.setState({
+                userMessage: ""
+              });
+
+              _this.setState({
+                errorMessage: ""
+              });
+
+              _context.next = 4;
+              return axios.put("/api/invitations/".concat(_User__WEBPACK_IMPORTED_MODULE_2__.default.userId()), {
+                is_attend: _this.state.isAttend,
+                email: _this.state.email,
+                address: _this.state.address,
+                tel: _this.state.tel,
+                has_allergy: _this.state.hasAllergy,
+                allergy_detail: _this.state.allergyDetail,
+                message: _this.state.message
+              }).then(function (res) {
+                if (res.data.result == true) {
+                  _User__WEBPACK_IMPORTED_MODULE_2__.default.set('userEmail', _this.state.email);
+                  _User__WEBPACK_IMPORTED_MODULE_2__.default.set('isAttend', _this.state.isAttend);
+                  _User__WEBPACK_IMPORTED_MODULE_2__.default.set('address', _this.state.address);
+                  _User__WEBPACK_IMPORTED_MODULE_2__.default.set('tel', _this.state.tel);
+                  _User__WEBPACK_IMPORTED_MODULE_2__.default.set('hasAllergy', _this.state.hasAllergy);
+                  _User__WEBPACK_IMPORTED_MODULE_2__.default.set('allergyDetail', _this.state.allergyDetail);
+                  _User__WEBPACK_IMPORTED_MODULE_2__.default.set('message', _this.state.message);
+
+                  _this.setState({
+                    userMessage: '送信が完了しました'
+                  });
+                } else {
+                  _this.setState({
+                    errorMessage: '送信に失敗しました'
+                  });
+                }
+              })["catch"](function (err) {
+                console.error(err);
+
+                _this.setState({
+                  errorMessage: '送信に失敗しました'
+                });
+              });
+
+            case 4:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    })));
+
+    _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
+      _this.setState(_defineProperty({}, e.target.id, e.target.value));
+    });
+
+    _this.state = {
+      isAttend: _User__WEBPACK_IMPORTED_MODULE_2__.default.isAttend(),
+      name: _User__WEBPACK_IMPORTED_MODULE_2__.default.userName() + ' 様',
+      email: _User__WEBPACK_IMPORTED_MODULE_2__.default.userEmail(),
+      address: (_User$address = _User__WEBPACK_IMPORTED_MODULE_2__.default.address()) !== null && _User$address !== void 0 ? _User$address : '',
+      tel: (_User$tel = _User__WEBPACK_IMPORTED_MODULE_2__.default.tel()) !== null && _User$tel !== void 0 ? _User$tel : '',
+      hasAllergy: _User__WEBPACK_IMPORTED_MODULE_2__.default.hasAllergy(),
+      allergyDetail: (_User$allergyDetail = _User__WEBPACK_IMPORTED_MODULE_2__.default.allergyDetail()) !== null && _User$allergyDetail !== void 0 ? _User$allergyDetail : '',
+      message: (_User$message = _User__WEBPACK_IMPORTED_MODULE_2__.default.message()) !== null && _User$message !== void 0 ? _User$message : '',
+      userMessage: '',
+      errorMessage: ''
+    };
+    return _this;
+  }
+
+  _createClass(Rsvp, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "wrapper",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "rsvp__main",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            className: "rsvp__description font_gray",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+              className: "rsvp__description_block",
+              children: ["\u304A\u554F\u3044\u5408\u308F\u305B\u3001\u3054\u8981\u671B\u7B49\u304C\u3054\u3056\u3044\u307E\u3057\u305F\u3089\u3001\u304A\u6C17\u8EFD\u306B\u304A\u554F\u3044\u5408\u308F\u305B\u304F\u3060\u3055\u3044\u3002", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {})]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+              className: "rsvp__form_block",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default, {
+                children: [this.state.userMessage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__.default, {
+                  variant: "success",
+                  children: this.state.userMessage
+                }), this.state.errorMessage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__.default, {
+                  variant: "danger",
+                  children: this.state.errorMessage
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Group, {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Label, {
+                    className: "rsvp__form_label required",
+                    children: "\u3069\u3061\u3089\u304B\u3092\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Check, {
+                    required: true,
+                    inline: true,
+                    label: "\u3054\u51FA\u5E2D",
+                    name: "is_attend",
+                    type: "radio",
+                    id: "attend",
+                    checked: this.state.isAttend !== null && this.state.isAttend === "1",
+                    onChange: function onChange() {
+                      return _this2.setState({
+                        isAttend: "1"
+                      });
+                    }
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Check, {
+                    required: true,
+                    inline: true,
+                    label: "\u3054\u6B20\u5E2D",
+                    name: "is_attend",
+                    type: "radio",
+                    id: "absent",
+                    checked: this.state.isAttend !== null && this.state.isAttend === "0",
+                    onChange: function onChange() {
+                      return _this2.setState({
+                        isAttend: "0"
+                      });
+                    }
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Group, {
+                  className: "cp_iptxt",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Label, {
+                    className: "rsvp__form_label",
+                    children: "\u3054\u82B3\u540D"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                    id: "name",
+                    type: "text",
+                    value: this.state.name,
+                    className: "ef",
+                    disabled: "disabled",
+                    onChange: this.handleChange,
+                    autoComplete: "off"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                    className: "focus_line"
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Group, {
+                  className: "cp_iptxt",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Label, {
+                    className: "rsvp__form_label required",
+                    children: "\u30E1\u30FC\u30EB\u30A2\u30C9\u30EC\u30B9"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                    id: "email",
+                    type: "email",
+                    className: "ef",
+                    value: this.state.email,
+                    onChange: this.handleChange,
+                    autoComplete: "off"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                    className: "focus_line"
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Group, {
+                  className: "cp_iptxt",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Label, {
+                    className: "rsvp__form_label required",
+                    children: "\u3054\u4F4F\u6240"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                    id: "address",
+                    className: "ef",
+                    required: true,
+                    type: "text",
+                    value: this.state.address,
+                    onChange: this.handleChange,
+                    autoComplete: "off"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                    className: "focus_line"
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Group, {
+                  className: "cp_iptxt",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Label, {
+                    className: "rsvp__form_label required",
+                    children: "\u96FB\u8A71\u756A\u53F7"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                    id: "tel",
+                    className: "ef",
+                    required: true,
+                    type: "text",
+                    value: this.state.tel,
+                    onChange: this.handleChange,
+                    autoComplete: "off"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                    className: "focus_line"
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Group, {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Label, {
+                    className: "rsvp__form_label required",
+                    children: "\u30A2\u30EC\u30EB\u30AE\u30FC"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Check, {
+                    required: true,
+                    inline: true,
+                    label: "\u3042\u308A",
+                    name: "has_allergy",
+                    type: "radio",
+                    id: "has_allergy",
+                    checked: this.state.hasAllergy !== null && this.state.hasAllergy === "1",
+                    onChange: function onChange() {
+                      return _this2.setState({
+                        hasAllergy: "1"
+                      });
+                    }
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Check, {
+                    required: true,
+                    inline: true,
+                    label: "\u306A\u3057",
+                    name: "has_allergy",
+                    type: "radio",
+                    id: "has_not_allergy",
+                    checked: this.state.hasAllergy !== null && this.state.hasAllergy === "0",
+                    onChange: function onChange() {
+                      return _this2.setState({
+                        hasAllergy: "0"
+                      });
+                    }
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Group, {
+                  className: "cp_iptxt",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Label, {
+                    className: "rsvp__form_label",
+                    children: "\u30A2\u30EC\u30EB\u30AE\u30FC\u3067\u300C\u3042\u308A\u300D\u3092\u9078\u629E\u3057\u305F\u65B9\u306F\u304A\u805E\u304B\u305B\u304F\u3060\u3055\u3044\u307E\u305B"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                    id: "allergyDetail",
+                    className: "ef",
+                    type: "text",
+                    value: this.state.allergyDetail,
+                    onChange: this.handleChange,
+                    autoComplete: "off"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                    className: "focus_line"
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Group, {
+                  className: "cp_iptxt",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Label, {
+                    className: "rsvp__form_label",
+                    children: "\u30E1\u30C3\u30BB\u30FC\u30B8"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("textarea", {
+                    id: "message",
+                    className: "ef",
+                    rows: 3,
+                    value: this.state.message,
+                    onChange: this.handleChange,
+                    autoComplete: "off"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                    className: "focus_line"
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__.default, {
+                  variant: "light",
+                  onClick: this.click,
+                  children: "Send"
+                })]
+              })
+            })]
+          })
+        })
+      });
+    }
+  }]);
+
+  return Rsvp;
+}(react__WEBPACK_IMPORTED_MODULE_1__.Component);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Rsvp);
 
@@ -3459,8 +3764,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -3471,8 +3774,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-
-
 var User = function User() {
   var _this = this;
 
@@ -3482,7 +3783,41 @@ var User = function User() {
     return _this.get('isLoggedIn') === 'true';
   });
 
-  _defineProperty(this, "userInfo", {});
+  _defineProperty(this, "userId", function () {
+    return _this.get('userId');
+  });
+
+  _defineProperty(this, "userName", function () {
+    return _this.get('userName');
+  });
+
+  _defineProperty(this, "userEmail", function () {
+    return _this.get('userEmail');
+  });
+
+  _defineProperty(this, "isAttend", function () {
+    return _this.get('isAttend');
+  });
+
+  _defineProperty(this, "address", function () {
+    return _this.get('address');
+  });
+
+  _defineProperty(this, "tel", function () {
+    return _this.get('tel');
+  });
+
+  _defineProperty(this, "hasAllergy", function () {
+    return _this.get('hasAllergy');
+  });
+
+  _defineProperty(this, "allergyDetail", function () {
+    return _this.get('allergyDetail');
+  });
+
+  _defineProperty(this, "message", function () {
+    return _this.get('message');
+  });
 
   _defineProperty(this, "set", function (key, value) {
     return localStorage.setItem(key, value);
@@ -3504,15 +3839,23 @@ var User = function User() {
 
   _defineProperty(this, "login", /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(email, password) {
-      var result, userInfo;
+      var isLoggedIn, userId, userName, userEmail, isAttend, address, tel, hasAllergy, allergyDetail, message;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              result = false;
-              userInfo = {}; // ログイン時にCSRFトークンを初期化
+              isLoggedIn = false;
+              userId = '';
+              userName = '';
+              userEmail = '';
+              isAttend = '';
+              address = '';
+              tel = '';
+              hasAllergy = '';
+              allergyDetail = '';
+              message = ''; // ログイン時にCSRFトークンを初期化
 
-              _context2.next = 4;
+              _context2.next = 12;
               return axios.get("/sanctum/csrf-cookie").then( /*#__PURE__*/function () {
                 var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(response) {
                   return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -3525,13 +3868,24 @@ var User = function User() {
                             password: password
                           }).then(function (res) {
                             if (res.data.result) {
-                              userInfo = res.data.user;
-                              result = true;
+                              var _res$data$invitation$, _res$data$invitation, _res$data$invitation$2, _res$data$invitation2, _res$data$invitation$3, _res$data$invitation3, _res$data$invitation$4, _res$data$invitation4, _res$data$invitation$5, _res$data$invitation5, _res$data$invitation$6, _res$data$invitation6;
+
+                              userId = res.data.user.id;
+                              userName = res.data.user.name;
+                              userEmail = res.data.user.email;
+                              isAttend = (_res$data$invitation$ = (_res$data$invitation = res.data.invitation) === null || _res$data$invitation === void 0 ? void 0 : _res$data$invitation.is_attend) !== null && _res$data$invitation$ !== void 0 ? _res$data$invitation$ : null;
+                              address = (_res$data$invitation$2 = (_res$data$invitation2 = res.data.invitation) === null || _res$data$invitation2 === void 0 ? void 0 : _res$data$invitation2.address) !== null && _res$data$invitation$2 !== void 0 ? _res$data$invitation$2 : '';
+                              tel = (_res$data$invitation$3 = (_res$data$invitation3 = res.data.invitation) === null || _res$data$invitation3 === void 0 ? void 0 : _res$data$invitation3.tel) !== null && _res$data$invitation$3 !== void 0 ? _res$data$invitation$3 : '';
+                              hasAllergy = (_res$data$invitation$4 = (_res$data$invitation4 = res.data.invitation) === null || _res$data$invitation4 === void 0 ? void 0 : _res$data$invitation4.has_allergy) !== null && _res$data$invitation$4 !== void 0 ? _res$data$invitation$4 : null;
+                              allergyDetail = (_res$data$invitation$5 = (_res$data$invitation5 = res.data.invitation) === null || _res$data$invitation5 === void 0 ? void 0 : _res$data$invitation5.allergy_detail) !== null && _res$data$invitation$5 !== void 0 ? _res$data$invitation$5 : '';
+                              message = (_res$data$invitation$6 = (_res$data$invitation6 = res.data.invitation) === null || _res$data$invitation6 === void 0 ? void 0 : _res$data$invitation6.message) !== null && _res$data$invitation$6 !== void 0 ? _res$data$invitation$6 : '';
+                              isLoggedIn = true;
                             } else {
-                              result = false;
+                              isLoggedIn = false;
                             }
                           })["catch"](function (err) {
-                            result = false;
+                            console.error(err);
+                            isLoggedIn = false;
                           });
 
                         case 2:
@@ -3547,13 +3901,30 @@ var User = function User() {
                 };
               }());
 
-            case 4:
-              _this.set('isLoggedIn', result);
+            case 12:
+              _this.set('isLoggedIn', isLoggedIn);
 
-              _this.userInfo = userInfo;
-              return _context2.abrupt("return", result);
+              _this.set('userId', userId);
 
-            case 7:
+              _this.set('userName', userName);
+
+              _this.set('userEmail', userEmail);
+
+              _this.set('isAttend', isAttend);
+
+              _this.set('address', address);
+
+              _this.set('tel', tel);
+
+              _this.set('hasAllergy', hasAllergy);
+
+              _this.set('allergyDetail', allergyDetail);
+
+              _this.set('message', message);
+
+              return _context2.abrupt("return", isLoggedIn);
+
+            case 23:
             case "end":
               return _context2.stop();
           }
@@ -3572,9 +3943,25 @@ var User = function User() {
         switch (_context3.prev = _context3.next) {
           case 0:
             if (_this.isLoggedIn()) {
-              _this.set('isLoggedIn', false); // ログアウト処理
-              //　他に必要な処理があるのならこちら
+              _this.set('isLoggedIn', false);
 
+              _this.set('userId', '');
+
+              _this.set('userName', '');
+
+              _this.set('userEmail', '');
+
+              _this.set('isAttend', '');
+
+              _this.set('address', '');
+
+              _this.set('tel', '');
+
+              _this.set('hasAllergy', '');
+
+              _this.set('allergyDetail', '');
+
+              _this.set('message', '');
             }
 
           case 1:
@@ -8350,7 +8737,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".rsvp__main {\n  display: flex;\n}\n\n.rsvp__description {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 700px;\n  width: 80%;\n  height: -webkit-max-content;\n  height: -moz-max-content;\n  height: max-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  text-align:center;\n  border-bottom: 3px solid #008080;\n  border-top: 3px solid #008080;\n}\n\n.rsvp__description_block {\n  padding: 30px;\n  -webkit-backdrop-filter: blur(2px);\n          backdrop-filter: blur(2px);\n}\n\n.font_gray {\n  color: #707070;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".rsvp__main {\n  display: flex;\n}\n\n.rsvp__description {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 700px;\n  width: 80%;\n  height: -webkit-max-content;\n  height: -moz-max-content;\n  height: max-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  text-align:center;\n  border-bottom: 3px solid #008080;\n  border-top: 3px solid #008080;\n  -webkit-backdrop-filter: blur(2px);\n          backdrop-filter: blur(2px);\n}\n\n.rsvp__description_block {\n  padding: 30px;\n}\n\n.font_gray {\n  color: #707070;\n}\n\n.rsvp__form_block {\n  margin: auto;\n  text-align: center;\n}\n\n.rsvp__form_label {\n  width: 100%;\n}\n\ninput {\n  text-align: center;\n}\n\ntextarea {\n  text-align: center;\n}\n\n.required::after {\n  content: \" *\";\n  color: red;\n  vertical-align: middle;\n}\n\n.cp_iptxt {\n\tposition: relative;\n}\n.cp_iptxt input[type='text'],\n.cp_iptxt input[type='email'],\ntextarea {\n\tfont: 15px/24px sans-serif;\n  font-family: 'Caveat', cursive;\n\tbox-sizing: border-box;\n\twidth: 100%;\n\tletter-spacing: 1px;\n}\n.cp_iptxt input[type='text']:focus,\n.cp_iptxt input[type='email']:focus,\ntextarea:focus {\n\toutline: none;\n}\n.ef {\n\tpadding: 4px 0;\n\tborder: 0;\n\tborder-bottom: 1px solid #1b2538;\n\tbackground-color: transparent;\n}\n\u0003.ef ~ .focus_line {\n\tposition: absolute;\n\tbottom: 0;\n\tleft: 50%;\n\twidth: 0;\n\theight: 2px;\n\ttransition: 0.4s;\n\tbackground-color: #008080;\n}\n.ef ~ .focus_line {\n\tposition: absolute;\n\tbottom: 0;\n\tleft: 50%;\n\twidth: 0;\n\theight: 2px;\n\ttransition: 0.4s;\n\tbackground-color: #008080;\n}\n.ef:focus ~ .focus_line,\n.cp_iptxt.ef ~ .focus_line {\n\tleft: 0;\n\twidth: 100%;\n\ttransition: 0.4s;\n}\n.ef ~ label {\n\tposition: absolute;\n\tz-index: -1;\n\ttop: 4px;\n\tleft: 0;\n\twidth: 100%;\n\ttransition: 0.3s;\n\tletter-spacing: 0.5px;\n\tcolor: #aaaaaa;\n}\n.ef:focus ~ label, .cp_iptxt.ef ~ label {\n\tfont-size: 12px;\n\ttop: -16px;\n\ttransition: 0.3s;\n\tcolor: #008080;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
