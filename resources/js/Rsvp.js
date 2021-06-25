@@ -21,6 +21,8 @@ class Rsvp extends Component {
     }
 
     click = async () => {
+        this.setState({userMessage: ""})
+        this.setState({errorMessage: ""})
         await axios.put(`/api/invitations/${User.userId()}`, {
             is_attend: this.state.isAttend,
             email: this.state.email,
@@ -44,6 +46,7 @@ class Rsvp extends Component {
             }
         }).catch(err => {
           console.error(err);
+          this.setState({ errorMessage: '送信に失敗しました' });
         });
     }
 
@@ -67,7 +70,7 @@ class Rsvp extends Component {
                                 {this.state.errorMessage && (
                                     <Alert variant="danger">{this.state.errorMessage}</Alert>
                                 )}
-                                <Form.Group controlId="is_attend">
+                                <Form.Group>
                                     <Form.Label className="rsvp__form_label required">どちらかを選択してください</Form.Label><br/>
                                     <Form.Check
                                         required
@@ -90,46 +93,58 @@ class Rsvp extends Component {
                                         onChange={() => this.setState({isAttend: "0"})}
                                     />
                                 </Form.Group>
-                                <Form.Group controlId="name">
+                                <Form.Group className="cp_iptxt">
                                     <Form.Label className="rsvp__form_label">ご芳名</Form.Label>
-                                    <Form.Control
-                                        type="name"
+                                    <input
+                                        id="name"
+                                        type="text"
                                         value={this.state.name}
+                                        className="ef"
                                         disabled="disabled"
                                         onChange={this.handleChange}
                                         autoComplete="off"
                                     />
+                                    <span className="focus_line"></span>
                                 </Form.Group>
-                                <Form.Group controlId="email">
+                                <Form.Group className="cp_iptxt">
                                     <Form.Label className="rsvp__form_label required">メールアドレス</Form.Label>
-                                    <Form.Control
+                                    <input
+                                        id="email"
                                         type="email"
+                                        className="ef"
                                         value={this.state.email}
                                         onChange={this.handleChange}
                                         autoComplete="off"
                                     />
+                                    <span className="focus_line"></span>
                                 </Form.Group>
-                                <Form.Group controlId="address">
+                                <Form.Group className="cp_iptxt">
                                     <Form.Label className="rsvp__form_label required">ご住所</Form.Label>
-                                    <Form.Control
+                                    <input
+                                        id="address"
+                                        className="ef"
                                         required
                                         type="text"
                                         value={this.state.address}
                                         onChange={this.handleChange}
                                         autoComplete="off"
                                     />
+                                    <span className="focus_line"></span>
                                 </Form.Group>
-                                <Form.Group controlId="tel">
+                                <Form.Group className="cp_iptxt">
                                     <Form.Label className="rsvp__form_label required">電話番号</Form.Label>
-                                    <Form.Control
+                                    <input
+                                        id="tel"
+                                        className="ef"
                                         required
                                         type="text"
                                         value={this.state.tel}
                                         onChange={this.handleChange}
                                         autoComplete="off"
                                     />
+                                    <span className="focus_line"></span>
                                 </Form.Group>
-                                <Form.Group controlId="has_allergy">
+                                <Form.Group>
                                     <Form.Label className="rsvp__form_label required">アレルギー</Form.Label><br/>
                                     <Form.Check
                                         required
@@ -152,24 +167,29 @@ class Rsvp extends Component {
                                         onChange={() => this.setState({hasAllergy: "0"})}
                                     />
                                 </Form.Group>
-                                <Form.Group controlId="allergyDetail">
+                                <Form.Group className="cp_iptxt">
                                     <Form.Label className="rsvp__form_label">アレルギーで「あり」を選択した方はお聞かせくださいませ</Form.Label>
-                                    <Form.Control
+                                    <input
+                                        id="allergyDetail"
+                                        className="ef"
                                         type="text"
                                         value={this.state.allergyDetail}
                                         onChange={this.handleChange}
                                         autoComplete="off"
                                     />
+                                    <span className="focus_line"></span>
                                 </Form.Group>
-                                <Form.Group controlId="message">
+                                <Form.Group className="cp_iptxt">
                                     <Form.Label className="rsvp__form_label">メッセージ</Form.Label>
-                                    <Form.Control
-                                        as="textarea"
+                                    <textarea
+                                        id="message"
+                                        className="ef"
                                         rows={3}
                                         value={this.state.message}
                                         onChange={this.handleChange}
                                         autoComplete="off"
                                     />
+                                    <span className="focus_line"></span>
                                 </Form.Group>
                                 <Button variant="light" onClick={this.click}>
                                     Send

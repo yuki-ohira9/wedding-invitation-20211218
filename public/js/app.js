@@ -3483,7 +3483,15 @@ var Rsvp = /*#__PURE__*/function (_Component) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              _this.setState({
+                userMessage: ""
+              });
+
+              _this.setState({
+                errorMessage: ""
+              });
+
+              _context.next = 4;
               return axios.put("/api/invitations/".concat(_User__WEBPACK_IMPORTED_MODULE_2__.default.userId()), {
                 is_attend: _this.state.isAttend,
                 email: _this.state.email,
@@ -3512,9 +3520,13 @@ var Rsvp = /*#__PURE__*/function (_Component) {
                 }
               })["catch"](function (err) {
                 console.error(err);
+
+                _this.setState({
+                  errorMessage: '送信に失敗しました'
+                });
               });
 
-            case 2:
+            case 4:
             case "end":
               return _context.stop();
           }
@@ -3565,7 +3577,6 @@ var Rsvp = /*#__PURE__*/function (_Component) {
                   variant: "danger",
                   children: this.state.errorMessage
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Group, {
-                  controlId: "is_attend",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Label, {
                     className: "rsvp__form_label required",
                     children: "\u3069\u3061\u3089\u304B\u3092\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044"
@@ -3597,54 +3608,69 @@ var Rsvp = /*#__PURE__*/function (_Component) {
                     }
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Group, {
-                  controlId: "name",
+                  className: "cp_iptxt",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Label, {
                     className: "rsvp__form_label",
                     children: "\u3054\u82B3\u540D"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Control, {
-                    type: "name",
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                    id: "name",
+                    type: "text",
                     value: this.state.name,
+                    className: "ef",
                     disabled: "disabled",
                     onChange: this.handleChange,
                     autoComplete: "off"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                    className: "focus_line"
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Group, {
-                  controlId: "email",
+                  className: "cp_iptxt",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Label, {
                     className: "rsvp__form_label required",
                     children: "\u30E1\u30FC\u30EB\u30A2\u30C9\u30EC\u30B9"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Control, {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                    id: "email",
                     type: "email",
+                    className: "ef",
                     value: this.state.email,
                     onChange: this.handleChange,
                     autoComplete: "off"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                    className: "focus_line"
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Group, {
-                  controlId: "address",
+                  className: "cp_iptxt",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Label, {
                     className: "rsvp__form_label required",
                     children: "\u3054\u4F4F\u6240"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Control, {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                    id: "address",
+                    className: "ef",
                     required: true,
                     type: "text",
                     value: this.state.address,
                     onChange: this.handleChange,
                     autoComplete: "off"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                    className: "focus_line"
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Group, {
-                  controlId: "tel",
+                  className: "cp_iptxt",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Label, {
                     className: "rsvp__form_label required",
                     children: "\u96FB\u8A71\u756A\u53F7"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Control, {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                    id: "tel",
+                    className: "ef",
                     required: true,
                     type: "text",
                     value: this.state.tel,
                     onChange: this.handleChange,
                     autoComplete: "off"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                    className: "focus_line"
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Group, {
-                  controlId: "has_allergy",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Label, {
                     className: "rsvp__form_label required",
                     children: "\u30A2\u30EC\u30EB\u30AE\u30FC"
@@ -3676,27 +3702,34 @@ var Rsvp = /*#__PURE__*/function (_Component) {
                     }
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Group, {
-                  controlId: "allergyDetail",
+                  className: "cp_iptxt",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Label, {
                     className: "rsvp__form_label",
                     children: "\u30A2\u30EC\u30EB\u30AE\u30FC\u3067\u300C\u3042\u308A\u300D\u3092\u9078\u629E\u3057\u305F\u65B9\u306F\u304A\u805E\u304B\u305B\u304F\u3060\u3055\u3044\u307E\u305B"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Control, {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                    id: "allergyDetail",
+                    className: "ef",
                     type: "text",
                     value: this.state.allergyDetail,
                     onChange: this.handleChange,
                     autoComplete: "off"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                    className: "focus_line"
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Group, {
-                  controlId: "message",
+                  className: "cp_iptxt",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Label, {
                     className: "rsvp__form_label",
                     children: "\u30E1\u30C3\u30BB\u30FC\u30B8"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Control, {
-                    as: "textarea",
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("textarea", {
+                    id: "message",
+                    className: "ef",
                     rows: 3,
                     value: this.state.message,
                     onChange: this.handleChange,
                     autoComplete: "off"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                    className: "focus_line"
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__.default, {
                   variant: "light",
@@ -8704,7 +8737,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".rsvp__main {\n  display: flex;\n}\n\n.rsvp__description {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 700px;\n  width: 80%;\n  height: -webkit-max-content;\n  height: -moz-max-content;\n  height: max-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  text-align:center;\n  border-bottom: 3px solid #008080;\n  border-top: 3px solid #008080;\n  -webkit-backdrop-filter: blur(2px);\n          backdrop-filter: blur(2px);\n}\n\n.rsvp__description_block {\n  padding: 30px;\n}\n\n.font_gray {\n  color: #707070;\n}\n\n.rsvp__form_block {\n  margin: auto;\n  text-align: center;\n}\n\n.rsvp__form_label {\n  width: 100%;\n}\n\ninput {\n  text-align: center;\n  background-color: rgba(255,255,255,0.5) !important;\n}\n\ntextarea {\n  text-align: center;\n  background-color: rgba(255,255,255,0.5) !important;\n}\n\n.required::after {\n  content: \" *\";\n  color: red;\n  vertical-align: middle;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".rsvp__main {\n  display: flex;\n}\n\n.rsvp__description {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 700px;\n  width: 80%;\n  height: -webkit-max-content;\n  height: -moz-max-content;\n  height: max-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  text-align:center;\n  border-bottom: 3px solid #008080;\n  border-top: 3px solid #008080;\n  -webkit-backdrop-filter: blur(2px);\n          backdrop-filter: blur(2px);\n}\n\n.rsvp__description_block {\n  padding: 30px;\n}\n\n.font_gray {\n  color: #707070;\n}\n\n.rsvp__form_block {\n  margin: auto;\n  text-align: center;\n}\n\n.rsvp__form_label {\n  width: 100%;\n}\n\ninput {\n  text-align: center;\n}\n\ntextarea {\n  text-align: center;\n}\n\n.required::after {\n  content: \" *\";\n  color: red;\n  vertical-align: middle;\n}\n\n.cp_iptxt {\n\tposition: relative;\n}\n.cp_iptxt input[type='text'],\n.cp_iptxt input[type='email'],\ntextarea {\n\tfont: 15px/24px sans-serif;\n  font-family: 'Caveat', cursive;\n\tbox-sizing: border-box;\n\twidth: 100%;\n\tletter-spacing: 1px;\n}\n.cp_iptxt input[type='text']:focus,\n.cp_iptxt input[type='email']:focus,\ntextarea:focus {\n\toutline: none;\n}\n.ef {\n\tpadding: 4px 0;\n\tborder: 0;\n\tborder-bottom: 1px solid #1b2538;\n\tbackground-color: transparent;\n}\n\u0003.ef ~ .focus_line {\n\tposition: absolute;\n\tbottom: 0;\n\tleft: 50%;\n\twidth: 0;\n\theight: 2px;\n\ttransition: 0.4s;\n\tbackground-color: #008080;\n}\n.ef ~ .focus_line {\n\tposition: absolute;\n\tbottom: 0;\n\tleft: 50%;\n\twidth: 0;\n\theight: 2px;\n\ttransition: 0.4s;\n\tbackground-color: #008080;\n}\n.ef:focus ~ .focus_line,\n.cp_iptxt.ef ~ .focus_line {\n\tleft: 0;\n\twidth: 100%;\n\ttransition: 0.4s;\n}\n.ef ~ label {\n\tposition: absolute;\n\tz-index: -1;\n\ttop: 4px;\n\tleft: 0;\n\twidth: 100%;\n\ttransition: 0.3s;\n\tletter-spacing: 0.5px;\n\tcolor: #aaaaaa;\n}\n.ef:focus ~ label, .cp_iptxt.ef ~ label {\n\tfont-size: 12px;\n\ttop: -16px;\n\ttransition: 0.3s;\n\tcolor: #008080;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
