@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -33,12 +34,19 @@ class LoginController extends Controller
             $result = true;
             $status = 200;
             $message = 'OK';
+            /** @var User $user */
             $user = Auth::user();
             // ※古いトークン削除&新しいトークン生成
             $user->tokens()->where('name', 'token-name')->delete();
             $token = $user->createToken('token-name')->plainTextToken;
         }
-        return response()->json(['result' => $result, 'status' => $status, 'user' => $user, 'message' => $message]);
+        return response()->json([
+            'result' => $result,
+            'status' => $status,
+            'user' => $user,
+            'invitation' => $user->invitation ?? null,
+            'message' => $message
+        ]);
     }
 
 

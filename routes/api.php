@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\LoginController;
+use App\Http\Controllers\Api\InvitationsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(["middleware" => "api"], function () {
     Route::post('/login', [LoginController::class, 'login']);
     Route::get('/logout', [LoginController::class, 'logout']);
+    
+    Route::put('/invitations/{user_id}', [InvitationsController::class, 'update']);
 });
