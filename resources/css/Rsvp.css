@@ -14,13 +14,38 @@
   text-align:center;
   border-bottom: 3px solid #008080;
   border-top: 3px solid #008080;
+  backdrop-filter: blur(2px);
 }
 
 .rsvp__description_block {
   padding: 30px;
-  backdrop-filter: blur(2px);
 }
 
 .font_gray {
   color: #707070;
+}
+
+.rsvp__form_block {
+  margin: auto;
+  text-align: center;
+}
+
+.rsvp__form_label {
+  width: 100%;
+}
+
+input {
+  text-align: center;
+  background-color: rgba(255,255,255,0.5) !important;
+}
+
+textarea {
+  text-align: center;
+  background-color: rgba(255,255,255,0.5) !important;
+}
+
+.required::after {
+  content: " *";
+  color: red;
+  vertical-align: middle;
 }
