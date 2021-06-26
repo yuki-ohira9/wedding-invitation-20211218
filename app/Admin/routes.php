@@ -16,4 +16,6 @@ Route::group([
     $router->get('/', 'HomeController@index')->name('home');
 
     $router->resource('/guests', GuestsController::class);
+
+    $router->resource('/invitations', InvitationsController::class);
 });
