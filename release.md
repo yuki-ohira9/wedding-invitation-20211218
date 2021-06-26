@@ -27,3 +27,7 @@ php artisan cache:clear
 php artisan admin:install
 
 exit
+
+
+## サーバー起動
+php artisan serve --host 0.0.0.0 --port 9999
