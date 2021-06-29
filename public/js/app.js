@@ -3515,14 +3515,14 @@ var Rsvp = /*#__PURE__*/function (_Component) {
                   });
                 } else {
                   _this.setState({
-                    errorMessage: '送信に失敗しました'
+                    errorMessage: 'DBの保存に失敗しました'
                   });
                 }
               })["catch"](function (err) {
                 console.error(err);
 
                 _this.setState({
-                  errorMessage: '送信に失敗しました'
+                  errorMessage: '必須項目を入力してください'
                 });
               });
 
@@ -3536,6 +3536,38 @@ var Rsvp = /*#__PURE__*/function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
       _this.setState(_defineProperty({}, e.target.id, e.target.value));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "changeIsAttend", function (isAttend, id) {
+      _this.setState({
+        isAttend: isAttend
+      });
+
+      if ('attend' === id) {
+        // 出席がクリックされた場合
+        $('#attend').parent().removeClass('cancel_line');
+        $('#absent').parent().addClass('cancel_line');
+      } else {
+        // 欠席がクリックされた場合
+        $('#absent').parent().removeClass('cancel_line');
+        $('#attend').parent().addClass('cancel_line');
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "changeHasAllergy", function (hasAllergy, id) {
+      _this.setState({
+        hasAllergy: hasAllergy
+      });
+
+      if ('has_allergy' === id) {
+        // 出席がクリックされた場合
+        $('#has_allergy').parent().removeClass('cancel_line');
+        $('#has_not_allergy').parent().addClass('cancel_line');
+      } else {
+        // 欠席がクリックされた場合
+        $('#has_not_allergy').parent().removeClass('cancel_line');
+        $('#has_allergy').parent().addClass('cancel_line');
+      }
     });
 
     _this.state = {
@@ -3587,12 +3619,11 @@ var Rsvp = /*#__PURE__*/function (_Component) {
                     name: "is_attend",
                     type: "radio",
                     id: "attend",
-                    checked: this.state.isAttend !== null && this.state.isAttend === "1",
+                    checked: this.state.isAttend === '1',
                     onChange: function onChange() {
-                      return _this2.setState({
-                        isAttend: "1"
-                      });
-                    }
+                      return _this2.changeIsAttend('1', 'attend');
+                    },
+                    className: '0' === this.state.isAttend ? 'cancel_line' : ''
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Check, {
                     required: true,
                     inline: true,
@@ -3600,12 +3631,11 @@ var Rsvp = /*#__PURE__*/function (_Component) {
                     name: "is_attend",
                     type: "radio",
                     id: "absent",
-                    checked: this.state.isAttend !== null && this.state.isAttend === "0",
+                    checked: this.state.isAttend === '0',
                     onChange: function onChange() {
-                      return _this2.setState({
-                        isAttend: "0"
-                      });
-                    }
+                      return _this2.changeIsAttend('0', 'absent');
+                    },
+                    className: '1' === this.state.isAttend ? 'cancel_line' : ''
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Group, {
                   className: "cp_iptxt",
@@ -3683,10 +3713,9 @@ var Rsvp = /*#__PURE__*/function (_Component) {
                     id: "has_allergy",
                     checked: this.state.hasAllergy !== null && this.state.hasAllergy === "1",
                     onChange: function onChange() {
-                      return _this2.setState({
-                        hasAllergy: "1"
-                      });
-                    }
+                      return _this2.changeHasAllergy('1', 'has_allergy');
+                    },
+                    className: '0' === this.state.hasAllergy ? 'cancel_line' : ''
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Check, {
                     required: true,
                     inline: true,
@@ -3696,10 +3725,9 @@ var Rsvp = /*#__PURE__*/function (_Component) {
                     id: "has_not_allergy",
                     checked: this.state.hasAllergy !== null && this.state.hasAllergy === "0",
                     onChange: function onChange() {
-                      return _this2.setState({
-                        hasAllergy: "0"
-                      });
-                    }
+                      return _this2.changeHasAllergy('0', 'has_not_allergy');
+                    },
+                    className: '1' === this.state.hasAllergy ? 'cancel_line' : ''
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default.Group, {
                   className: "cp_iptxt",
@@ -8737,7 +8765,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".rsvp__main {\n  display: flex;\n}\n\n.rsvp__description {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 700px;\n  width: 80%;\n  height: -webkit-max-content;\n  height: -moz-max-content;\n  height: max-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  text-align:center;\n  border-bottom: 3px solid #008080;\n  border-top: 3px solid #008080;\n  -webkit-backdrop-filter: blur(2px);\n          backdrop-filter: blur(2px);\n}\n\n.rsvp__description_block {\n  padding: 30px;\n}\n\n.font_gray {\n  color: #707070;\n}\n\n.rsvp__form_block {\n  margin: auto;\n  text-align: center;\n}\n\n.rsvp__form_label {\n  width: 100%;\n}\n\ninput {\n  text-align: center;\n}\n\ntextarea {\n  text-align: center;\n}\n\n.required::after {\n  content: \" *\";\n  color: red;\n  vertical-align: middle;\n}\n\n.cp_iptxt {\n\tposition: relative;\n}\n.cp_iptxt input[type='text'],\n.cp_iptxt input[type='email'],\ntextarea {\n\tfont: 15px/24px sans-serif;\n  font-family: 'Caveat', cursive;\n\tbox-sizing: border-box;\n\twidth: 100%;\n\tletter-spacing: 1px;\n}\n.cp_iptxt input[type='text']:focus,\n.cp_iptxt input[type='email']:focus,\ntextarea:focus {\n\toutline: none;\n}\n.ef {\n\tpadding: 4px 0;\n\tborder: 0;\n\tborder-bottom: 1px solid #1b2538;\n\tbackground-color: transparent;\n}\n\u0003.ef ~ .focus_line {\n\tposition: absolute;\n\tbottom: 0;\n\tleft: 50%;\n\twidth: 0;\n\theight: 2px;\n\ttransition: 0.4s;\n\tbackground-color: #008080;\n}\n.ef ~ .focus_line {\n\tposition: absolute;\n\tbottom: 0;\n\tleft: 50%;\n\twidth: 0;\n\theight: 2px;\n\ttransition: 0.4s;\n\tbackground-color: #008080;\n}\n.ef:focus ~ .focus_line,\n.cp_iptxt.ef ~ .focus_line {\n\tleft: 0;\n\twidth: 100%;\n\ttransition: 0.4s;\n}\n.ef ~ label {\n\tposition: absolute;\n\tz-index: -1;\n\ttop: 4px;\n\tleft: 0;\n\twidth: 100%;\n\ttransition: 0.3s;\n\tletter-spacing: 0.5px;\n\tcolor: #aaaaaa;\n}\n.ef:focus ~ label, .cp_iptxt.ef ~ label {\n\tfont-size: 12px;\n\ttop: -16px;\n\ttransition: 0.3s;\n\tcolor: #008080;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".rsvp__main {\n  display: flex;\n}\n\n.rsvp__description {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 700px;\n  width: 80%;\n  height: -webkit-max-content;\n  height: -moz-max-content;\n  height: max-content;\n  margin: auto;\n  font-family: 'Caveat', cursive;\n  text-align:center;\n  border-bottom: 3px solid #008080;\n  border-top: 3px solid #008080;\n  -webkit-backdrop-filter: blur(2px);\n          backdrop-filter: blur(2px);\n}\n\n.rsvp__description_block {\n  padding: 30px;\n}\n\n.font_gray {\n  color: #707070;\n}\n\n.rsvp__form_block {\n  margin: auto;\n  text-align: center;\n}\n\n.rsvp__form_label {\n  width: 100%;\n}\n\ninput {\n  text-align: center;\n}\n\ntextarea {\n  text-align: center;\n}\n\n.required::after {\n  content: \" *\";\n  color: red;\n  vertical-align: middle;\n}\n\n.cp_iptxt {\n\tposition: relative;\n}\n.cp_iptxt input[type='text'],\n.cp_iptxt input[type='email'],\ntextarea {\n\tfont: 15px/24px sans-serif;\n  font-family: 'Caveat', cursive;\n\tbox-sizing: border-box;\n\twidth: 100%;\n\tletter-spacing: 1px;\n}\n.cp_iptxt input[type='text']:focus,\n.cp_iptxt input[type='email']:focus,\ntextarea:focus {\n\toutline: none;\n}\n.ef {\n\tpadding: 4px 0;\n\tborder: 0;\n\tborder-bottom: 1px solid #1b2538;\n\tbackground-color: transparent;\n}\n\u0003.ef ~ .focus_line {\n\tposition: absolute;\n\tbottom: 0;\n\tleft: 50%;\n\twidth: 0;\n\theight: 2px;\n\ttransition: 0.4s;\n\tbackground-color: #008080;\n}\n.ef ~ .focus_line {\n\tposition: absolute;\n\tbottom: 0;\n\tleft: 50%;\n\twidth: 0;\n\theight: 2px;\n\ttransition: 0.4s;\n\tbackground-color: #008080;\n}\n.ef:focus ~ .focus_line,\n.cp_iptxt.ef ~ .focus_line {\n\tleft: 0;\n\twidth: 100%;\n\ttransition: 0.4s;\n}\n.ef ~ label {\n\tposition: absolute;\n\tz-index: -1;\n\ttop: 4px;\n\tleft: 0;\n\twidth: 100%;\n\ttransition: 0.3s;\n\tletter-spacing: 0.5px;\n\tcolor: #aaaaaa;\n}\n.ef:focus ~ label, .cp_iptxt.ef ~ label {\n\tfont-size: 12px;\n\ttop: -16px;\n\ttransition: 0.3s;\n\tcolor: #008080;\n}\n\n/* チェックボックススタイル */\ninput[type=radio] {\n\tdisplay: none; /* ラジオボタンを非表示にする */\n}\n\ninput[type=radio] + label {\n\tdisplay: block; /* ブロックレベル要素化する */\n\tfloat: left; /* 要素の左寄せ・回り込を指定する */\n\tmargin: 5px; /* ボックス外側の余白を指定する */\n\twidth: 100px; /* ボックスの横幅を指定する */\n\theight: 45px; /* ボックスの高さを指定する */\n\tpadding-left: 5px; /* ボックス内左側の余白を指定する */\n\tpadding-right: 5px; /* ボックス内御右側の余白を指定する */\n\ttext-align: center; /* テキストのセンタリングを指定する */\n\tline-height: 45px; /* 行の高さを指定する */\n}\ninput[type=\"radio\"]:checked + label {\n\tcursor: pointer; /* マウスカーソルの形（リンクカーソル）を指定する */\n\tborder: 2px solid black;/* ボックスの境界線を実線で指定する */\n\tborder-radius: 50%; /* 角丸を指定する */\t\n}\n\n/* 二重取り消し線スタイル */\n.cancel_line::before {\n\tcontent: '';                \t/* 擬似要素に実体を持たせる */\n\twidth: 100%;                \t/* 打ち消し線の幅を指定する*/\n\theight: 1px;                \t/* 線を表示させるために1pxだけ高さを入れる */\n\tborder-top: solid 1px #000;     /* 二重線の上側になる線をひく */\n\tposition: absolute;            \t/* 線の位置を自由に動かせるようにする */\n\tleft: 0 ;                   \t/* 線の位置を左に揃える */\n\ttop: calc(50% - 3px);           /* 線の位置を真ん中から3px上にする */\n}\n \n.cancel_line::after {\n\tcontent: '';                \t/* 擬似要素に実体を持たせる */\n\twidth: 100%;                \t/* 打ち消し線の幅を指定する*/\n\theight: 1px;                \t/* 線を表示させるために1pxだけ高さを入れる */\n\tborder-bottom: solid 1px #000;  /* 二重線の上側になる線をひく */\n\tposition: absolute;            \t/* 線の位置を自由に動かせるようにする */\n\tleft: 0 ;                    \t/* 線の位置を左に揃える */\n\tbottom: calc(50% - 3px);        /* 線の位置を真ん中から3px下にする */\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -9300,7 +9328,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/bride.jpg?09d10e87f24cfe17d0ecb0c3a8c255fc");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/bride.jpg?fe62e06174c30bcd3b1b6cba6907f113");
 
 /***/ }),
 
@@ -9315,7 +9343,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/groom.jpg?c7bf46179ba8ffb5e9ca751461e45048");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/groom.jpg?f42e5322a5ad320457319fb50a64314e");
 
 /***/ }),
 

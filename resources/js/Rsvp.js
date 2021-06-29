@@ -42,17 +42,47 @@ class Rsvp extends Component {
                 User.set('message', this.state.message);
                 this.setState({ userMessage: '送信が完了しました' });
             } else {
-                this.setState({ errorMessage: '送信に失敗しました' });
+                this.setState({ errorMessage: 'DBの保存に失敗しました' });
             }
         }).catch(err => {
           console.error(err);
-          this.setState({ errorMessage: '送信に失敗しました' });
+          this.setState({ errorMessage: '必須項目を入力してください' });
         });
     }
 
     handleChange = e => {
         this.setState({ [e.target.id]: e.target.value });
     };
+
+    /**
+     * @param {String} isAttend 
+     * @param {String} id
+     */
+    changeIsAttend = (isAttend, id) => {
+        this.setState({isAttend: isAttend});
+        if ('attend' === id) { // 出席がクリックされた場合
+            $('#attend').parent().removeClass('cancel_line');
+            $('#absent').parent().addClass('cancel_line');
+        } else { // 欠席がクリックされた場合
+            $('#absent').parent().removeClass('cancel_line');
+            $('#attend').parent().addClass('cancel_line');
+        }
+    }
+
+    /**
+     * @param {String} isAttend 
+     * @param {String} id
+     */
+     changeHasAllergy = (hasAllergy, id) => {
+        this.setState({hasAllergy: hasAllergy});
+        if ('has_allergy' === id) { // 出席がクリックされた場合
+            $('#has_allergy').parent().removeClass('cancel_line');
+            $('#has_not_allergy').parent().addClass('cancel_line');
+        } else { // 欠席がクリックされた場合
+            $('#has_not_allergy').parent().removeClass('cancel_line');
+            $('#has_allergy').parent().addClass('cancel_line');
+        }
+    }
 
     render() {
         return (
@@ -79,8 +109,9 @@ class Rsvp extends Component {
                                         name="is_attend"
                                         type="radio"
                                         id="attend"
-                                        checked={this.state.isAttend !== null && this.state.isAttend === "1"}
-                                        onChange={() => this.setState({isAttend: "1"})}
+                                        checked={this.state.isAttend === '1'}
+                                        onChange={() => this.changeIsAttend('1', 'attend')}
+                                        className={'0' === this.state.isAttend ? 'cancel_line' : ''}
                                     />
                                     <Form.Check
                                         required
@@ -89,8 +120,9 @@ class Rsvp extends Component {
                                         name="is_attend"
                                         type="radio"
                                         id="absent"
-                                        checked={this.state.isAttend !== null && this.state.isAttend === "0"}
-                                        onChange={() => this.setState({isAttend: "0"})}
+                                        checked={this.state.isAttend === '0'}
+                                        onChange={() => this.changeIsAttend('0', 'absent')}
+                                        className={'1' === this.state.isAttend ? 'cancel_line' : ''}
                                     />
                                 </Form.Group>
                                 <Form.Group className="cp_iptxt">
@@ -154,7 +186,8 @@ class Rsvp extends Component {
                                         type="radio"
                                         id="has_allergy"
                                         checked={this.state.hasAllergy !== null && this.state.hasAllergy === "1"}
-                                        onChange={() => this.setState({hasAllergy: "1"})}
+                                        onChange={() => this.changeHasAllergy('1', 'has_allergy')}
+                                        className={'0' === this.state.hasAllergy ? 'cancel_line' : ''}
                                     />
                                     <Form.Check
                                         required
@@ -164,7 +197,8 @@ class Rsvp extends Component {
                                         type="radio"
                                         id="has_not_allergy"
                                         checked={this.state.hasAllergy !== null && this.state.hasAllergy === "0"}
-                                        onChange={() => this.setState({hasAllergy: "0"})}
+                                        onChange={() => this.changeHasAllergy('0', 'has_not_allergy')}
+                                        className={'1' === this.state.hasAllergy ? 'cancel_line' : ''}
                                     />
                                 </Form.Group>
                                 <Form.Group className="cp_iptxt">
