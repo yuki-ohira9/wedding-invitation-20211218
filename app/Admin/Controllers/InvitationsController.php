@@ -39,14 +39,14 @@ class InvitationsController extends AdminController
             0 => 'なし',
             1 => 'あり',
         ], '未回答');
-        $grid->invitation()->tel('電話番号');
+        $grid->invitation()->tel('電話番号')->default('未回答');
         $grid->invitation()->created_at('回答日時')->display(function ($createdAt) {
             $dt = new Carbon($createdAt, 'UTC');
-            return $createdAt ? $dt->setTimezone('Asia/Tokyo')->format('Y-m-d H:i:s') : null;
-        });
+            return $createdAt ? $dt->setTimezone('Asia/Tokyo')->format('Y-m-d H:i:s') : '未回答';
+        })->default('未回答');
         $grid->invitation()->updated_at('更新日時')->display(function ($updatedAt) {
             $dt = new Carbon($updatedAt, 'UTC');
-            return $updatedAt ? $dt->setTimezone('Asia/Tokyo')->format('Y-m-d H:i:s') : null;
+            return $updatedAt ? $dt->setTimezone('Asia/Tokyo')->format('Y-m-d H:i:s') : '未回答';
         });
 
         return $grid;
