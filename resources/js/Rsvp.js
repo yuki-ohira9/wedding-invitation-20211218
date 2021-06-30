@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import User from './User';
 import '../css/Rsvp.css'
+import Swal from 'sweetalert2'
 
 class Rsvp extends Component {
     constructor(props) {
@@ -15,14 +16,10 @@ class Rsvp extends Component {
             hasAllergy: User.hasAllergy(),
             allergyDetail: User.allergyDetail() ?? '',
             message: User.message() ?? '',
-            userMessage: '',
-            errorMessage: '',
         };
     }
 
     click = async () => {
-        this.setState({userMessage: ""})
-        this.setState({errorMessage: ""})
         await axios.put(`/api/invitations/${User.userId()}`, {
             is_attend: this.state.isAttend,
             email: this.state.email,
@@ -40,13 +37,48 @@ class Rsvp extends Component {
                 User.set('hasAllergy', this.state.hasAllergy);
                 User.set('allergyDetail', this.state.allergyDetail);
                 User.set('message', this.state.message);
-                this.setState({ userMessage: '送信が完了しました' });
+                Swal.fire({
+                    icon: 'success',
+                    title: '送信が完了しました',
+                    width: 600,
+                    padding: '3em',
+                    background: '#gray',
+                });
             } else {
-                this.setState({ errorMessage: 'DBの保存に失敗しました' });
+                Swal.fire({
+                    icon: 'error',
+                    title: 'DBの保存に失敗しました',
+                    width: 600,
+                    padding: '3em',
+                    background: '#gray',
+                });
             }
-        }).catch(err => {
-          console.error(err);
-          this.setState({ errorMessage: '必須項目を入力してください' });
+        })
+        .catch(err => {
+            console.error(err.response);
+            if (422 === err.response.status) {
+                let errors = [];
+                const errorsObj = err.response.data.errors;
+                Object.keys(errorsObj).forEach(function (key) {
+                    errors.push(`${errorsObj[key].join(',')}`);
+                  });
+                Swal.fire({
+                    icon: 'warning',
+                    title: '入力値を確認してください',
+                    html: errors.join('<br/>'),
+                    width: 600,
+                    padding: '3em',
+                    background: '#gray',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'DBの保存に失敗しました',
+                    width: 600,
+                    padding: '3em',
+                    background: '#gray',
+                });
+            }
         });
     }
 
@@ -94,12 +126,6 @@ class Rsvp extends Component {
                         </div>
                         <div className="rsvp__form_block">
                             <Form>
-                                {this.state.userMessage && (
-                                    <Alert variant="success">{this.state.userMessage}</Alert>
-                                )}
-                                {this.state.errorMessage && (
-                                    <Alert variant="danger">{this.state.errorMessage}</Alert>
-                                )}
                                 <Form.Group>
                                     <Form.Label className="rsvp__form_label required">どちらかを選択してください</Form.Label><br/>
                                     <Form.Check
