@@ -36,15 +36,11 @@ class InvitationsController extends Controller
                 ]
             );
             DB::commit();
-            return response()->json([
-                'result' => true,
-            ]);
+            return response()->json(['result' => true]);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             DB::rollback();
-            return response()->json([
-                'result' => false,
-            ]);
+            return response()->json(['result' => false]);
         }
     }
 }
