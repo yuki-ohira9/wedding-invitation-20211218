@@ -1,6 +1,6 @@
 .event_main {
   position: absolute;
-  width: 80%;
+  width: 60%;
   left: 0;
   right: 0;
   top: 700px;
@@ -84,4 +84,10 @@ table td{
   text-align: center;
   background-color: #eee;
   padding: 10px 0;
+}
+
+@media screen and (max-width: 480px) {
+  .event_main {
+    left: 30%;
+  }
 }
