@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/NavBar.css'
 import posed from 'react-pose'
+import Swal from 'sweetalert2'
 
 const props = {
     visible: { opacity: 1 },
@@ -26,9 +27,17 @@ class NavBar extends Component {
     }
 
     logout = async () => {
-        if (window.confirm('ログアウトしますか？')) {
-            window.location = '/logout';
-        }
+        Swal.fire({
+            title: 'ログアウトしますか？',
+            width: 600,
+            padding: '3em',
+            background: '#gray',
+            showCancelButton: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location = '/logout';
+            }
+        })
     };
 
     render() {
